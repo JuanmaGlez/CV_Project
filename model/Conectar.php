@@ -26,7 +26,7 @@ class Conectar{
 
   //Creamos el método constructor
   public function __construct(){
-    $datos_bd = require_once '../config/db.php';
+    $datos_bd = require_once '/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/config/db.php';
     echo "Clase conectar" . " " . $datos_bd["login"] . " " . $datos_bd["contrasena"] . "<br>";
     $this->serverlocal=$datos_bd["serverlocal"];
     $this->login=$datos_bd["login"];

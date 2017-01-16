@@ -3,4 +3,7 @@
  *
  * @autor Juanma
  */
-<?php echo 'Hola Mundo'; ?>
+<?php
+	echo 'Hola Mundo';
+	echo 'Aquí estamos haciendo prueba con git';
+ ?>

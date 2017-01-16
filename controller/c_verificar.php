@@ -55,10 +55,9 @@ class Verificar {
   // Método comprobrar login
   public function checkLogin(){
     $resultado=$objuser->buscarUsuario($this->username,$this->password,$this->email);
-
     if ($this->password == $resultado['password']) {
       $_SESSION['loggedin'] = true;
-      $_SESSION['username'] = $this->username;
+      //$_SESSION['username'] = $this->username;
       //$_SESSION['username'] = $resultado['username'];
       $_SESSION['start'] = time();
       $_SESSION['expire'] = $_SESSION['start'] + (60 * 2);
@@ -94,7 +93,7 @@ class Verificar {
     unset ($_SESSION['username']);
     session_destroy();
 
-    header('location:http://jmgonzalez.com/proyecto_curri4/view/v_login.php');
+    //header('location:http://jmgonzalez.com/proyecto_curri4/view/v_login.php');
   } //Fin método cerrar sesión
 } // Fin clase Verificar
 ?>

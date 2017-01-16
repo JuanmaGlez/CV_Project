@@ -10,6 +10,14 @@ Uso **Comillas Invertidas** (*ejemplo*) :
 sirver para eso
 ```
 
+```console
+javac HolaMundo.java
+```
+
+'''console
+java HolaMundo
+'''
+
 ## Aprende Java
 
 Te recomiendo el libro [Aprende Java con Ejercicios](https://leanpub.com/aprendejava) :wink:

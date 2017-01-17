@@ -28,6 +28,7 @@
     <header>
       <h1>CURRICULUM</h1>
     </header>
+    <!--<input type="button" onclick=" location.href='v_registrar..php' " value="REGISTRARSE">-->
     <form action="v_registrar.php" method="post">
       <input type="submit" name="registrar" value="Registrar">
     </form>

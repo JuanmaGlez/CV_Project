@@ -22,51 +22,41 @@
   */
   session_start();
   require_once("Conectar.php");
-  //require_once("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/rprueba6.php");
 
   class Usuarios {
 
     // Definimos las propiedades o atributos
-    public $idUsuario;
-    public $username;
-    public $password;
-    public $email;
-    public $name;
-    public $surname;
-    public $birthday;
-    public $address;
-    public $postal;
-    public $town;
-    public $province;
-    public $mobile;
-    public $telephone;
-    public $idTipos;
-    public $error;
+    private $idUsuario;
+    private $username;
+    private $password;
+    private $email;
+    private $name;
+    private $surname;
+    private $birthday;
+    private $address;
+    private $postal;
+    private $town;
+    private $province;
+    private $mobile;
+    private $telephone;
+    private $idTipos;
+    private $error;
     private $conectarse;
 
     //Método Constructor
-    /*public function __construct($username,$password,$email,$name,$surname,$birthday,
-    $address,$postal,$town,$province,$mobile,$telephone)*/
     public function __construct($idUsuario=null){
-      echo "Clase Usuario. Constructor1 " . $this->conectarse->login . $this->conectarse->contrasena . "<br>";
       $this->conectarse=new Conectar();
-      echo "Clase Usuario. Constructor2. Inicio Clase Conectar " . $this->conectarse->login . "<br>" . $this->conectarse->contrasena . "<br>";
       $this->conectarse->conexion();
-      echo "Clase Usuario. Constructor3. Inicio conexion" . $this->conectarse->login . $this->conectarse->contrasena . "<br>";
-      //$this->conectarse=new PruebaC();
-      //$this->conectarse->conex();
       if($idUsuario != "" || $idUsuario != 0){
         $this->idUsuario=$idUsuario;
         $this->recuperar();
       } //***FIN if***
-      echo "Clase Usuario. Constructor4. Fin Constructor " . $this->conectarse->login . $this->conectarse->contrasena . "<br>";
     }// ****** FIN CONSTRUCTOR ********
 
 
     //Métodos
     //Método Recuperar Datos del Usuario de la Base de Datos
     public function recuperar(){
-      //echo "Clase Usuario. recuperar " . $this->conectarse->contrasena;
       $datosArray="SELECT * FROM usuarios WHERE idUsuario = $this->idUsuario";
       if($datosRecuperados=$this->conectarse->query($datosArray)){
         $this->idUsuario=$datosRecuperados['idUsuario'];
@@ -157,13 +147,19 @@
     }
 
     //Método Buscar Usuario
-    public function buscarUsuario($username,$password,$email){
+    public function buscarUsuario($username,$password){
+      $consulta="SELECT * FROM usuarios WHERE username = '$username' and password = '$password'";
+      if ($resultado=$this->conectarse->query($consulta)){
+        $this->idUsuario=$resultado['idUsuario'];
+        return $resultado;
+      } // **Fin if**
+
+    } // *** Fin método buscarUsuario()***
+
+    /*public function buscarUsuario($username,$password,$email){
       if($email){
         $sql="Select idUsuario from usuarios where username='$username' and email='$email'";
-        //$this->conectarse->conexion();
         $resultado=$this->conectarse->query($sql);
-        //echo "$resultado[idUsuario]";
-        //if ($resultado["idUsuario"]>0)
         if ($resultado>0){
           return $resultado;
         } else {
@@ -171,16 +167,12 @@
         }
       } else {
             $sql="SELECT * FROM usuarios where username = '$username' AND password = '$password'";
-          //  $this->conectarse->conexion();
             $resultado=$this->conectarse->query($sql);
             $this->idUsuario=$resultado['idUsuario'];
             $this->idTipos=$resultado['idTipoUsuario'];
             return $resultado;
-            //$a=$this->conectarse->query($sql);
-            //echo $a;
-            //return $a;
         }
-    } //*** FIN MÉTODO buscarUsuario
+    } //*** FIN MÉTODO buscarUsuario*/
 
     //Método Crear Usuario
     public function crearUsuario($username,$password,$email,$name,$surname,$birthday,
@@ -189,8 +181,7 @@
       ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
       $resultado=$this->conectarse->query($sql);
       if ($resultado){
-        //echo "Usuario Creado";
-        header('location:http://jmgonzalez.com/proyecto_curri4/view/v_login.php');
+        echo "Usuario Creado";
       } else {
         echo "Error al crear el usuario";
       }
@@ -199,127 +190,58 @@
     //Método Modificar Datos personales
     public function setDatosPersonales($username,$password,$email,$name,$surname,$birthday,$address,$postal,$town,$province,$mobile,$telephone){
     //public function setDatosPersonales($datos)
-    //echo "Clase Usuario. datos personales " . $this->conectarse->contrasena;
         $modificado=array();
-        /*if($username==""){
-          $username=$this->username;
-        }*/
         if($this->username != $username){
-            //echo $this->username . "usuariobd <br>";
-            //echo $username . "usuario nuevo <br>";
-            //$usuario =  htmlspecialchars($datos['username']);
-            //echo "error1 <br>";
             $sql = "UPDATE usuarios SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
-        //    echo $sql;
             $modificado['username'] = $this->conectarse->query($sql);
         }
-
-        /*if($password==""){
-          $password=$this->password;
-        }*/
         if($this->password != $password){
-          //echo "error 2";
-            //$contrasena =  htmlspecialchars($datos['password']);
             $sql = "UPDATE usuarios set password = '$password' where idUsuario ='$this->idUsuario'";
             $modificado['password'] = $this->conectarse->query($sql);
         }
-
-        /*if($email==""){
-          $email=$this->email;
-        }*/
         if($this->email != $email){
-          //echo "error 3";
-            //$correo =  htmlspecialchars($datos['email']);
             $sql = "UPDATE usuarios set email = '$email' where idUsuario ='$this->idUsuario'";
             $modificado['email'] = $this->conectarse->query($sql);
         }
-
-        /*if($name==""){
-          $name=$this->name;
-        }*/
         if($this->name != $name){
-          //echo "error 4";
-            //echo $this->name . "1 <br>";
-            //echo $name . "2 <br>" ;
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set name = '$name' where idUsuario ='$this->idUsuario'";
             $modificado['name'] = $this->conectarse->query($sql);
         }
-
-        /*if($surname==""){
-          $surname=$this->surname;
-        }*/
         if($this->surname != $surname){
             //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set surname = '$surname' where idUsuario ='$this->idUsuario'";
             $modificado['surname'] = $this->conectarse->query($sql);
         }
-
-        /*if($birthday==""){
-          $birthday=$this->birthday;
-        }*/
         if($this->birthday != $birthday){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set birthday = '$birthday' where idUsuario ='$this->idUsuario'";
             $modificado['birthday'] = $this->conectarse->query($sql);
         }
-
-        /*if($address==""){
-          $address=$this->address;
-        }*/
         if($this->address != $address){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set address = '$address' where idUsuario ='$this->idUsuario'";
             $modificado['address'] = $this->conectarse->query($sql);
         }
-
-        /*if($postal==""){
-          $postal=$this->postal;
-        }*/
         if($this->postal != $postal){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set postal = '$postal' where idUsuario ='$this->idUsuario'";
             $modificado['postal'] = $this->conectarse->query($sql);
         }
-
-        /*if($town==""){
-          $town=$this->town;
-        }*/
         if($this->town != $town){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set town = '$town' where idUsuario ='$this->idUsuario'";
             $modificado['town'] = $this->conectarse->query($sql);
         }
-
-        /*if($province==""){
-          $province=$this->province;
-        }*/
         if($this->province != $province){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set province = '$province' where idUsuario ='$this->idUsuario'";
             $modificado['province'] = $this->conectarse->query($sql);
         }
-
-        /*if($mobile==""){
-          $mobile=$this->mobile;
-        }*/
         if($this->mobile != $mobile){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set mobile = '$mobile' where idUsuario ='$this->idUsuario'";
             $modificado['mobile'] = $this->conectarse->query($sql);
         }
-
-        /*if($telephone==""){
-          $telephone=$this->telephone;
-        }*/
         if($this->telephone != $telephone){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set telephone = '$telephone' where idUsuario ='$this->idUsuario'";
             $modificado['telephone'] = $this->conectarse->query($sql);
         }
         if($modificado){
-          //echo "Datos modificados";
-          header('location:http://jmgonzalez.com/proyecto_curri4/view/v_administrador/v_administrador.php');
+          echo "Los datos has sido modificados correctamente";
         } else {
           echo "Error al modificar";
         }

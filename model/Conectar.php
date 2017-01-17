@@ -27,7 +27,6 @@ class Conectar{
   //Creamos el método constructor
   public function __construct(){
     $datos_bd = require_once '/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/config/db.php';
-    echo "Clase conectar" . " " . $datos_bd["login"] . " " . $datos_bd["contrasena"] . "<br>";
     $this->serverlocal=$datos_bd["serverlocal"];
     $this->login=$datos_bd["login"];
     $this->contrasena=$datos_bd["contrasena"];
@@ -61,8 +60,8 @@ class Conectar{
           exit;
         }
     if($resultado->num_rows === 0){
-      //echo "Ups. No hay ningun resultado";
-      //exit;
+      echo "Ups. No hay ningun resultado";
+      exit;
       //return $resultado;
     }
     /*$valor=$resultado->fetch_assoc();
@@ -79,10 +78,4 @@ class Conectar{
   }
 
 }
-
-/*$obj = new Conectar();
-echo $obj->server;
-echo $obj->userbd;
-echo $obj->pwdbd;
-echo $obj->database;*/
  ?>

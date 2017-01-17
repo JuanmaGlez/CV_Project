@@ -22,7 +22,7 @@ class Verificar {
 
   // Constructor
   public function __construct(){
-    $objuser=new Usuarios();
+    $this->objuser=new Usuarios();
     $this->username=$_POST['username'];
     $this->password = $_POST['password'];
     $this->email=$_POST['email'];
@@ -40,7 +40,7 @@ class Verificar {
 
   // Método comprobar usuario
   public function checkUsuario(){
-    $resultado=$objuser->buscarUsuario($this->username,$this->password,$this->email);
+    $resultado=$this->objuser->buscarUsuario($this->username,$this->password,$this->email);
     if($resultado==0){
       //echo "Usuario creado";
       $objuser->crearUsuario($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
@@ -54,17 +54,16 @@ class Verificar {
 
   // Método comprobrar login
   public function checkLogin(){
-    $resultado=$objuser->buscarUsuario($this->username,$this->password,$this->email);
+    $resultado=$this->objuser->buscarUsuario($this->username,$this->password,$this->email);
     if ($this->password == $resultado['password']) {
       $_SESSION['loggedin'] = true;
       //$_SESSION['username'] = $this->username;
       //$_SESSION['username'] = $resultado['username'];
       $_SESSION['start'] = time();
       $_SESSION['expire'] = $_SESSION['start'] + (60 * 2);
-      $_SESSION['idUsuario']=$objuser->getIdUsuario();
-      $_SESSION['idTipoUsuario']=$objuser->getIdTipos();
+      $_SESSION['idUsuario']=$this->objuser->getIdUsuario();
+      $_SESSION['idTipoUsuario']=$this->objuser->getIdTipos();
 
-      session_start();
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       } else {
         echo "Solo usuarios registrados.<br>";

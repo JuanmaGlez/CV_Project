@@ -2,7 +2,7 @@
 session_start();
 require_once("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/model/Usuarios.php");
 
-// Clase Verificar
+// Clase Registrar
 class Registrar {
   public $idUsuario;
   public $username;
@@ -17,7 +17,6 @@ class Registrar {
   public $province;
   public $mobile;
   public $telephone;
-  private $arrayDatos;
   private $objuser;
 
   // Constructor
@@ -40,17 +39,15 @@ class Registrar {
 
   // Método comprobar usuario
   public function checkUsuario(){
-    $this->objuser->crearUsuario($this->arrayDatos);
-    /*if($resultado==0){
-      //echo "Usuario creado";
-      $objuser->crearUsuario($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+    $resultado=$this->objuser->crearUsuario($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone=0);
-      //header('location:http://jmgonzalez.com/proyecto_curri4/view/v_login.php');
+      if($resultado==0){
+      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
     } else {
       echo "El usuario ya existe";
-    }*/
+    }
   } // Fin método comprobar usuario
 
 
-} // Fin clase Verificar
+} // Fin clase Registrar
 ?>

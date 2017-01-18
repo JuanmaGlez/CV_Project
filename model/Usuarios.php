@@ -151,45 +151,36 @@
       $consulta="SELECT * FROM usuarios WHERE username = '$username' and password = '$password'";
       if ($resultado=$this->conectarse->query($consulta)){
         $this->idUsuario=$resultado['idUsuario'];
+        $this->idTipos=$resultado['idTipoUsuario'];
+        $this->recuperar();
+        $this->conectarse->desconexion();
         return $resultado;
       } // **Fin if**
 
     } // *** Fin método buscarUsuario()***
 
-    /*public function buscarUsuario($username,$password,$email){
-      if($email){
-        $sql="Select idUsuario from usuarios where username='$username' and email='$email'";
-        $resultado=$this->conectarse->query($sql);
-        if ($resultado>0){
-          return $resultado;
-        } else {
-          return $resultado;
-        }
-      } else {
-            $sql="SELECT * FROM usuarios where username = '$username' AND password = '$password'";
-            $resultado=$this->conectarse->query($sql);
-            $this->idUsuario=$resultado['idUsuario'];
-            $this->idTipos=$resultado['idTipoUsuario'];
-            return $resultado;
-        }
-    } //*** FIN MÉTODO buscarUsuario*/
-
     //Método Crear Usuario
     public function crearUsuario($username,$password,$email,$name,$surname,$birthday,
     $address,$postal,$town,$province,$mobile,$telephone=null){
-      $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
-      ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
-      $resultado=$this->conectarse->query($sql);
-      if ($resultado){
-        echo "Usuario Creado";
+      $consulta="SELECT idUsuario FROM usuarios WHERE username = '$username' and email = '$email'";
+      $valor=$this->conectarse->query($consulta);
+      if ($valor == 0) {
+        $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
+        ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
+        $resultado=$this->conectarse->query($sql);
+        $this->conectarse->desconexion();
+        if ($resultado){
+          echo "Usuario Creado";
+        } else {
+          echo "Error al crear el usuario";
+        }
       } else {
-        echo "Error al crear el usuario";
+        return $valor;
       }
     } //*** FIN MÉTODO crearUsuario
 
     //Método Modificar Datos personales
     public function setDatosPersonales($username,$password,$email,$name,$surname,$birthday,$address,$postal,$town,$province,$mobile,$telephone){
-    //public function setDatosPersonales($datos)
         $modificado=array();
         if($this->username != $username){
             $sql = "UPDATE usuarios SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
@@ -208,7 +199,6 @@
             $modificado['name'] = $this->conectarse->query($sql);
         }
         if($this->surname != $surname){
-            //$nombre = htmlspecialchars($datos['name']);
             $sql = "UPDATE usuarios set surname = '$surname' where idUsuario ='$this->idUsuario'";
             $modificado['surname'] = $this->conectarse->query($sql);
         }
@@ -262,12 +252,13 @@
 */
 
     public function listarUsuario(){
-      $sql = "SELECT username FROM usuarios";
+      $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
       $row_lista = $this->conectarse->query($sql);
-
+      while ($fila=$row_lista->fetch_array()){
+        echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
+      }
     } //*** FIN MÉTODO listarUsuario
 
-  //$this->conectarse->desconexion();
 
 } //*** FIN DE LA CLASE Usuario ***
 

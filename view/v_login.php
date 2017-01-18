@@ -28,10 +28,10 @@
     <header>
       <h1>CURRICULUM</h1>
     </header>
-    <!--<input type="button" onclick=" location.href='v_registrar..php' " value="REGISTRARSE">-->
-    <form action="v_registrar.php" method="post">
+    <input type="button" onclick=" location.href='v_registrar.php' " value="Registrar">
+    <!--<form action="v_registrar.php" method="post">
       <input type="submit" name="registrar" value="Registrar">
-    </form>
+    </form>-->
 
     <div class="login">
         <!--<form action="../rprueba2.php" method="post">-->

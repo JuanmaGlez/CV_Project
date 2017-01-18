@@ -1,15 +1,11 @@
 <?php
 session_start();
-//require_once ("../controller/c_verificar.php");
 require_once ("../controller/c_perfil.php");
-require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/model/Usuarios.php");
+//require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/model/Usuarios.php");
 
 $objVerLog=new Perfil($_POST['username'],$_POST['password']);
 $objVerLog->checkLogin();
 $objVerLog->checkConexion();
-
-/*$objVerificar=new Verificar();
-$objVerificar->checkLogin();*/
 
 if(isset($_POST["salir"])){
   $objVerLog->closeSession();
@@ -27,18 +23,17 @@ if(isset($_POST["salir"])){
   <input type="submit" name="modificar" value="Modificar">
 </form>
 <?php
-$objUsuario=new Usuarios($_SESSION['idUsuario']);
-echo $this->objUsuario->getUsername() . "<br>";
-echo $this->objUsuario->getPassword() . "<br>";
-echo $this->objUsuario->getEmail() . "<br>";
-echo $this->objUsuario->getName() . " " . $this->objUsuario->getSurname() . "<br>";
-echo $this->objUsuario->getBirthday() . "<br>";
-echo $this->objUsuario->getAddress() . "<br>";
-echo $this->objUsuario->getPostal() . "<br>";
-echo $this->objUsuario->getTown() . "<br>";
-echo $this->objUsuario->getProvince() . "<br>";
-echo $this->objUsuario->getMobile() . "<br>";
-echo $this->objUsuario->getTelephone() . "<br>";
+echo $objVerLog->objUser->getUsername() . "<br>";
+echo $objVerLog->objUser->getPassword() . "<br>";
+echo $objVerLog->objUser->getEmail() . "<br>";
+echo $objVerLog->objUser->getName() . " " . $objVerLog->objUser->getSurname() . "<br>";
+echo $objVerLog->objUser->getBirthday() . "<br>";
+echo $objVerLog->objUser->getAddress() . "<br>";
+echo $objVerLog->objUser->getPostal() . "<br>";
+echo $objVerLog->objUser->getTown() . "<br>";
+echo $objVerLog->objUser->getProvince() . "<br>";
+echo $objVerLog->objUser->getMobile() . "<br>";
+echo $objVerLog->objUser->getTelephone() . "<br>";*/
 
 
 if ($_SESSION['idTipoUsuario']==1) {

@@ -5,17 +5,16 @@ require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/model/Us
 if(isset($_POST["submit"])){
   $objmodificar=new Modificar();
   $objmodificar->checkModificar();
-  //echo "datos enviados";
 }
+
 $objvalor=new Usuarios($_SESSION['idUsuario']);
-//$objvalor=new Usuarios(1);
 ?>
 
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
         <meta charset="utf-8"/>
-        <title>Registrar</title>
+        <title>Modificar Usuario</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -30,7 +29,7 @@ $objvalor=new Usuarios($_SESSION['idUsuario']);
         </style>
     </head>
     <body>
-        <!--<form action="../controller/c_verificar.php" method="post" class="col-lg-5">-->
+
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
             <h4>Modificar Usuario</h4>
             <hr/>

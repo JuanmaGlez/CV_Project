@@ -8,7 +8,7 @@ require_once('../model/Usuarios.php');
 class Perfil {
   private $usuario;
   private $contrasena;
-  private $objUser;
+  public $objUser;
 
   public function __construct($usuario,$contrasena) {
     $this->usuario=$usuario;
@@ -25,10 +25,10 @@ class Perfil {
       $_SESSION['username']=$this->usuario;
       $_SESSION['start'] = time();
       $_SESSION['expire'] = $_SESSION['start'] + (10 * 1);
-      echo "Usuario " . $_SESSION['username'] . "esta Conectado";
     } else {
+      header("refresh:2;url=../view/v_login.php");
       echo "Usuario o Contraseña son incorrectos.";
-      require_once('/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/view/v_login.php');
+      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
       exit;
     } // **Fin IF **
 
@@ -46,18 +46,30 @@ class Perfil {
 
     if ($ahora > $_SESSION['expire']) {
       session_destroy();
-      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=login.php\">";
-      echo "Su sesión ha terminado. <a href='/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/view/v_login.php'>
-      Volver a Entrar</a>";
+      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
       exit;
     }
+  }
+
+  public function mostrar(){
+    echo $this->objUser->getUsername() . "<br>";
+    echo $this->objUser->getPassword() . "<br>";
+    echo $this->objUser->getEmail() . "<br>";
+    echo $this->objUser->getName() . " " . $this->objUser->getSurname() . "<br>";
+    echo $this->objUser->getBirthday() . "<br>";
+    echo $this->objUser->getAddress() . "<br>";
+    echo $this->objUser->getPostal() . "<br>";
+    echo $this->objUser->getTown() . "<br>";
+    echo $this->objUser->getProvince() . "<br>";
+    echo $this->objUser->getMobile() . "<br>";
+    echo $this->objUser->getTelephone() . "<br>";
   }
 
   public function closeSession(){
     //echo "saliendo";
     unset ($_SESSION['username']);
     session_destroy();
-    require_once('../view/v_login.php');
+    echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
     exit;
   } //Fin método cerrar sesión
 

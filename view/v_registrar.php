@@ -1,9 +1,8 @@
 <?php
-require_once ("../controller/c_verificar.php");
+require_once ("../controller/c_registrar.php");
 if(isset($_POST["submit"])){
-  $objregistar=new Verificar();
+  $objregistar=new Registrar();
   $objregistar->checkUsuario();
-  //echo "datos enviados";
 }
 ?>
 
@@ -26,7 +25,6 @@ if(isset($_POST["submit"])){
         </style>
     </head>
     <body>
-        <!--<form action="../controller/c_verificar.php" method="post" class="col-lg-5">-->
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
             <h4>Registrar Usuario</h4>
             <hr/>

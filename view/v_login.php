@@ -1,10 +1,10 @@
 <?php
 //session_start();
-/*if(!isset($_POST["entrar"])){
-
-} else {
-  echo "quieres entrar";
-}*/
+require_once ("../controller/c_perfil.php");
+if(isset($_POST["entrar"])){
+  $objVerLog=new Perfil($_POST['username'],$_POST['password']);
+  $objVerLog->checkLogin();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,8 +35,8 @@
 
     <div class="login">
         <!--<form action="../rprueba2.php" method="post">-->
-        <form action="v_perfil.php" method="post">
-        <!--<form action="<?PHP $PHP_SELF?>" method="post">-->
+        <!--<form action="v_perfil.php" method="post">-->
+        <form action="<?PHP $PHP_SELF?>" method="post">
           <table>
             <tr>
               <td><label for="nombre">Usuario: </label></td>
@@ -56,7 +56,7 @@
           </table>
         </form>
         <p>
-          Si ha olvidado la contraseña pulse <a href="v_recuperarpass.php">aquí</a>
+          Si ha olvidado la contraseña pulse <a href="v_recuperarpass.php" target="_blank">aquí</a>
         </p>
     </div>
 

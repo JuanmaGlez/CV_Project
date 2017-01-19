@@ -16,7 +16,7 @@ class Modificar {
   public $province;
   public $mobile;
   public $telephone;
-  private $user;
+  public $user;
 
 
   // Constructor
@@ -39,12 +39,11 @@ class Modificar {
 
   // Método comprobar usuario
   public function checkModificar(){
-    $resultado=$this->user->buscarUsuario($this->username,$this->password,$this->email);
-    if($resultado==0){
-      $user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+    $resultado=$this->user->buscarUsuario($this->username,$this->password);    
+    if($resultado['email']!=$this->email){
+      $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone);
     } else {
-        header("refresh:2;url=../view/v_login.php");
         echo "El nombre y/o email ya están siendo usados";
     }
   } // Fin método comprobar usuario

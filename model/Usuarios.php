@@ -45,8 +45,9 @@
 
     //Método Constructor
     public function __construct($idUsuario=null){
-      $this->conectarse=new Conectar();
-      $this->conectarse->conexion();
+      //$this->conectarse=new Conectar();
+      $conect=new Conectar();
+      $this->conectarse=$conect->conexion();
       if($idUsuario != "" || $idUsuario != 0){
         $this->idUsuario=$idUsuario;
         $this->recuperar();
@@ -58,7 +59,9 @@
     //Método Recuperar Datos del Usuario de la Base de Datos
     public function recuperar(){
       $datosArray="SELECT * FROM usuarios WHERE idUsuario = $this->idUsuario";
-      if($datosRecuperados=$this->conectarse->query($datosArray)){
+      $datos=$this->conectarse->query($datosArray);
+      if($datosRecuperados=$datos->fetch_assoc()){
+      //if($datosRecuperados=$this->conectarse->query($datosArray))
         $this->idUsuario=$datosRecuperados['idUsuario'];
         $this->username=$datosRecuperados['username'];
         $this->password=$datosRecuperados['password'];
@@ -72,7 +75,7 @@
         $this->province=$datosRecuperados['province'];
         $this->mobile=$datosRecuperados['mobile'];
         $this->telephone=$datosRecuperados['telephone'];
-        $this->idTipos=$datosRecuperados['idTipos'];
+        $this->idTipos=$datosRecuperados['idTipoUsuario'];
       } //***FIN if***
     } //**** FIN METODO RECUPERAR
 
@@ -149,11 +152,13 @@
     //Método Buscar Usuario
     public function buscarUsuario($username,$password){
       $consulta="SELECT * FROM usuarios WHERE username = '$username' and password = '$password'";
-      if ($resultado=$this->conectarse->query($consulta)){
+      $datos=$this->conectarse->query($consulta);
+      if($resultado=$datos->fetch_assoc()){
+      //if ($resultado=$this->conectarse->query($consulta))
         $this->idUsuario=$resultado['idUsuario'];
         $this->idTipos=$resultado['idTipoUsuario'];
         $this->recuperar();
-        $this->conectarse->desconexion();
+        //$this->conectarse->desconexion();
         return $resultado;
       } // **Fin if**
 
@@ -162,17 +167,22 @@
     //Método Crear Usuario
     public function crearUsuario($username,$password,$email,$name,$surname,$birthday,
     $address,$postal,$town,$province,$mobile,$telephone=null){
-      $consulta="SELECT idUsuario FROM usuarios WHERE username = '$username' and email = '$email'";
+      //$consulta="SELECT idUsuario FROM usuarios WHERE username = '$username' and email = '$email'";
+      $consulta="SELECT idUsuario FROM usuarios WHERE username = '$username'";
+      $consulta2="SELECT idUsuario FROM usuarios WHERE email = '$email'";
       $valor=$this->conectarse->query($consulta);
-      if ($valor == 0) {
+      $valor2=$this->conectarse->query($consulta2);
+      if ($valor->num_rows == 0 and $valor2->num_rows == 0 ) {
         $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
         ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
         $resultado=$this->conectarse->query($sql);
-        $this->conectarse->desconexion();
+        //$this->conectarse->desconexion();
         if ($resultado){
-          echo "Usuario Creado";
+          return 2;
+          //echo "Usuario Creado";
         } else {
-          echo "Error al crear el usuario";
+          return 0;
+          //echo "Error al crear el usuario";
         }
       } else {
         return $valor;
@@ -231,7 +241,8 @@
             $modificado['telephone'] = $this->conectarse->query($sql);
         }
         if($modificado){
-          echo "Los datos has sido modificados correctamente";
+          //echo "Los datos has sido modificados correctamente";
+          echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
         } else {
           echo "Error al modificar";
         }
@@ -258,6 +269,14 @@
         echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
       }
     } //*** FIN MÉTODO listarUsuario
+
+    public function mostrarUsuario($nombre){
+      $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";
+      $resultado=$this->conectarse->query($sql);
+      $datosRecuperados=$resultado->fetch_assoc();
+      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      . " " . $datosRecuperados['idTipoUsuario'];
+    }
 
 
 } //*** FIN DE LA CLASE Usuario ***

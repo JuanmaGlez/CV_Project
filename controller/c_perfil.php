@@ -13,7 +13,7 @@ class Perfil {
   public function __construct($usuario,$contrasena) {
     $this->usuario=$usuario;
     $this->contrasena=$contrasena;
-    $this->objUser=new Usuarios();
+    $this->objUser=new Usuarios($_SESSION['idUsuario']);
   } //***Fin Construtor***
 
   public function checkLogin(){
@@ -25,11 +25,11 @@ class Perfil {
       $_SESSION['username']=$this->usuario;
       $_SESSION['start'] = time();
       $_SESSION['expire'] = $_SESSION['start'] + (10 * 1);
+      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
     } else {
-      header("refresh:2;url=../view/v_login.php");
+      //header("refresh:2;url=../view/v_login.php");
       echo "Usuario o Contraseña son incorrectos.";
-      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
-      exit;
+      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";      
     } // **Fin IF **
 
   } //***Fin método checkLogin()***

@@ -41,9 +41,11 @@ class Registrar {
   public function checkUsuario(){
     $resultado=$this->objuser->crearUsuario($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone=0);
-      if($resultado==0){
+      if($resultado==2){
       echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
-    } else {
+    } elseif ($resultado==0) {
+      echo "Faltan campos por rellenar";
+    }else {
       echo "El usuario ya existe";
     }
   } // Fin método comprobar usuario

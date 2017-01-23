@@ -69,15 +69,17 @@ if ($_SESSION['idTipoUsuario']==1) {
 <?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
+  <h4><u>Curriculum</u></h4>
+  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
   <h4><u>Datos Académicos</u></h4>
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
-  echo "<h4><u>Datos Profesionales</u></h4>
+  <h4><u>Datos Profesionales</u></h4>
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Borrar">
-  echo "<h4><u>Otros Datos</u></h4>
+  <h4><u>Otros Datos</u></h4>
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Borrar">

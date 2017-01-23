@@ -268,7 +268,7 @@
       //$fila=$row_lista->fetch_array();
       //return $fila;
       while ($fila=$row_lista->fetch_array()){
-        return $fila['username'];
+        return $fila;
         //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
       }
     } //*** FIN MÉTODO listarUsuario

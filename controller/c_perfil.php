@@ -52,8 +52,8 @@ class Perfil {
   }
 
   public function listar(){
-    $row_lista->listarUsuario();
-    while ($fila=$row_lista->fetch_array()) {    
+    $row_lista=$objUser->listarUsuario();
+    while ($fila=$row_lista->fetch_array()) {
       echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
     }
   }

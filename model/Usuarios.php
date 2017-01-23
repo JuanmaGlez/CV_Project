@@ -41,7 +41,7 @@
     private $telephone;
     private $idTipos;
     private $error;
-    private $conectarse;
+    public $conectarse;
 
     //Método Constructor
     public function __construct($idUsuario=null){
@@ -265,10 +265,11 @@
     public function listarUsuario(){
       $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
       $row_lista = $this->conectarse->query($sql);
-      while ($fila=$row_lista->fetch_array()){
-        return $fila;
+      return $row_lista;
+      //while ($fila=$row_lista->fetch_array()){
+        //return $fila;
         //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
-      }
+      //}
     } //*** FIN MÉTODO listarUsuario
 
     public function mostrarUsuario($nombre){

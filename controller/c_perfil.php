@@ -52,9 +52,10 @@ class Perfil {
   }
 
   public function listar(){
-    $fila=$this->listarUsuario();
-    echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
-
+    $row_lista->listarUsuario();
+    while ($fila=$row_lista->fetch_array()) {    
+      echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
+    }
   }
 
   public function mostrar($nombre){

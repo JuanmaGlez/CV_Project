@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/model/Usuarios.php");
+require_once("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/model/Usuarios.php");
 
 // Clase Modificar
 class Modificar {

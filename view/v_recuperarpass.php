@@ -1,5 +1,5 @@
 <?php
-require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/proyecto_curri4/rprueba3.php");
+require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/rprueba3.php");
 //require_once ("../../model/Usuarios.php");
 if(isset($_POST["ecorreo"])){
   $objcorreo=new Prueba();

@@ -57,7 +57,7 @@ class Perfil {
     while ($fila=$row_lista) {
       echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
       //echo '<option value="'.$fila.'">'.$fila. '</option>';
-    //}
+    }
   }
 
   public function mostrar($nombre){

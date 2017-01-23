@@ -29,7 +29,7 @@ class Perfil {
     } else {
       //header("refresh:2;url=../view/v_login.php");
       echo "Usuario o Contraseña son incorrectos.";
-      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";      
+      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
     } // **Fin IF **
 
   } //***Fin método checkLogin()***
@@ -51,18 +51,14 @@ class Perfil {
     }
   }
 
-  public function mostrar(){
-    echo $this->objUser->getUsername() . "<br>";
-    echo $this->objUser->getPassword() . "<br>";
-    echo $this->objUser->getEmail() . "<br>";
-    echo $this->objUser->getName() . " " . $this->objUser->getSurname() . "<br>";
-    echo $this->objUser->getBirthday() . "<br>";
-    echo $this->objUser->getAddress() . "<br>";
-    echo $this->objUser->getPostal() . "<br>";
-    echo $this->objUser->getTown() . "<br>";
-    echo $this->objUser->getProvince() . "<br>";
-    echo $this->objUser->getMobile() . "<br>";
-    echo $this->objUser->getTelephone() . "<br>";
+  public function listar(){
+
+  }
+
+  public function mostrar($nombre){
+    $datosRecuperados=$this->objUser->mostrarUsuario($nombre);
+    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      . " " . $datosRecuperados['idTipoUsuario'];
   }
 
   public function closeSession(){

@@ -53,7 +53,8 @@ if ($_SESSION['idTipoUsuario']==1) {
 <?php
   //$valor=$_POST["usuarios"];
   if (isset($_POST["usuarios"])){
-    $objVerLog->objUser->mostrarUsuario($_POST["usuarios"]);
+    //$objVerLog->objUser->mostrarUsuario($_POST["usuarios"]);
+    $objVerLog->mostrar($_POST["usuarios"]);
     echo "<br>";
   }
 ?>

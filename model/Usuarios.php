@@ -274,8 +274,9 @@
       $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";
       $resultado=$this->conectarse->query($sql);
       $datosRecuperados=$resultado->fetch_assoc();
-      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-      . " " . $datosRecuperados['idTipoUsuario'];
+    //  echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      //. " " . $datosRecuperados['idTipoUsuario'];
+      return $datosRecuperados;
     }
 
 

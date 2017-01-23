@@ -39,7 +39,7 @@ class Modificar {
 
   // Método comprobar usuario
   public function checkModificar(){
-    $resultado=$this->user->buscarUsuario($this->username,$this->password);    
+    $resultado=$this->user->buscarUsuario($this->username,$this->password);
     if($resultado['email']!=$this->email){
       $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone);

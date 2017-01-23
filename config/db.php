@@ -2,7 +2,7 @@
 return array (
 "serverlocal"      => "localhost",
 "login"      => "manu",
-"contrasena"  => " ",
+"contrasena"  => "5Fa2afCt75",
 "basedatos"  => "pcurridb01",
 "charset"   => "utf8"
 );

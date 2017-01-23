@@ -40,7 +40,7 @@ class Registrar {
   // Método comprobar usuario
   public function checkUsuario(){
     $resultado=$this->objuser->crearUsuario($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
-      $this->mobile,$this->telephone);
+      $this->mobile,$this->telephone=0);
       if($resultado==2){
       echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
     } elseif ($resultado==0) {

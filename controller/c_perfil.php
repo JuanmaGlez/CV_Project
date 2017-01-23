@@ -46,7 +46,8 @@ class Perfil {
 
     if ($ahora > $_SESSION['expire']) {
       session_destroy();
-      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
+      echo "Su sesión ha terminado. <a href='../View/v_login.php'>Volver a Entrar</a>";
+      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
       exit;
     }
   }

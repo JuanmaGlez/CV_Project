@@ -59,22 +59,32 @@ if ($_SESSION['idTipoUsuario']==1) {
     $objVerLog->mostrar($_POST["usuarios"]);
     echo "<br>";
   }
+  echo "<br>";
 ?>
 
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">
 
-<?php
-} elseif ($_SESSION['idTipoUsuario']==2) {
-  echo "<br>";
-  echo "Seguimos por buen caminio. Tipo 2 <br>";
-  echo "<h4><u>Datos Académicos</u></h4>";
+<?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>
+  <br>
+  Seguimos por buen caminio. Tipo 2 <br>
+  <h4><u>Datos Académicos</u></h4>
+  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
+  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
   echo "<h4><u>Datos Profesionales</u></h4>";
+  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Modificar">
+  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Borrar">
   echo "<h4><u>Otros Datos</u></h4>";
-} else {
-  echo "<br>";
-  echo "Podemos hacer el cambio. Tipo 3 <br>";
-  echo "<h4><u>Buscador</u></h4>";
-}
- ?>
+  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Modificar">
+  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Borrar">
+<?php} else { ?>
+  <br>
+  Podemos hacer el cambio. Tipo 3 <br>
+  <h4><u>Buscador</u></h4>
+  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Ver">
+
+<?php }  ?>

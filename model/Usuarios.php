@@ -265,8 +265,8 @@
     public function listarUsuario(){
       $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
       $row_lista = $this->conectarse->query($sql);
-      $fila=$row_lista->fetch_array();
-      return $fila;
+      //$fila=$row_lista->fetch_array();
+      return $row_lista;
       //while ($fila=$row_lista->fetch_array()){
         //return $fila;
         //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';

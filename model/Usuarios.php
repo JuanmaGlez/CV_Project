@@ -266,7 +266,8 @@
       $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
       $row_lista = $this->conectarse->query($sql);
       while ($fila=$row_lista->fetch_array()){
-        echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
+        return $fila;
+        //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
       }
     } //*** FIN MÉTODO listarUsuario
 
@@ -274,8 +275,6 @@
       $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";
       $resultado=$this->conectarse->query($sql);
       $datosRecuperados=$resultado->fetch_assoc();
-    //  echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-      //. " " . $datosRecuperados['idTipoUsuario'];
       return $datosRecuperados;
     }
 

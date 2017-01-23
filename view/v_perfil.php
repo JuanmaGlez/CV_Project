@@ -44,7 +44,9 @@ if ($_SESSION['idTipoUsuario']==1) {
   <form action='' method='post'/>
     <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
-        <?php  $objVerLog->objUser->listarUsuario(); ?>
+        <?php  //$objVerLog->objUser->listarUsuario();
+            $objVerLog->listar();
+         ?>
     </select>
     <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
   </form>

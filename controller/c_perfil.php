@@ -24,7 +24,7 @@ class Perfil {
       $_SESSION['loggedin'] = true;
       $_SESSION['username']=$this->usuario;
       $_SESSION['start'] = time();
-      $_SESSION['expire'] = $_SESSION['start'] + (10 * 1);
+      $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);
       echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
     } else {
       //header("refresh:2;url=../view/v_login.php");
@@ -52,6 +52,8 @@ class Perfil {
   }
 
   public function listar(){
+    $fila=$this->listarUsuario();
+    echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
 
   }
 

@@ -57,7 +57,7 @@ if ($_SESSION['idTipoUsuario']==1) {
     echo "<br>";
   }
   if (isset($_POST["desactivar"])){
-    $objVerLog->desactivo("true",$_POST("usuarios"));
+    $objVerLog->desactivo(1,$_POST("usuarios"));
     echo "<br>";
   }
   echo "<br>";

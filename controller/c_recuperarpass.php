@@ -24,7 +24,7 @@ class Prueba
     if ($this->email!="") {
       if ($resultado['email'] == $this->email) {
         // Mensaje
-        $mensaje = "Link para poder recuperar su password" . "<br>" . "<a href=\"../view/v_login.php\">Recuperar Password</a>;
+        $mensaje = "Link para poder recuperar su password" . "<br>" . "<a href=\"../view/v_login.php\">Recuperar Password</a>";
         //Titulo
         $titulo = "Recuperar Password";
         //cabecera

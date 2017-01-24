@@ -58,14 +58,17 @@ if ($_SESSION['idTipoUsuario']==1) {
   }
   if (isset($_POST["desactivar"])){ ?>
     <form action='' method='post'/>
-      <label>true  </label><input type='checkbox' type='submit' value='true' name='true'><br>
+      <label>true  </label><input type='checkbox' value='true' name='true'><br>
       <label>false </label><input type='checkbox' value='false' name='false'>
+      <input type='submit' name='aceptar' value='Aceptar'class='btn btn-success'/>
     </from>
 <?php
-    if (isset($_POST["true"])){
-      $objVerLog->desactivo($_POST["true"],$_POST["usuarios"]);
-    } elseif (isset($_POST["false"])){
-      $objVerLog->desactivo($_POST["false"],$_POST["usuarios"]);
+    if (isset($_POST["aceptar"])){
+      if (isset($_POST["true"])){
+        $objVerLog->desactivo($_POST["true"],$_POST["usuarios"]);
+      } elseif (isset($_POST["false"])){
+        $objVerLog->desactivo($_POST["false"],$_POST["usuarios"]);
+      }
     }
     echo "<br>";
   }

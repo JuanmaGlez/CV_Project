@@ -65,13 +65,15 @@ class Perfil {
 
   public function mostrar($nombre){
     $datosRecuperados=$this->objUser->mostrarUsuario($nombre);
-    /*if ($datosRecupados['desactivado'] == 0) {
-      $datos=$datosRecupados['desactivado'];
+    if ($datosRecupados['desactivado'] == 0) {
+      $datos='Activado';
+      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+        . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     } else {
-      $datos=$datosRecupados['desactivado'];
-    }*/
-    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-      . " " . $datosRecuperados['idTipoUsuario'] . " " . $datosRecuperados['desactivado'];
+      $datos='Desactivado';
+      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+        . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
+    }
   }
 
   public function desactivo($valor,$nombre){

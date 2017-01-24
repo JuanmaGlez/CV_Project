@@ -7,7 +7,7 @@ class Prueba
 {
   public $email;
 
-  function __construct($email=null) {
+  function __construct($email) {
     if ($email == ""){
       $this->email="Esta vacio";
     } else {

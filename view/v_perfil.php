@@ -58,7 +58,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   }
   if (isset($_POST["desactivar"])){ ?>
     <form action='' method='post'/>
-      <label>true  </label><input type='checkbox' value='true' name='true'><br>
+      <label>true  </label><input type='checkbox' type='submit' value='true' name='true'><br>
       <label>false </label><input type='checkbox' value='false' name='false'>
     </from>
 <?php

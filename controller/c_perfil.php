@@ -67,13 +67,11 @@ class Perfil {
     $datosRecuperados=$this->objUser->mostrarUsuario($nombre);
     if ($datosRecuperados['desactivado'] == 0) {
       $datos='Activado';
-      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-        . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     } else {
       $datos='Desactivado';
-      echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-        . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     }
+    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   }
 
   public function desactivo($valor,$nombre){

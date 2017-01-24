@@ -63,14 +63,17 @@ if ($_SESSION['idTipoUsuario']==1) {
 ?>
 
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
-  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">
+  <!--<input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">-->
+  <form action='v_modificarUsuario.php' method='post'/>
+    <input type='submit' name='submit' value='modificar'class='btn btn-success'/>
+  </form>
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">
 
 <?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
   <h4><u>Curriculum</u></h4>
-  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Ver">
   <h4><u>Datos Académicos</u></h4>
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">

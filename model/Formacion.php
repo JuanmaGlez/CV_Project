@@ -39,7 +39,7 @@
     }
 
     public function buscarFormacion($formacion){
-      $sql="SELECT * FROM formaciones where formation = '$formacion'";      
+      $sql="SELECT * FROM formacion where formation = '$formacion'";
     }
 
     public function addFormacion($formation,$start,$end,$center,$grades){
@@ -48,6 +48,7 @@
     }
 
     public function setFormacion(){
+      //$sql="UPDATE formacion SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
 
     }
 

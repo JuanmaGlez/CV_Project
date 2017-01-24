@@ -20,9 +20,10 @@ class Prueba
   }
 
   public function enviado() {
+    echo "Email introducido " . $this->email;
     $resultado=$this->objBuscar->buscarEmail($this->email);
     echo $resultado['email'];
-    if ($this->email!="") {      
+    if ($this->email!="") {
       if ($resultado['email'] == $this->email) {
         // Mensaje
         $mensaje = "Link para poder recuperar su password";
@@ -44,7 +45,7 @@ class Prueba
           echo "Mensaje no enviado";
         }
       } else {
-        echo "El email no está en la base de datos";
+        echo "El email introducido no está en la base de datos";
       }
     } else {
       echo "No ha introducido el email";

@@ -7,11 +7,13 @@ class Prueba
 {
   public $email;
 
-  function __construct($email=null) {
+  public function __construct($email=null) {
     if ($_POST['correo'] == ""){
       $this->email="Esta vacio";
     } else {
-      $this->email=$_POST['correo'];
+      //$this->email=$_POST['correo'];
+      echo $email;
+      $this->email=$email;
     }
   }
 

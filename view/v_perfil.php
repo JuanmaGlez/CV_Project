@@ -44,7 +44,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   <form action='' method='post'/>
     <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
-        <?php  //$objVerLog->objUser->listarUsuario();
+        <?php
             $objVerLog->listar();
          ?>
     </select>
@@ -53,9 +53,7 @@ if ($_SESSION['idTipoUsuario']==1) {
 
 
 <?php
-  //$valor=$_POST["usuarios"];
   if (isset($_POST["usuarios"])){
-    //$objVerLog->objUser->mostrarUsuario($_POST["usuarios"]);
     $objVerLog->mostrar($_POST["usuarios"]);
     echo "<br>";
   }
@@ -64,9 +62,17 @@ if ($_SESSION['idTipoUsuario']==1) {
 
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
   <!--<input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">-->
-  <form action='v_modificarUsuario.php' method='post'/>
+  <form action='' method='post'/>
     <input type='submit' name='submit' value='modificar'class='btn btn-success'/>
   </form>
+<?php
+    if (isset($_POST["modificar"])){
+      //$objVerLog->objUser->mostrarUsuario($_POST["usuarios"]);
+      $objVerLog->mostrar($_POST["usuarios"]);
+      echo "<br>";
+    }
+    echo "<br>";
+?>
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">
 
 <?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>

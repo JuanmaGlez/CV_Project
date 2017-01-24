@@ -170,6 +170,14 @@
 
     } // *** Fin método buscarUsuario()***
 
+    public function buscarEmail($email){
+      $sql="SELECT * FROM usuarios WHERE username = '$email'";
+      $datos=$this->conectarse->query($sql);
+      if ($valor=$datos->fetch_assoc()){
+        return $valor;
+      }
+    }
+
     //Método Crear Usuario
     public function crearUsuario($username,$password,$email,$name,$surname,$birthday,
     $address,$postal,$town,$province,$mobile,$telephone=null){

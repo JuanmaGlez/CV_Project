@@ -44,18 +44,13 @@ if ($_SESSION['idTipoUsuario']==1) {
   <form action='' method='post'/>
     <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
-        <?php  //$objVerLog->objUser->listarUsuario();
-            $objVerLog->listar();
-         ?>
+        <?php $objVerLog->listar(); ?>
     </select>
     <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
   </form>
 
-
 <?php
-  //$valor=$_POST["usuarios"];
   if (isset($_POST["usuarios"])){
-    //$objVerLog->objUser->mostrarUsuario($_POST["usuarios"]);
     $objVerLog->mostrar($_POST["usuarios"]);
     echo "<br>";
   }
@@ -70,7 +65,16 @@ if ($_SESSION['idTipoUsuario']==1) {
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
   <h4><u>Curriculum</u></h4>
-  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Ver">
+  <form action='' method='post'/>
+    <select class='lista' name='curriculum'>
+      <option value="0">Seleccione</option>
+        <?php
+            $objVerLog->listar();
+         ?>
+    </select>
+    <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
+  </form>
+  <!--<input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Ver">-->
   <h4><u>Datos Académicos</u></h4>
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">

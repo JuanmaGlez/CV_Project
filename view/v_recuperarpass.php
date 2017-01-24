@@ -4,7 +4,7 @@ require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_
 if(isset($_POST["ecorreo"])){
   $objcorreo=new Prueba($_POST['correo']);
   //$objcorreo->vacio();
-  $objcorreo->enviado(;)
+  $objcorreo->enviado();
   //echo "Saliendo";
   //echo "datos enviados";
 }

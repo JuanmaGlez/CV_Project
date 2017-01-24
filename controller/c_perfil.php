@@ -67,8 +67,8 @@ class Perfil {
       . " " . $datosRecuperados['idTipoUsuario'];
   }
 
-  public function desactivo($valor,$nombre){
-    $desactivo=$this->objUser->desactivarCuenta($valor,$nombre); 
+  public function desactivo($nombre){
+    $desactivo=$this->objUser->desactivarCuenta(1,$nombre); 
   }
 
   public function closeSession(){

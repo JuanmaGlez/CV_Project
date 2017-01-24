@@ -286,7 +286,9 @@
     public function mostrarUsuario($nombre){
       $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";
       $resultado=$this->conectarse->query($sql);
+      echo $resultado;
       $datosRecuperados=$resultado->fetch_assoc();
+      echo $datosRecuperados;
       return $datosRecuperados;
     }
 

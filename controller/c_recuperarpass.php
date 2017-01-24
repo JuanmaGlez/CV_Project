@@ -21,8 +21,8 @@ class Prueba
 
   public function enviado() {
     $resultado=$this->objBuscar->buscarEmail($this->email);
-    if ($this->email!="") {
-      echo $resultado['email'];
+    echo $resultado['email'];
+    if ($this->email!="") {      
       if ($resultado['email'] == $this->email) {
         // Mensaje
         $mensaje = "Link para poder recuperar su password";

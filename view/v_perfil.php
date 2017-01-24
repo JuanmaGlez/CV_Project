@@ -65,9 +65,9 @@ if ($_SESSION['idTipoUsuario']==1) {
 <?php
     if (isset($_POST["aceptar"])){
       if (isset($_POST["true"])){
-        $objVerLog->desactivo($_POST["true"],$_POST["usuarios"]);
+        $objVerLog->desactivo(true,$_POST["usuarios"]);
       } elseif (isset($_POST["false"])){
-        $objVerLog->desactivo($_POST["false"],$_POST["usuarios"]);
+        $objVerLog->desactivo(false,$_POST["usuarios"]);
       }
     }
     echo "<br>";

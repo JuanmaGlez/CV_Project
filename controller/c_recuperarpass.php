@@ -8,8 +8,8 @@ class Prueba
   public $email;
 
   function __construct($email=null) {
-    if ($email != ""){
-      echo $this->email="Esta vacio";
+    if ($_POST['correo'] == ""){
+      $this->email="Esta vacio";
     } else {
       $this->email=$_POST['correo'];
     }

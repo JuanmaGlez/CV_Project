@@ -40,7 +40,7 @@ class Perfil {
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     } else {
       echo "Solo usuarios registrados.<br>";
-      echo "<br><a href='/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/view/v_login.php'></a>";
+      echo "<br><a href='../view/v_login.php'></a>";
     exit;
     }
 

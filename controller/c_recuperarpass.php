@@ -20,11 +20,11 @@ class Prueba
   }
 
   public function enviado() {
-    $resultado=$this->objBuscar->buscarEmail($this->email);    
+    $resultado=$this->objBuscar->buscarEmail($this->email);
     if ($this->email!="") {
       if ($resultado['email'] == $this->email) {
         // Mensaje
-        $mensaje = "Link para poder recuperar su password";
+        $mensaje = "Link para poder recuperar su password" . "<br>" . "<a href='../view/v_login.php'>Recuperar Password</a>"> ;
         //Titulo
         $titulo = "Recuperar Password";
         //cabecera

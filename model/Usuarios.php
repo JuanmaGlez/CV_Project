@@ -171,9 +171,7 @@
     } // *** Fin método buscarUsuario()***
 
     public function buscarEmail($email){
-      echo "desde Clase Usuario " . $email;
-      $sql="SELECT * FROM usuarios WHERE email = '$email'";
-      echo $sql;
+      $sql="SELECT * FROM usuarios WHERE email = '$email'";      
       $datos=$this->conectarse->query($sql);
       if ($valor=$datos->fetch_assoc()){
         return $valor;

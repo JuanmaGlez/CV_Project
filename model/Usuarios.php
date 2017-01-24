@@ -256,8 +256,10 @@
 
     //Método Desactivar Cuenta Usuario
     public function desactivarCuenta($valor,$nombre){
+      echo $valor . $nombre;
       $sql="UPDATE usuarios set desactivar = '$valor' where username='$nombre'";
       $valorDesactivar=$this->conectarse->query($sql);
+      echo $valorDesactivar;
       if ($valorDesactivar){
         echo "Usuario desactivado";
       } else {

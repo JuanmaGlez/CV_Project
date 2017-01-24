@@ -172,7 +172,7 @@
 
     public function buscarEmail($email){
       echo "desde Clase Usuario " . $email;
-      $sql="SELECT * FROM usuarios WHERE username = '$email'";
+      $sql="SELECT * FROM usuarios WHERE email = '$email'";
       echo $sql;
       $datos=$this->conectarse->query($sql);
       if ($valor=$datos->fetch_assoc()){

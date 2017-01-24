@@ -56,7 +56,8 @@ if ($_SESSION['idTipoUsuario']==1) {
     $objVerLog->mostrar($_POST["usuarios"]);
     echo "<br>";
   }
-  if (isset($_POST["desactivar"])){ ?>
+  if (isset($_POST["desactivar"])){
+    $objVerLog->mostrar($_POST["usuarios"]); ?>
     <form action='' method='post'/>
       <label>true  </label><input type='checkbox' value='true' name='true'><br>
       <label>false </label><input type='checkbox' value='false' name='false'>

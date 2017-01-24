@@ -9,7 +9,7 @@ class Prueba
 
   function __construct($email=null) {
     if ($email != ""){
-      $this->email="Esta vacio";
+      echo $this->email="Esta vacio";
     } else {
       $this->email=$_POST['correo'];
     }

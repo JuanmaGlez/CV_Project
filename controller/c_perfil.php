@@ -18,21 +18,23 @@ class Perfil {
 
   public function checkLogin(){
     $arraybuscar=$this->objUser->buscarUsuario($this->usuario,$this->contrasena);
-    if ($this->contrasena == $arraybuscar['password'] && $arraybuscar['desactivado'] == 0){
-      $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
-      $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();
-      $_SESSION['loggedin'] = true;
-      $_SESSION['username']=$this->usuario;
-      $_SESSION['start'] = time();
-      $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);
-      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+    if ($arraybuscar['desactivado'] == 0) {
+      if ($this->contrasena == $arraybuscar['password']) {
+        $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
+        $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username']=$this->usuario;
+        $_SESSION['start'] = time();
+        $_SESSION['expire'] = $_SESSION['start'] + (10 * 60);
+        echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+      } else {
+          echo "Usuario o Contraseña son incorrectos.";
+          //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
+      } // ** Fin IF **
     } else {
-      //header("refresh:2;url=../view/v_login.php");
-      echo "Usuario o Contraseña son incorrectos.";
-      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
-    } // **Fin IF **
-
-  } //***Fin método checkLogin()***
+        echo "Este usuario esta desactivado";
+    } // ** Fin IF **
+  } //*** Fin método checkLogin()***
 
   public function checkConexion(){
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {

@@ -41,25 +41,30 @@ if ($_SESSION['idTipoUsuario']==1) {
   <br>
   <p>Vamos por buen camino. Tipo 1 </p>
   <h4><u>Usuarios</u></h4>
+  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
   <form action='' method='post'/>
     <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
         <?php $objVerLog->listar(); ?>
     </select>
-    <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
+    <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
+    <input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>
   </form>
 
 <?php
-  if (isset($_POST["usuarios"])){
+  if (isset($_POST["ver"])){
     $objVerLog->mostrar($_POST["usuarios"]);
+    echo "<br>";
+  }
+  if (isset($_POST["desactivar"])){
+    $objVerLog->desactivarCuenta("true",$_POST("usuarios"));
     echo "<br>";
   }
   echo "<br>";
 ?>
 
-  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">
-  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">
+<!--<input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">-->
 
 <?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>
   <br>

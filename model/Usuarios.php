@@ -39,8 +39,8 @@
     private $province;
     private $mobile;
     private $telephone;
+    private $desactivar;
     private $idTipos;
-    private $error;
     public $conectarse;
 
     //Método Constructor
@@ -75,6 +75,7 @@
         $this->province=$datosRecuperados['province'];
         $this->mobile=$datosRecuperados['mobile'];
         $this->telephone=$datosRecuperados['telephone'];
+        $this->desactivar=$datosRecuperados['desactivar'];
         $this->idTipos=$datosRecuperados['idTipoUsuario'];
       } //***FIN if***
     } //**** FIN METODO RECUPERAR
@@ -142,6 +143,11 @@
     //Método devolver telephone
     public function getTelephone(){
       return $this->telephone;
+    }
+
+    //Método devolver desactivar
+    public function getDesactivar(){
+      return $this->desactivar;
     }
 
     //Método devolver tipo de usuario
@@ -248,13 +254,17 @@
         }
     } // Fin método modificar Datos Personales
 
-/*
-
     //Método Desactivar Cuenta Usuario
-    public function desactivarCuenta(){
-
+    public function desactivarCuenta($valor,$nombre){
+      $sql="UPDATE usuarios set desactivar = '$valor' where username='$nombre'";
+      $valorDesactivar=$this->conectarse->query($sql);
+      if ($valorDesactivar){
+        echo "Usuario desactivado";
+      } else {
+        echo "Error al desactivar";
+      }
     }
-
+/*
     //Metodo Eliminar Cuenta usuario
     public function eliminarCuenta($idUsuario){
         $sql="DROP "

@@ -68,7 +68,7 @@ class Perfil {
   }
 
   public function desactivo($valor,$nombre){
-    $desactivo=$this->objUser->desactivarCuenta($valor,$nombre);
+    $desactivo=$this->objUser->desactivarCuenta($valor,$nombre); 
   }
 
   public function closeSession(){

@@ -20,9 +20,7 @@ class Prueba
   }
 
   public function enviado() {
-    echo "Email introducido " . $this->email;
-    $resultado=$this->objBuscar->buscarEmail($this->email);
-    echo $resultado['email'];
+    $resultado=$this->objBuscar->buscarEmail($this->email);    
     if ($this->email!="") {
       if ($resultado['email'] == $this->email) {
         // Mensaje

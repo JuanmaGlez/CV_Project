@@ -39,10 +39,7 @@ class Modificar {
 
   // Método comprobar usuario
   public function checkModificar(){
-    if ($_POST['username'] == $this->user->getUsername()) {
-      echo "son iguales";
-    }
-    /*$resultado=$this->user->buscarUsuario($this->username,$this->password);
+    $resultado=$this->user->buscarUsuario($this->getUsername(),$this->getPassword());
     $valor=$this->user->buscarEmail($this->email);
     echo $resultado['email'] . "a " .  $resultado['username'] . " " . $this->email . "b " . $this->username . "<br>";
     if($resultado['email']==$this->email && $resultado['username']==$this->username){
@@ -85,7 +82,7 @@ class Modificar {
           echo "El email ya está siendo usado. 2";
           }
           //echo "El nombre y/o email ya están siendo usados";
-      }*/
+      }
   } // Fin método comprobar usuario
 
 

@@ -180,8 +180,7 @@
 
     public function updatePass($contra,$email){
       $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
-      $resultado=$this->conectarse->query($sql);
-      echo $resultado . "<br>";
+      $resultado=$this->conectarse->query($sql);      
       if ($resultado){
         return $resultado;
         //echo "Contraseña modificada";

@@ -1,9 +1,11 @@
 <?php
-session_start();
+if (!session_start()){
+  echo "Solo usuarios registrados.<br>";
+}
 require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");
-require_once ("../controller/c_perfil.php");
+/*require_once ("../controller/c_perfil.php");
 $objVerLog=new Perfil($_POST['username'],$_POST['password']);
-$objVerLog->checkConexion();
+$objVerLog->checkConexion();*/
 
 $objmodificar=new Modificar();
 if(isset($_POST["submit"])){

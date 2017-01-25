@@ -58,10 +58,7 @@ if ($_SESSION['idTipoUsuario']==1) {
     echo "<br>";
   }
   if (isset($_POST["desactivar"])){
-    echo '<input type="submit" name="aceptar" value="Aceptar" class="btn btn-success"/>';
-    if ($_POST["aceptar"]) {
-      $objVerLog->desactivo(true,$_POST["usuarios"]);
-    }   
+    $objVerLog->desactivo(true,$_POST["usuarios"]);
     echo "<br>";
   }
   if (isset($_POST["modificar"])){

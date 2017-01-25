@@ -72,8 +72,9 @@ class Perfil {
     } else {
       $datos='Desactivado';
     }
-    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-      . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
+    return $datosRecuperados['username'];
+    //echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      //. " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   }
 
   public function desactivo($valor,$nombre){

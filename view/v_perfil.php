@@ -48,8 +48,8 @@ if ($_SESSION['idTipoUsuario']==1) {
         <?php $objVerLog->listar(); ?>
     </select>
     <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
-    <input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>
     <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
+    <input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>
   </form>
 
 <?php
@@ -58,20 +58,17 @@ if ($_SESSION['idTipoUsuario']==1) {
     echo "<br>";
   }
   if (isset($_POST["desactivar"])){
-    $objVerLog->desactivo(true,$_POST["usuarios"]);
+    echo '<input type="submit" name="aceptar" value="Aceptar" class="btn btn-success"/>';
+    if ($_POST["aceptar"]) {
+      $objVerLog->desactivo(true,$_POST["usuarios"]);
+    }   
     echo "<br>";
   }
   if (isset($_POST["modificar"])){
     $objVerLog->mostrar($_POST["usuarios"]); ?>
     <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
-        Id: <input type="text" name="id" value="<?php echo $objmodificar->user->getIdUsuario();?>" class="form-control"/> <!--required/>-->
-        Username: <input type="text" name="username" value="<?php echo $objmodificar->user->getUsername();?>" class="form-control"/> <!--required/>-->
-        Email: <input type="text" name="email" value="<?php echo $objmodificar->user->getEmail();?>" class="form-control"/><!--required />-->
-        Name: <input type="text" name="name" value="<?php echo $objmodificar->user->getName();?>" class="form-control"/> <!--required/>-->
-        Surname: <input type="text" name="surname" value="<?php echo $objmodificar->user->getSurname();?>" class="form-control"/> <!--required/>-->
-        Tipo Usuario: <input type="text" name="mobile" value="<?php echo $objmodificar->user->getIdTipos();?>" class="form-control"/> <!--required/>-->
 
-      <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
+      <input type="submit" name="submit" value="Aceptar" class="btn btn-success"/>
     </form>
     "<br>";
 <?php  }

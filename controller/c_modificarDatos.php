@@ -41,7 +41,6 @@ class Modificar {
   public function checkModificar(){
     $resultado=$this->user->buscarUsuario($this->user->getUsername(),$this->user->getPassword());
     $valor=$this->user->buscarEmail($this->email);
-    echo $resultado['email'] . "a " .  $resultado['username'] . " " . $this->email . "b " . $this->username . "<br>";
     if($resultado['email']==$this->email && $resultado['username']==$this->username){
       echo "1";
       $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
@@ -59,7 +58,7 @@ class Modificar {
     }
     if ($resultado['email']==$this->email && $resultado['username']!=$this->username){
       echo "4";
-      if($valor['username']!=$this->username) {
+      if($valor['username']==$this->username) {
         echo "5";
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);

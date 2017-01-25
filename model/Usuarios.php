@@ -171,10 +171,22 @@
     } // *** Fin método buscarUsuario()***
 
     public function buscarEmail($email){
-      $sql="SELECT * FROM usuarios WHERE email = '$email'";      
+      $sql="SELECT * FROM usuarios WHERE email = '$email'";
       $datos=$this->conectarse->query($sql);
       if ($valor=$datos->fetch_assoc()){
         return $valor;
+      }
+    }
+
+    public function updatePass($contrasena,$email){
+      $sql = "UPDATE usuarios SET password = '$contrasena' WHERE  email = '$email'";
+      $resultado=$this->conectarse->query($sql);
+      if ($resultado){
+        return 1;
+        //echo "Contraseña modificada";
+      } else {
+        return 0;
+        //echo "Error al cambiar contraseña";
       }
     }
 

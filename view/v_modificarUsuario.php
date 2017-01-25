@@ -2,8 +2,8 @@
 session_start();
 require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");
 require_once ("../controller/c_perfil.php");
-$objVerLog=new Perfil($_POST['username'],$_POST['password']);
-$objVerLog->checkConexion();
+/*$objVerLog=new Perfil($_POST['username'],$_POST['password']);
+$objVerLog->checkConexion();*/
 
 $objmodificar=new Modificar();
 if(isset($_POST["submit"])){

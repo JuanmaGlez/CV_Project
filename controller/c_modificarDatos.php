@@ -4,18 +4,18 @@ require_once("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/model/Usuarios
 
 // Clase Modificar
 class Modificar {
-  public $username;
-  public $password;
-  public $email;
-  public $name;
-  public $surname;
-  public $birthday;
-  public $address;
-  public $postal;
-  public $town;
-  public $province;
-  public $mobile;
-  public $telephone;
+  private $username;
+  private $password;
+  private $email;
+  private $name;
+  private $surname;
+  private $birthday;
+  private $address;
+  private $postal;
+  private $town;
+  private $province;
+  private $mobile;
+  private $telephone;
   public $user;
 
 

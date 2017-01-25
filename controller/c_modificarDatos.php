@@ -45,21 +45,24 @@ class Modificar {
     if($resultado['email']==$this->email && $resultado['username']==$this->username){
       $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone);
-    } elseif ($resultado['email']!=$this->email && $resultado['username']==$this->username){
+    }
+    if ($resultado['email']!=$this->email && $resultado['username']==$this->username){
       if($valor['email']!=$this->email) {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
         echo "El email ya está siendo usado. 1";
       }
-    } elseif ($resultado['email']==$this->email && $resultado['username']!=$this->username){
+    }
+    if ($resultado['email']==$this->email && $resultado['username']!=$this->username){
       if($valor['username']!=$this->username) {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
         echo "El nombre ya está siendo usado. 1";
       }
-    } else {
+    }
+    if ($resultado['email']!=$this->email && $resultado['username']!=$this->username){
         if($valor['email']!=$this->email){
           if ($valor['username']!=$this->username) {
             $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,

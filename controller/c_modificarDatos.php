@@ -41,6 +41,7 @@ class Modificar {
   public function checkModificar(){
     $resultado=$this->user->buscarUsuario($this->username,$this->password);
     $valor=$this->user->buscarEmail($this->email);
+    echo $resultado['email'] . " " .  $resultado['username'] . " " . $this->email . " " . $this->username;
     if($resultado['email']==$this->email && $resultado['username']==$this->username){
       $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone);
@@ -49,14 +50,14 @@ class Modificar {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
-        echo "El email ya está siendo usado.";
+        echo "El email ya está siendo usado. 1";
       }
     } elseif ($resultado['email']==$this->email && $resultado['username']!=$this->username){
       if($valor['username']!=$this->username) {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
-        echo "El nombre ya está siendo usado.";
+        echo "El nombre ya está siendo usado. 1";
       }
     } else {
         if($valor['email']!=$this->email){
@@ -64,13 +65,13 @@ class Modificar {
             $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
             $this->mobile,$this->telephone);
           } else {
-            echo "El nombre ya está siendo usado.";
+            echo "El nombre ya está siendo usado. 2";
             }
         } else {
-          echo "El email ya está siendo usado.";
+          echo "El email ya está siendo usado. 2";
           }
           //echo "El nombre y/o email ya están siendo usados";
-      }      
+      }
   } // Fin método comprobar usuario
 
 

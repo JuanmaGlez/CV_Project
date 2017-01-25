@@ -178,8 +178,8 @@
       }
     }
 
-    public function updatePass($contrasena,$email){
-      $sql = "UPDATE usuarios SET password = '$contrasena' WHERE  email = '$email'";
+    public function updatePass($contra,$email){
+      $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
       $resultado=$this->conectarse->query($sql);
       echo $resultado . "<br>";
       if ($resultado){

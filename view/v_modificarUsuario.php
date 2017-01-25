@@ -1,5 +1,6 @@
 <?php
-if (!session_start()){
+session_start()
+if (!$_SESSION['loggedin']){
   echo "Solo usuarios registrados.<br>";
 }
 require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");

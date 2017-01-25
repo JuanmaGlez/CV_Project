@@ -180,7 +180,7 @@
 
     public function updatePass($contra,$email){
       $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
-      $resultado=$this->conectarse->query($sql);      
+      $resultado=$this->conectarse->query($sql);
       if ($resultado){
         return $resultado;
         //echo "Contraseña modificada";
@@ -200,7 +200,7 @@
       $valor2=$this->conectarse->query($consulta2);
       if ($valor->num_rows == 0 and $valor2->num_rows == 0 ) {
         $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
-        ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
+        ('$username',SHA('$password'),'$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
         $resultado=$this->conectarse->query($sql);
         //$this->conectarse->desconexion();
         if ($resultado){

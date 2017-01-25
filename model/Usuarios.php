@@ -271,7 +271,7 @@
           //echo "Los datos has sido modificados correctamente";
           echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
         } else {
-          echo "Error al modificar";
+          echo "No se ha modificado ningún dato";
         }
     } // Fin método modificar Datos Personales
 

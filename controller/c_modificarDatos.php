@@ -42,40 +42,32 @@ class Modificar {
     $resultado=$this->user->buscarUsuario($this->user->getUsername(),$this->user->getPassword());
     $valor=$this->user->buscarEmail($this->email);
     if($resultado['email']==$this->email && $resultado['username']==$this->username){
-      echo "1";
       $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
       $this->mobile,$this->telephone);
     }
     if ($resultado['email']!=$this->email && $resultado['username']==$this->username){
-      echo "2";
       if($valor['email']!=$this->email) {
-        echo "3";
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
-        echo "El email ya está siendo usado. 1";
+        echo "El email ya está siendo usado.";
       }
     }
     if ($resultado['email']==$this->email && $resultado['username']!=$this->username){
-      echo "4";
       if($valor['username']==$this->username) {
-        echo "5";
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
-        echo "El nombre ya está siendo usado. 1";
+        echo "El nombre ya está siendo usado.";
       }
     }
     if ($resultado['email']!=$this->email && $resultado['username']!=$this->username){
-      echo "6";
         if($valor['email']!=$this->email){
-          echo "7";
           if ($valor['username']!=$this->username) {
-            echo "7";
             $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
             $this->mobile,$this->telephone);
           } else {
-            echo "El nombre ya está siendo usado. 2";
+            echo "El nombre ya está siendo usado.";
             }
         } else {
           echo "El email ya está siendo usado. 2";

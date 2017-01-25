@@ -2,7 +2,7 @@
 require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_recuperarpass.php");
 //require_once ("../../model/Usuarios.php");
 if(isset($_POST["ecorreo"])){
-  $objcorreo=new Prueba($_POST['correo']);
+  $objcorreo=new Recuperar($_POST['correo']);
   //$objcorreo->vacio();
   $objcorreo->enviado();
   //echo "Saliendo";

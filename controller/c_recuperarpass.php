@@ -3,7 +3,7 @@ require_once('../model/Usuarios.php');
 /**
  *
  */
-class Prueba
+class Recuperar
 {
   private $email;
   public $objBuscar;
@@ -21,10 +21,15 @@ class Prueba
 
   public function enviado() {
     $resultado=$this->objBuscar->buscarEmail($this->email);
+    $logitud = 10;
+    $psswd = substr( md5(microtime()), 1, $logitud);
+    //echo $psswd;
     if ($this->email!="") {
       if ($resultado['email'] == $this->email) {
         // Mensaje
-        $mensaje = "Link para poder recuperar su password \"http://jmgonzalez.com\"";
+        //$mensaje = "Link para poder recuperar su password \"http://jmgonzalez.com\"";
+        $mensaje = "Su nueva password es: " . $psswd;
+        $mensaje .= "<br> Recuerde modificarla";
         //Titulo
         $titulo = "Recuperar Password";
         //cabecera
@@ -48,7 +53,14 @@ class Prueba
     } else {
       echo "No ha introducido el email";
     }
-  }
+  } /**FIN MÉTODO enviado**/
+
+  public function cambiarPass(){
+    if ($_POST['password'] == $_POST['repassword']){
+
+    } /**FIN IF **/
+
+  } /**FIN MÉTODO cambiarPass **/
 
 }
  ?>

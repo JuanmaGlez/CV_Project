@@ -275,10 +275,9 @@
     } // Fin método modificar Datos Personales
 
     //Método Desactivar Cuenta Usuario
-    public function desactivarCuenta($valor,$nombre){      
+    public function desactivarCuenta($valor,$nombre){
       $sql="UPDATE usuarios set desactivado = $valor where username='$nombre'";
       $valorDesactivar=$this->conectarse->query($sql);
-      echo $valorDesactivar;
       if ($valorDesactivar){
         echo "Usuario desactivado";
       } else {
@@ -292,8 +291,18 @@
 
     }
 */
+public function listarUsuario(){
+  $sql = "SELECT * FROM usuarios ORDER BY idUsuario";
+  $row_lista = $this->conectarse->query($sql);
+  //$fila=$row_lista->fetch_array();
+  return $row_lista;
+  //while ($fila=$row_lista->fetch_array()){
+    //return $fila;
+    //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
+  //}
+} //*** FIN MÉTODO listarUsuario
 
-    public function listarUsuario(){
+    /*public function listarUsuario(){
       $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
       $row_lista = $this->conectarse->query($sql);
       //$fila=$row_lista->fetch_array();
@@ -302,7 +311,7 @@
         //return $fila;
         //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
       //}
-    } //*** FIN MÉTODO listarUsuario
+    } //*** FIN MÉTODO listarUsuario*/
 
     public function mostrarUsuario($nombre){
       $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";

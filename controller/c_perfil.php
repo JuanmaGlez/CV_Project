@@ -72,8 +72,9 @@ class Perfil {
     } else {
       $datos='Desactivado';
     }
-    foreach ($datosRecuperados as $value) {
-      echo $datosRecuperados[$values];
+    $a=$datosRecuperados;
+    foreach ($a as $value) {
+      echo $a[$values];
     }
     //echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
       //. " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;

@@ -28,8 +28,7 @@ class Recuperar
       if ($resultado['email'] == $this->email) {
         // Mensaje
         //$mensaje = "Link para poder recuperar su password \"http://jmgonzalez.com\"";
-        $mensaje = "Su nueva password es: " . $psswd;
-        echo "<br>";
+        $mensaje = "Su nueva password es: " . $psswd;        
         $mensaje .= " Recuerde modificarla";
         //Titulo
         $titulo = "Recuperar Password";
@@ -44,9 +43,9 @@ class Recuperar
         //Enviamos el mensaje a tu_dirección_email
         $bool = mail($this->email,$titulo,$mensaje,$cabeceras);
         if($bool){
-          echo "Mensaje enviado. ";
+          echo "Mensaje enviado.";
           $contra=$this->objBuscar->updatePass($psswd,$this->email);
-          if(!$contra){            
+          if(!$contra){
             echo "Error en Contraseña";
           }
         }else{

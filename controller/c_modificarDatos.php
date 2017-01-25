@@ -54,7 +54,7 @@ class Modificar {
       }
     }
     if ($resultado['email']==$this->email && $resultado['username']!=$this->username){
-      if($valor['username']==$this->username) {
+      if($valor['username']!=$this->username) {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {

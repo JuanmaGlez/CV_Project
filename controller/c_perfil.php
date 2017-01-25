@@ -72,15 +72,14 @@ class Perfil {
     } else {
       $datos='Desactivado';
     }
-    return $datosRecuperados['username'];
-    //echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-      //. " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
+    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+      . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   }
 
   public function desactivo($valor,$nombre){
     $desactivo=$this->objUser->desactivarCuenta($valor,$nombre);
   }
-
+  
   public function closeSession(){
     //echo "saliendo";
     unset ($_SESSION['username']);

@@ -30,7 +30,7 @@ class Recuperar
         //$mensaje = "Link para poder recuperar su password \"http://jmgonzalez.com\"";
         $mensaje = "Su nueva password es: " . $psswd;
         echo "<br>";
-        $mensaje .= "Recuerde modificarla";
+        $mensaje .= " Recuerde modificarla";
         //Titulo
         $titulo = "Recuperar Password";
         //cabecera

@@ -178,7 +178,7 @@
       }
     }
 
-    public function updatePass($contra,$email){
+    /*public function updatePass($contra,$email){
       $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
       $resultado=$this->conectarse->query($sql);
       echo $resultado . "<br>";
@@ -189,7 +189,7 @@
         return $resultado;
         //echo "Error al cambiar contraseña";
       }
-    }
+    }*/
 
     //Método Crear Usuario
     public function crearUsuario($username,$password,$email,$name,$surname,$birthday,

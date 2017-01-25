@@ -41,16 +41,36 @@ class Modificar {
   public function checkModificar(){
     $resultado=$this->user->buscarUsuario($this->username,$this->password);
     $valor=$this->user->buscarEmail($this->email);
-    if($resultado['email']!=$this->email){
+    if($resultado['email']==$this->email && $resultado['username']==$this->username){
+      $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+      $this->mobile,$this->telephone);
+    } elseif ($resultado['email']!=$this->email && $resultado['username']==$this->username){
       if($valor['email']!=$this->email) {
         $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
         $this->mobile,$this->telephone);
       } else {
         echo "El email ya está siendo usado.";
       }
+    } elseif ($resultado['email']==$this->email && $resultado['username']!=$this->username){
+      if($valor['username']!=$this->username) {
+        $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+        $this->mobile,$this->telephone);
+      } else {
+        echo "El nombre ya está siendo usado.";
+      }
     } else {
-        echo "El nombre y/o email ya están siendo usados";
-    }
+        if($valor['email']!=$this->email){
+          if ($valor['username']!=$this->username) {
+            $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+            $this->mobile,$this->telephone);
+          } else {
+            echo "El nombre ya está siendo usado.";
+            }
+        } else {
+          echo "El email ya está siendo usado.";
+          }
+          //echo "El nombre y/o email ya están siendo usados";
+      }      
   } // Fin método comprobar usuario
 
 

@@ -41,8 +41,8 @@ if(isset($_POST["submit"])){
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
             <h4>Modificar Usuario</h4>
             <hr/>
-            Username: <input type="text" name="username" value="<?php echo $objmodificar->user->getUsername();?>" class="form-control"/> <!--required/>-->
-            Password: <input type="password" name="password" value="<?php echo $objmodificar->user->getPassword();?>" class="form-control"/> <!--required/>-->
+            Username: <input type="text" name="username" value="" placeholder="<?php echo $objmodificar->user->getUsername();?>" class="form-control"/> <!--required/>-->
+            Password: <input type="password" name="password" value="" placeholder="<?php echo $objmodificar->user->getPassword();?>" class="form-control"/> <!--required/>-->
             Email: <input type="text" name="email" value="<?php echo $objmodificar->user->getEmail();?>" class="form-control"/><!--required />-->
             Name: <input type="text" name="name" value="<?php echo $objmodificar->user->getName();?>" class="form-control"/> <!--required/>-->
             Surname: <input type="text" name="surname" value="<?php echo $objmodificar->user->getSurname();?>" class="form-control"/> <!--required/>-->

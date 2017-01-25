@@ -46,7 +46,7 @@ class Recuperar
         if($bool){
           echo "Mensaje enviado. ";
           $contra=$this->objBuscar->updatePass($psswd,$this->email);
-          if($resultado==1){
+          if($contra){
             echo "Contraseña enviada";
           } else {
             echo "Error en Contraseña";

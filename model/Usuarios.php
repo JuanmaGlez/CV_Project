@@ -183,10 +183,10 @@
       $resultado=$this->conectarse->query($sql);
       echo $resultado . "<br>";
       if ($resultado){
-        return 1;
+        return $resultado;
         //echo "Contraseña modificada";
       } else {
-        return 0;
+        return $resultado;
         //echo "Error al cambiar contraseña";
       }
     }

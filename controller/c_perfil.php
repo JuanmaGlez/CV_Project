@@ -58,8 +58,10 @@ class Perfil {
     $row_lista=$this->objUser->listarUsuario();
     //$fila=$this->objUser->listarUsuario();
     while ($fila=$row_lista->fetch_array()) {
-      echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
-      //echo '<option value="'.$fila.'">'.$fila. '</option>';
+      if ($fila['idUsuario'] != 1){
+        echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
+        //echo '<option value="'.$fila.'">'.$fila. '</option>';
+      }
     }
   }
 

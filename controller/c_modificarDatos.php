@@ -40,9 +40,14 @@ class Modificar {
   // Método comprobar usuario
   public function checkModificar(){
     $resultado=$this->user->buscarUsuario($this->username,$this->password);
+    $valor=$this->user->buscarEmail($this->email);
     if($resultado['email']!=$this->email){
-      $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
-      $this->mobile,$this->telephone);
+      if($valor['email']!=$this->email) {
+        $this->user->setDatosPersonales($this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthday,$this->address,$this->postal,$this->town,$this->province,
+        $this->mobile,$this->telephone);
+      } else {
+        echo "El email ya está siendo usado.";
+      }
     } else {
         echo "El nombre y/o email ya están siendo usados";
     }

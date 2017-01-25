@@ -63,11 +63,11 @@ if ($_SESSION['idTipoUsuario']==1) {
   }
   if (isset($_POST["modificar"])){
     $objVerLog->mostrar($_POST["usuarios"]); ?>
-    <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">        
+    <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
       <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
     </form>
-    "<br>";
+    <br>
 <?php  }
   echo "<br>";
 ?>

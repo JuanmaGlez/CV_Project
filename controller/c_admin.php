@@ -38,6 +38,7 @@ class Admin
     }
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
+    echo "<br">
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor,$nombre2){

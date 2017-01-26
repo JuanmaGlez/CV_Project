@@ -20,9 +20,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
    if (isset($_POST["ver"])){
      $objAdmin->mostrar($_POST["usuarios"]);
      echo "<br>";
-     echo "<form action='v_admin.php' method='post'/>";
-     echo "<input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>";
-     echo "</form>";
+     echo "<input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>";     
    }
    if (isset($_POST["desactivar"])){
      $objAdmin->desactivar(true);

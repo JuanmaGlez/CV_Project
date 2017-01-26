@@ -20,18 +20,20 @@ $objAdmin=new Admin($_POST["usuarios"]);
      $objAdmin->mostrar();
      echo "<br>";
      echo "<input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>";
+     if (isset($_POST["desactivar"])){
+       $objAdmin->desactivar(true);
+       echo "<br>";
+     }
      echo"<input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>";
-   }
-   if (isset($_POST["desactivar"])){
-     $objAdmin->desactivar(true);
-     echo "<br>";
-   }
-   if (isset($_POST["modificar"])){
-     $objAdmin->mostrar(); ?>
-     <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
+     if (isset($_POST["modificar"])){
+       $objAdmin->mostrar(); ?>
+       <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
-       <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
-     </form>
+         <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
+       </form>
+   }
+
+
      <br>
  <?php  }  ?>
 <br>

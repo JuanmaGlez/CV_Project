@@ -13,8 +13,8 @@ class Admin
 
   public function __construct($nombre) {
     $this->nombre=$nombre;
-    $this->idUsuario="";
-    $this->username="";
+    //$this->idUsuario="";
+    //$this->username="";
     $this->objUser2=new Usuarios();
   }
 

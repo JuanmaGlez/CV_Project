@@ -13,14 +13,16 @@ $objAdmin=new Admin($_POST["usuarios"]);
        <?php $objAdmin->listar(); ?>
    </select>
    <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
+   <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
  </form>
 
  <?php
    if (isset($_POST["ver"])){
      $objAdmin->mostrar($_POST["usuarios"]);
      echo "<br>";
-     echo "<input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>";
+     echo "<form action='v_admin.php' method='post'/>";
      echo "<input type='submit' name='desactivar' value='Desactivar'class='btn btn-success'/>";
+     echo "</form>";
    }
    if (isset($_POST["desactivar"])){
      $objAdmin->desactivar(true,$_POST["usuarios"]);

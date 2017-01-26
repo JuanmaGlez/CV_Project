@@ -36,14 +36,15 @@ class Admin
     } else {
       $datos='Desactivado';
     }
+    $this->username=$datosRecuperados['username'];
+    echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     echo "<br>";
   } /***FIN MÉTODO mostrar() ***/
 
-  public function desactivar($valor,$nombre2){
-    echo "nombre " . $this->username;
-    $desactivo=$this->objUser2->desactivarCuenta($valor,$nombre2);
+  public function desactivar($valor){
+    $desactivo=$this->objUser2->desactivarCuenta($valor,$this->username);
   } /***FIN MÉTODO desactivar() ***/
 
 } /***FIN CLASE Admin ***/

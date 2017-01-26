@@ -14,7 +14,7 @@ class Admin
   public function __construct($nombre) {
     $this->nombre=$nombre;
     //$this->idUsuario="";
-    //$this->username="";
+    $this->username=$nombre;
     $this->objUser2=new Usuarios();
   }
 

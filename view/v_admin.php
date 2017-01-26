@@ -11,6 +11,11 @@ $objAdmin=new Admin($_POST["usuarios"]);
    <select class='lista' name='usuarios'>
      <option value="0">Usuarios</option>
        <?php $objAdmin->listar(); ?>
+       <optgroup label="Opciones">
+         <option>Casillas de verificación</option>
+         <option>Botones radio</option>
+         <option>Listas</option>
+       </optgroup>
    </select>
    <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
    <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>

@@ -13,8 +13,8 @@ class Admin
 
   public function __construct($nombre) {
     $this->nombre=$nombre;
-    //$this->idUsuario="";
-    //$this->username="";
+    $this->idUsuario="";
+    $this->username="";
     $this->objUser2=new Usuarios();
   }
 
@@ -29,8 +29,8 @@ class Admin
     }
   } /***FIN MÉTODO listar() ***/
 
-  public function mostrar(){
-    $datosRecuperados=$this->objUser2->mostrarUsuario($this->nombre);
+  public function mostrar($nombre2){
+    $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
     if ($datosRecuperados['desactivado'] == 0) {
       $datos='Activado';
     } else {
@@ -43,9 +43,9 @@ class Admin
     //. " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   } /***FIN MÉTODO mostrar() ***/
 
-  public function desactivar($valor){
+  public function desactivar($valor,$nombre2){
     echo "nombre " . $this->username;
-    $desactivo=$this->objUser2->desactivarCuenta($valor,$this->username);
+    $desactivo=$this->objUser2->desactivarCuenta($valor,$nombre2);
   } /***FIN MÉTODO desactivar() ***/
 
 } /***FIN CLASE Admin ***/

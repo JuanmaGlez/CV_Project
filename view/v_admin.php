@@ -19,15 +19,15 @@ $objAdmin=new Admin($_POST["usuarios"]);
 
  <?php
    if (isset($_POST["ver"])){
-     $objAdmin->mostrar();
+     $objAdmin->mostrar($_POST["usuarios"]);
      echo "<br>";
    }
    if (isset($_POST["desactivar"])){
-     $objAdmin->desactivar(true);
+     $objAdmin->desactivar(true,$_POST["usuarios"]);
      echo "<br>";
    }
    if (isset($_POST["modificar"])){
-     $objAdmin->mostrar(); ?>
+     $objAdmin->mostrar($_POST["usuarios"]); ?>
      <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
        <input type="submit" name="submit" value="Submit" class="btn btn-success"/>

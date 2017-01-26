@@ -41,11 +41,11 @@ if ($_SESSION['idTipoUsuario']==1) {
   <br>
   <p>Vamos por buen camino. Tipo 1 </p>
   <h4><u>Usuarios</u></h4>
-  <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
-  <form action='v_admin.php' method='post'/>
-    <select class='lista' name='usuarios'>
+  <input type="button" onclick=" location.href='v_admin.php' " value="Funciones">
+  <!--<form action='v_admin.php' method='post'/>
+  <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
-        <?php $objVerLog->listar(); ?>
+        <?php //$objVerLog->listar(); ?>
     </select>
     <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
     <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
@@ -70,7 +70,7 @@ if ($_SESSION['idTipoUsuario']==1) {
     <br>
 <?php  }
   echo "<br>";
-?>
+?>-->
 
 <!--<input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Modificar">-->
 <!--<input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Desactivar">-->

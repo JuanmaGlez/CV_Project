@@ -54,7 +54,7 @@ class Perfil {
     }
   }
 
-  public function listar(){
+/*  public function listar(){
     $row_lista=$this->objUser->listarUsuario();
     //$fila=$this->objUser->listarUsuario();
     while ($fila=$row_lista->fetch_array()) {
@@ -78,7 +78,7 @@ class Perfil {
 
   public function desactivo($valor,$nombre){
     $desactivo=$this->objUser->desactivarCuenta($valor,$nombre);
-  }
+  }*/
 
   public function closeSession(){
     //echo "saliendo";

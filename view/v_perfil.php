@@ -42,7 +42,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   <p>Vamos por buen camino. Tipo 1 </p>
   <h4><u>Usuarios</u></h4>
   <input type="button" onclick=" location.href='v_modificarUsuario.php' " value="Añadir">
-  <form action='' method='post'/>
+  <form action='v_admin.php' method='post'/>
     <select class='lista' name='usuarios'>
       <option value="0">Seleccione</option>
         <?php $objVerLog->listar(); ?>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once ("../controller/c_admin.php");
+$objAdmin=new Admin();
 
  ?>
 
@@ -9,7 +10,7 @@ require_once ("../controller/c_admin.php");
  <form action='v_admin.php' method='post'/>
    <select class='lista' name='usuarios'>
      <option value="0">Usuarios</option>
-       <?php $objVerLog->listar(); ?>
+       <?php $objAdmin->listar(); ?>
    </select>
    <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
    <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
@@ -18,15 +19,15 @@ require_once ("../controller/c_admin.php");
 
  <?php
    if (isset($_POST["ver"])){
-     $objVerLog->mostrar($_POST["usuarios"]);
+     $objAdmin->mostrar($_POST["usuarios"]);
      echo "<br>";
    }
    if (isset($_POST["desactivar"])){
-     $objVerLog->desactivo(true,$_POST["usuarios"]);
+     $objAdmin->desactivo(true,$_POST["usuarios"]);
      echo "<br>";
    }
    if (isset($_POST["modificar"])){
-     $objVerLog->mostrar($_POST["usuarios"]); ?>
+     $objAdmin->mostrar($_POST["usuarios"]); ?>
      <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
        <input type="submit" name="submit" value="Submit" class="btn btn-success"/>

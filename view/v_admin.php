@@ -23,7 +23,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <br>
      <form method='post'/>
      <input type='hidden' name='ver' value='Ver'/>
-     <input type='hidden' name='mostrar' value='<?php $_POST["usuarios"]?>'/>
+     <input type='hidden' name='mostrar' value='<?php echo $_POST["usuarios"]?>'/>
      <input type='submit' name='desactivar' value='Desactivar 'class='btn btn-success'/>
      </form>
      <?php

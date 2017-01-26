@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once ("../controller/c_admin.php");
-$objAdmin=new Admin();
+$objAdmin=new Admin($_POST["usuarios"]);
 
  ?>
 
@@ -19,15 +19,15 @@ $objAdmin=new Admin();
 
  <?php
    if (isset($_POST["ver"])){
-     $objAdmin->mostrar($_POST["usuarios"]);
+     $objAdmin->mostrar();
      echo "<br>";
    }
    if (isset($_POST["desactivar"])){
-     $objAdmin->desactivar(true,$_POST["usuarios"]);
+     $objAdmin->desactivar(true);
      echo "<br>";
    }
    if (isset($_POST["modificar"])){
-     $objAdmin->mostrar($_POST["usuarios"]); ?>
+     $objAdmin->mostrar(); ?>
      <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
        <input type="submit" name="submit" value="Submit" class="btn btn-success"/>

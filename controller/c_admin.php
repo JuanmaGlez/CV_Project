@@ -6,8 +6,11 @@ require_once('../model/Usuarios.php');
  */
 class Admin
 {
+  public $objUser2;
+  public $nombre;
 
-  public function __construct() {
+  public function __construct($nombre) {
+    $this->nombre=$nombre;
     $this->objUser2=new Usuarios();
   }
 
@@ -22,8 +25,8 @@ class Admin
     }
   } /***FIN MÉTODO listar() ***/
 
-  public function mostrar($nombre){
-    $datosRecuperados=$this->objUser2->mostrarUsuario($nombre);
+  public function mostrar(){
+    $datosRecuperados=$this->objUser2->mostrarUsuario($this->nombre);
     if ($datosRecuperados['desactivado'] == 0) {
       $datos='Activado';
     } else {
@@ -33,8 +36,8 @@ class Admin
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   } /***FIN MÉTODO mostrar() ***/
 
-  public function desactivar($valor,$nombre){
-    $desactivo=$this->objUser2->desactivarCuenta($valor,$nombre);
+  public function desactivar($valor){
+    $desactivo=$this->objUser2->desactivarCuenta($valor,$this->nombre);
   } /***FIN MÉTODO desactivar() ***/
 
 } /***FIN CLASE Admin ***/

@@ -44,6 +44,7 @@ class Admin
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor){
+    echo "nombre " . $this->username;
     $desactivo=$this->objUser2->desactivarCuenta($valor,$this->username);
   } /***FIN MÉTODO desactivar() ***/
 

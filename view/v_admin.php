@@ -12,7 +12,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <option value="0">Usuarios</option>
        <?php $objAdmin->listar(); ?>
    </select>
-   <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
+   <input type='hidden' name='ver' value='Ver'class='btn btn-success'/>
    <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
  </form>
 

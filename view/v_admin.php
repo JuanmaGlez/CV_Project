@@ -24,7 +24,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
 
    }
    if (isset($_POST["desactivar"])){
-     echo $_POST('usuario')
+     echo $_POST('usuario');
      $objAdmin->desactivar(true);
      echo "<br>";
    }

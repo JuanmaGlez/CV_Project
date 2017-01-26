@@ -7,10 +7,14 @@ require_once('../model/Usuarios.php');
 class Admin
 {
   public $objUser2;
-  public $nombre;
+  private $nombre;
+  private $idUsuario;
+  private $username;
 
   public function __construct($nombre) {
     $this->nombre=$nombre;
+    $this->idUsuario="";
+    $this->username="";
     $this->objUser2=new Usuarios();
   }
 
@@ -32,12 +36,15 @@ class Admin
     } else {
       $datos='Desactivado';
     }
-    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
-    . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
+    $this->idUsuario=$datosRecuperados['idUsuario'];
+    $this->username=$datosRecuperados['username'];
+    echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'];
+    //echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
+    //. " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor){
-    $desactivo=$this->objUser2->desactivarCuenta($valor,$this->nombre);
+    $desactivo=$this->objUser2->desactivarCuenta($valor,$this->username);
   } /***FIN MÉTODO desactivar() ***/
 
 } /***FIN CLASE Admin ***/

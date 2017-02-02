@@ -15,7 +15,6 @@ $objAdmin=new Admin($_POST["usuarios"]);
        <?php $objAdmin->listar(); ?>
    </select>
    <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
-   <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
  </form>
 
  <?php
@@ -27,16 +26,18 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <input type='hidden' name='ver' value='Ver'/>
      <input type='hidden' name='mostrar' value='<?php echo $_POST["usuarios"]?>'/>
      <input type='submit' name='desactivar' value='Desactivar 'class='btn btn-success'/>
+     <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
      <?php
      if (isset($_POST["desactivar"])){
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";
      }
-   }
+     if (isset($_POST["modificar"])){
+       $objAdmin->mostrar($_POST["usuarios"]); ?>
+     }
 
-   if (isset($_POST["modificar"])){
-     $objAdmin->mostrar($_POST["usuarios"]); ?>
+
      <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
        <input type="submit" name="submit" value="Submit" class="btn btn-success"/>

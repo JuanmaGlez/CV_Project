@@ -35,13 +35,13 @@ $objAdmin=new Admin($_POST["usuarios"]);
      }
      if (isset($_POST["modificar"])){
        $objAdmin->mostrar($_POST["usuarios"]); ?>
-     }
+       <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
 
+         <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
+       </form>
+       <br>
+<?php
+    }
 
-     <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
-
-       <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
-     </form>
-     <br>
- <?php  }  ?>
+}  ?>
 <br>

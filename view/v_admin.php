@@ -37,7 +37,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
        echo "<br>";
      }
      if (isset($_POST["modificar"])){
-       echo $_POST["usuarios"] . "ok";
+       echo $_POST["mostrar"] . "ok";
        $objAdmin->mostrar($_POST["usuarios"]); ?>
        <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
          Tipo usuario: <input type="text" name="tipoUsuario" class="form-control"/> <!--required/>-->

@@ -297,7 +297,7 @@
     }
 
     //Método Modificar Tipo Usuario
-    public function activarCuenta($valor,$nombre){
+    public function modificarTipo($valor,$nombre){
       $sql="UPDATE usuarios set idTipoUsuario = $valor where username='$nombre'";
       $valorModificar=$this->conectarse->query($sql);
       if ($valorModificar){

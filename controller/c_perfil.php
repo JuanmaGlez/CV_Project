@@ -18,8 +18,8 @@ class Perfil {
 
   public function checkLogin(){
     $arraybuscar=$this->objUser->buscarUsuario($this->usuario,$this->contrasena);
-    if ($arraybuscar['desactivado'] == 0) {      
-      if (password_verify($this->contrasena,$arraybuscar['password'])) {
+    if ($arraybuscar['desactivado'] == 0) {
+      if (password_verify('$this->contrasena',$arraybuscar['password'])) {
       //if ($this->contrasena == $arraybuscar['password']) {
         $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
         $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();

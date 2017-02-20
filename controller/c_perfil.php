@@ -21,7 +21,7 @@ class Perfil {
     if ($arraybuscar['desactivado'] == 0) {
       echo $arraybuscar['password'];
       $hash =  $arraybuscar['password'];
-      if (password_verify('luz', $hash)) {
+      if (password_verify($this->contrasena, $hash)) {
       //if ($this->contrasena == $arraybuscar['password']) {
         $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
         $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();

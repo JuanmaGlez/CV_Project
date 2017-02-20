@@ -26,6 +26,9 @@ if(isset($_POST["submit"])){
     </head>
     <body>
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
+            <?php
+              if ($_POST['anadirAca'] == 'anadirAca') {
+             ?>
             <h4>Añadir Formación</h4>
             <hr/>
             *Formation: <input type="text" name="formacion" class="form-control"/> <!--required/>-->
@@ -36,6 +39,7 @@ if(isset($_POST["submit"])){
             Todos los campos con <strong>*</strong> son obligatorios
             <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
         </form>
+            <?php } else { echo "le has dado a otro boton";} ?>
 
         <footer class="col-lg-12">
             <hr/>

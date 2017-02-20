@@ -79,7 +79,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
   <h4><u>Curriculum</u></h4>
-  <form action='v_curriculum.php' method='post'/>
+  <form action='v_curriculum.php' method='post'>
     <select class='lista' name='curriculum'>
       <option value="0">Seleccione</option>
         <?php
@@ -92,17 +92,19 @@ if ($_SESSION['idTipoUsuario']==1) {
   <input type="button" onclick=" location.href='v_curriculum.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_curriculum.php' " value="Borrar">
   <h4><u>Datos Académicos</u></h4>
-  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
-  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
-  <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
+  <form method='post'>
+    <input type="button" name="anadirAca" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
+    <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
+    <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
+  </form>
   <h4><u>Datos Profesionales</u></h4>
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Borrar">
   <h4><u>Otros Datos</u></h4>
-  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Añadir">
-  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Modificar">
-  <input type="button" onclick=" location.href='v_datosOtros.php' " value="Borrar">
+  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Modificar">
+  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Borrar">
 <?php } else { ?>
   <br>
   Podemos hacer el cambio. Tipo 3 <br>

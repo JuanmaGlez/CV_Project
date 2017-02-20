@@ -26,13 +26,13 @@ if(isset($_POST["submit"])){
     </head>
     <body>
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
-            <h4>Añadir Profesión</h4>
+            <h4>Añadir Formación</h4>
             <hr/>
-            *Occupation: <input type="text" name="formacion" class="form-control"/> <!--required/>-->
-            *Start: <input type="password" name="inicio" class="form-control"/> <!--required/>-->
-            *End: <input type="text" name="fin" class="form-control"/><!--required />-->
-            *Company: <input type="text" name="centro" class="form-control"/> <!--required/>-->
-            Description: <input type="text" name="Notas" class="form-control"/> <!--required/>-->
+            *Lenguaje: <input type="text" name="formacion" class="form-control"/> <!--required/>-->
+            *Card: <input type="password" name="inicio" class="form-control"/> <!--required/>-->
+            *Ability: <input type="text" name="fin" class="form-control"/><!--required />-->
+            *Knowledge: <input type="text" name="centro" class="form-control"/> <!--required/>-->
+            Hobby: <input type="text" name="Notas" class="form-control"/> <!--required/>-->
             Todos los campos con <strong>*</strong> son obligatorios
             <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
         </form>

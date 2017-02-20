@@ -34,7 +34,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";
      } elseif (isset($_POST["activar"])){
-       $objAdmin->activar(true,$_POST['mostrar']);
+       $objAdmin->activar(false,$_POST['mostrar']);
        echo "<br>";
      }
      if (isset($_POST["modificar"])){

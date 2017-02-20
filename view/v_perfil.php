@@ -79,7 +79,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
   <h4><u>Curriculum</u></h4>
-  <input type="button" onclick=" location.href='v_curriculum.php' " value="Funciones">
+  <input type="button" onclick=" location.href='v_curriculum.php' " value="Curriculum">
   <!--<form action='v_curriculum.php' method='post'/>
     <select class='lista' name='curriculum'>
       <option value="0">Seleccione</option>

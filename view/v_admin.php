@@ -25,15 +25,15 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <form method='post'/>
      <input type='hidden' name='ver' value='Ver'/>
      <input type='hidden' name='mostrar' value='<?php echo $_POST["usuarios"]?>'/>
-     <input type='submit' name='desactivar' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
-     <input type='submit' name='activar' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
+     <input type='submit' name='Desactivar' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
+     <input type='submit' name='Activar' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
      <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
      <?php
-     if (isset($_POST["desactivar"])){
+     if (isset($_POST["Desactivar"])){
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";
-     } elseif (isset($_POST["activar"])){
+     } elseif (isset($_POST["Activar"])){
        $objAdmin->activar(false,$_POST['mostrar']);
        echo "<br>";
      }

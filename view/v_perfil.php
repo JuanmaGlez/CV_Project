@@ -84,7 +84,7 @@ if ($_SESSION['idTipoUsuario']==1) {
     <select class='lista' name='curriculum'>
       <option value="0">Seleccione</option>
         <?php
-            $objVerLog->listar();
+          //  $objVerLog->listar();
          ?>
     </select>
     <input type='submit' name='submit' value='Ver'class='btn btn-success'/>

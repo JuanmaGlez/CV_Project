@@ -31,7 +31,7 @@ class Admin
   } /***FIN MÉTODO listar() ***/
 
   public function mostrar($nombre2){
-    echo $nombre2;
+    echo $nombre2 . "<br>";
     $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
     if ($datosRecuperados['desactivado'] == 0) {
       $datos='Activado';

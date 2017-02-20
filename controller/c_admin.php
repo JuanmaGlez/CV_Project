@@ -34,14 +34,17 @@ class Admin
     $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
     if ($datosRecuperados['desactivado'] == 0) {
       $datos='Activado';
+      $reves='Desactivar';
     } else {
       $datos='Desactivado';
+      $reves='Activar';
     }
     $this->username=$datosRecuperados['username'];
     //echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     echo "<br>";
+    return $reves;
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor,$nombre2){

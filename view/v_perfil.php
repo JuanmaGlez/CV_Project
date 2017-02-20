@@ -80,18 +80,27 @@ if ($_SESSION['idTipoUsuario']==1) {
   Seguimos por buen caminio. Tipo 2 <br>
   <h4><u>Curriculum</u></h4>
   <input type="button" onclick=" location.href='v_curriculum.php' " value="Curriculum">
+  <!--<form action='v_curriculum.php' method='post'/>
+    <select class='lista' name='curriculum'>
+      <option value="0">Seleccione</option>
+        <?php
+            $objVerLog->listar();
+         ?>
+    </select>
+    <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
+  </form>-->
+  <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Añadir">
+  <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Modificar">
+  <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Borrar">
   <h4><u>Datos Académicos</u></h4>
-  <input type="button" onclick=" location.href='v_curriculum.php' " value="Datos Académicos">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
   <h4><u>Datos Profesionales</u></h4>
-  <input type="button" onclick=" location.href='v_curriculum.php' " value="Datos Profesionales">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Borrar">
   <h4><u>Otros Datos</u></h4>
-  <input type="button" onclick=" location.href='v_curriculum.php' " value="Otros Datos">
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_datosOtros.php' " value="Borrar">

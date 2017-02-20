@@ -44,7 +44,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
        </form>
        <br>
 <?php
-      if (isset($_POST["Desactivar"])){
+      if (isset($_POST["Actualizar"])){
         $objAdmin->modificar($_POST['tipoUsuario'],$_POST['mostrar']);
         echo "<br>";
         }

@@ -27,7 +27,7 @@ if(isset($_POST["submit"])){
     <body>
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
             <?php
-              if ($_POST['anadirAca'] == 'anadirAca') {
+              if ($_POST['anadirAca']) {
              ?>
             <h4>Añadir Formación</h4>
             <hr/>

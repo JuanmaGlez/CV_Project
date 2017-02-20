@@ -30,8 +30,7 @@ class Admin
     }
   } /***FIN MÉTODO listar() ***/
 
-  public function mostrar($nombre2){
-    echo $nombre2 . "<br>";
+  public function mostrar($nombre2){    
     if ($nombre2 != '0') {
       $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
       if ($datosRecuperados['desactivado'] == 0) {
@@ -41,12 +40,12 @@ class Admin
         $datos='Desactivado';
         $_ENV['reves']='Activar';
       }
-  }
     $this->username=$datosRecuperados['username'];
     //echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
     echo "<br>";
+  }
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor,$nombre2){

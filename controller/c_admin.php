@@ -15,7 +15,7 @@ class Admin
     $this->nombre=$nombre;
     //$this->idUsuario="";
     $this->username=$nombre;
-    echo "constructor " . $this->username . "<br>";
+//    echo "constructor " . $this->username . "<br>";
     $this->objUser2=new Usuarios();
   }
 

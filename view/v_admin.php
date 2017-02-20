@@ -28,7 +28,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <input type='submit' name='<?php echo $_ENV['reves']?>' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
      <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
-     <?php     
+     <?php
      if (isset($_POST["Desactivar"])){
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";
@@ -39,7 +39,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      if (isset($_POST["modificar"])){
        $objAdmin->mostrar($_POST["usuarios"]); ?>
        <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
-
+         Tipo usuario: <input type="text" name="tipoUsuario" value="<?php ?>" class="form-control"/> <!--required/>-->
          <input type="submit" name="submit" value="Submit" class="btn btn-success"/>
        </form>
        <br>

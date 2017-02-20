@@ -198,10 +198,9 @@
       $consulta2="SELECT idUsuario FROM usuarios WHERE email = '$email'";
       $valor=$this->conectarse->query($consulta);
       $valor2=$this->conectarse->query($consulta2);
-      $enc = password_hash($password, PASSWORD_DEFAULT);
       if ($valor->num_rows == 0 and $valor2->num_rows == 0 ) {
         $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
-        ('$username','$enc','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
+        ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
         $resultado=$this->conectarse->query($sql);
         //$this->conectarse->desconexion();
         if ($resultado){
@@ -224,8 +223,7 @@
             $modificado['username'] = $this->conectarse->query($sql);
         }
         if($this->password != $password){
-            $enc = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "UPDATE usuarios set password = '$enc' where idUsuario ='$this->idUsuario'";
+            $sql = "UPDATE usuarios set password = '$password' where idUsuario ='$this->idUsuario'";
             $modificado['password'] = $this->conectarse->query($sql);
         }
         if($this->email != $email){

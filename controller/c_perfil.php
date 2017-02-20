@@ -18,12 +18,8 @@ class Perfil {
 
   public function checkLogin(){
     $arraybuscar=$this->objUser->buscarUsuario($this->usuario,$this->contrasena);
-    echo $arraybuscar['password'] . "<br>";
-    echo $this->objUser->getPassword();
-    echo $this->contrasena . "<br>";
     if ($arraybuscar['desactivado'] == 0) {
-      if (password_verify('$this->contrasena',$arraybuscar['password'])) {
-      //if ($this->contrasena == $arraybuscar['password']) {
+      if ($this->contrasena == $arraybuscar['password']) {
         $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
         $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();
         $_SESSION['loggedin'] = true;
@@ -82,7 +78,7 @@ class Perfil {
 
   public function desactivo($valor,$nombre){
     $desactivo=$this->objUser->desactivarCuenta($valor,$nombre);
-  }*/
+  }
 
   public function closeSession(){
     //echo "saliendo";

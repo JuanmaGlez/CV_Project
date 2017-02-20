@@ -22,7 +22,8 @@ class Perfil {
       echo $this->contrasena;
       echo $arraybuscar['password'];
       $hash =  $arraybuscar['password'];
-      if (password_verify($this->contrasena, $hash)) {
+      $contra = $this->contrasena;
+      if (password_verify($contra, $hash)) {
       //if ($this->contrasena == $arraybuscar['password']) {
         $_SESSION['idUsuario']=$this->objUser->getIdUsuario();
         $_SESSION['idTipoUsuario']=$this->objUser->getIdTipos();

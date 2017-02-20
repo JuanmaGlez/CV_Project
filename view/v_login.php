@@ -2,9 +2,7 @@
 //session_start();
 require_once ("../controller/c_perfil.php");
 if(isset($_POST["entrar"])){
-  $cont = password_hash($_POST['password'], PASSWORD_DEFAULT);
-  echo $cont;
-  $objVerLog=new Perfil($_POST['username'],$cont);
+  $objVerLog=new Perfil($_POST['username'],$_POST['password']);
   $objVerLog->checkLogin();
 }
 ?>

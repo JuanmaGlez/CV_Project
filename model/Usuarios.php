@@ -295,6 +295,17 @@
         echo "Error al activar";
       }
     }
+
+    //Método Modificar Tipo Usuario
+    public function activarCuenta($valor,$nombre){
+      $sql="UPDATE usuarios set idTipoUsuario = $valor where username='$nombre'";
+      $valorModificar=$this->conectarse->query($sql);
+      if ($valorModificar){
+        echo "Tipo modificado";
+      } else {
+        echo "Error al modificar el tipo de usuario";
+      }
+    }
 /*
     //Metodo Eliminar Cuenta usuario
     public function eliminarCuenta($idUsuario){

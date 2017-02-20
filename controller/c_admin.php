@@ -56,7 +56,8 @@ class Admin
     $activar=$this->objUser2->activarCuenta($valor,$nombre2);
   } /***FIN MÉTODO activar() ***/
 
-  public function modificar(){
+  public function modificar($valor,$nombre2){
+    $modificar=$this->objUser2->modificarTipo($valor,$nombre2);
 
   }
 

@@ -78,7 +78,7 @@ if ($_SESSION['idTipoUsuario']==1) {
 <?php } elseif ($_SESSION['idTipoUsuario']==2) { ?>
   <br>
   Seguimos por buen caminio. Tipo 2 <br>
-  <h4><u>Curriculum</u></h4>  
+  <h4><u>Curriculum</u></h4>
   <form action='v_curriculum.php' method='post'/>
     <select class='lista' name='curriculum'>
       <option value="0">Seleccione</option>
@@ -87,7 +87,7 @@ if ($_SESSION['idTipoUsuario']==1) {
          ?>
     </select>
     <input type='submit' name='submit' value='Ver'class='btn btn-success'/>
-  </form>-->
+  </form>
   <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Añadir">
   <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_curriculum.php.php' " value="Borrar">

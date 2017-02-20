@@ -19,6 +19,7 @@ class Perfil {
   public function checkLogin(){
     $arraybuscar=$this->objUser->buscarUsuario($this->usuario,$this->contrasena);
     echo $arraybuscar['password'] . "<br>";
+    echo $this->objUser->getPassword();
     echo $this->contrasena . "<br>";
     if ($arraybuscar['desactivado'] == 0) {
       if (password_verify('$this->contrasena',$arraybuscar['password'])) {

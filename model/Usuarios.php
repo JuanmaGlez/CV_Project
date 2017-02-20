@@ -224,7 +224,8 @@
             $modificado['username'] = $this->conectarse->query($sql);
         }
         if($this->password != $password){
-            $sql = "UPDATE usuarios set password = '$password' where idUsuario ='$this->idUsuario'";
+            $enc = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE usuarios set password = '$enc' where idUsuario ='$this->idUsuario'";
             $modificado['password'] = $this->conectarse->query($sql);
         }
         if($this->email != $email){

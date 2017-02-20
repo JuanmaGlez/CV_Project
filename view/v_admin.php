@@ -9,7 +9,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
  <input type="button" onclick=" location.href='v_perfil.php' " value="Volver">
  <br>
  <input type='submit' name='add' value='Añadir'class='btn btn-success'/>
-<form action="javascript:location.href=document.forms[0].elements['usuarios'].value">
+<form action="javascript:location.href=document.forms[0].elements['v_admin'].value">
  <!--<form action='v_admin.php' method='post'/>-->
    <select onchange="location.href=this.value" class='lista' name='usuarios'>
      <option value="0">Usuarios</option>

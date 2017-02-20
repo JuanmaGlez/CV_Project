@@ -94,17 +94,21 @@ if ($_SESSION['idTipoUsuario']==1) {
   <h4><u>Datos Académicos</u></h4>
   <form action='v_datosAcademicos.php' method='post'>
     <input type="submit" name="anadirAca" value="Añadir">
-    <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
-    <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">
-  </form>
+    <input type="submit" name="modificarAca" value="Modificar">
+    <input type="submit" name="borrarAca" value="Borrar">
   <h4><u>Datos Profesionales</u></h4>
-  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Añadir">
-  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Modificar">
-  <input type="button" onclick=" location.href='v_datosProfesionales.php' " value="Borrar">
+</form>
+  <form action='v_datosProfesionales.php' method='post'>
+    <input type="submit" name="anadirPro" value="Añadir">
+    <input type="submit" name="modificarPro" value="Modificar">
+    <input type="submit" name="borrarPro" value="Borrar">
+  </form>
   <h4><u>Otros Datos</u></h4>
-  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Añadir">
-  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Modificar">
-  <input type="button" onclick=" location.href='v_otrosDatos.php' " value="Borrar">
+  <form action='v_otrosDatos.php' method='post'>
+    <input type="submit" name="anadirOtro"  value="Añadir">
+    <input type="submit" name="modificarOtro"  value="Modificar">
+    <input type="submit" name="borrarOtro"  value="Borrar">
+  </form>
 <?php } else { ?>
   <br>
   Podemos hacer el cambio. Tipo 3 <br>

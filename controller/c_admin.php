@@ -31,14 +31,14 @@ class Admin
   } /***FIN MÉTODO listar() ***/
 
   public function mostrar($nombre2){
-      $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);      
-      if ($datosRecuperados['desactivado'] == 0 and $nombre2 != '0') {
+      $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
+      if ($datosRecuperados['desactivado'] == 0) {
         $datos='Activado';
         $_ENV['reves']='Desactivar';
-      } elseif ($datosRecuperados['desactivado'] == 1 and $nombre2 != '0') {
+      } else {
         $datos='Desactivado';
         $_ENV['reves']='Activar';
-      }
+      }    
     $this->username=$datosRecuperados['username'];
     //echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']

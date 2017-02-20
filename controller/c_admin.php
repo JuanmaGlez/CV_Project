@@ -32,7 +32,7 @@ class Admin
 
   public function mostrar($nombre2){
     echo $nombre2 . "<br>";
-    if ($nombre != 0) {
+    if ($nombre2 != 0) {
       $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
       if ($datosRecuperados['desactivado'] == 0) {
         $datos='Activado';

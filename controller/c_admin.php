@@ -43,13 +43,18 @@ class Admin
     //echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
     . " " . $datosRecuperados['idTipoUsuario'] . " " . $datos;
-    echo "<br>";    
+    echo "<br>";
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor,$nombre2){
     echo "desactivar " . $nombre2 . "<br>";
     $desactivo=$this->objUser2->desactivarCuenta($valor,$nombre2);
   } /***FIN MÉTODO desactivar() ***/
+
+  public function activar($valor,$nombre2){
+    echo "activar " . $nombre2 . "<br>";
+    $activar=$this->objUser2->activarCuenta($valor,$nombre2);
+  } /***FIN MÉTODO activar() ***/
 
 } /***FIN CLASE Admin ***/
  ?>

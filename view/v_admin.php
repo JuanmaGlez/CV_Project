@@ -29,6 +29,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
      <?php
+     echo $_POST[$_ENV['reves']];
      echo $_POST["Desactivar"];
      echo $_POST["Activar"];
      if (isset($_POST["desactivar"])){

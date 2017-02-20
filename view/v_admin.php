@@ -30,6 +30,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
      <?php
+     echo $_ENV['reves'];
      if (isset($_POST["Desactivar"])){
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";

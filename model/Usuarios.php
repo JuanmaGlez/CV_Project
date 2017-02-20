@@ -287,7 +287,7 @@
 
     //Método Activar Cuenta Usuario
     public function activarCuenta($valor,$nombre){
-      $sql="UPDATE usuarios set desactivado = $valor where username='$nombre'";
+      $sql="UPDATE usuarios set desactivado = '$valor' where username='$nombre'";
       $valorActivar=$this->conectarse->query($sql);
       if ($valorActivar){
         echo "Usuario activado";

@@ -92,7 +92,7 @@ if ($_SESSION['idTipoUsuario']==1) {
   <input type="button" onclick=" location.href='v_curriculum.php' " value="Modificar">
   <input type="button" onclick=" location.href='v_curriculum.php' " value="Borrar">
   <h4><u>Datos Académicos</u></h4>
-  <form method='post'>
+  <form action='v_datosAcademicos.php' method='post'>
     <input type="submit" name="anadirAca" value="Añadir">
     <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Modificar">
     <input type="button" onclick=" location.href='v_datosAcademicos.php' " value="Borrar">

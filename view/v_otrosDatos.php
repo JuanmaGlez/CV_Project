@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
     </head>
     <body>
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
-            <h4>Añadir Formación</h4>
+            <h4>Añadir Otros Datos</h4>
             <hr/>
             *Lenguaje: <input type="text" name="formacion" class="form-control"/> <!--required/>-->
             *Card: <input type="password" name="inicio" class="form-control"/> <!--required/>-->

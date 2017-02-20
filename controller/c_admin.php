@@ -32,13 +32,15 @@ class Admin
 
   public function mostrar($nombre2){
     echo $nombre2 . "<br>";
-    $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
-    if ($datosRecuperados['desactivado'] == 0) {
-      $datos='Activado';
-      $_ENV['reves']='Desactivar';
-    } else {
-      $datos='Desactivado';
-      $_ENV['reves']='Activar';
+    if ($nombre != 0) {
+      $datosRecuperados=$this->objUser2->mostrarUsuario($nombre2);
+      if ($datosRecuperados['desactivado'] == 0) {
+        $datos='Activado';
+        $_ENV['reves']='Desactivar';
+      } else {
+        $datos='Desactivado';
+        $_ENV['reves']='Activar';
+      }
     }
     $this->username=$datosRecuperados['username'];
     //echo $datosRecuperados['username'] . "<br>";

@@ -20,7 +20,7 @@
  /*
   * Definimos la clase Usuarios
   */
-  session_start();
+  //session_start();
   require_once("Conectar.php");
 
   class Usuarios {

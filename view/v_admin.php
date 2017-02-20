@@ -38,7 +38,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
        echo "<br>";
      }
      if (isset($_POST["modificar"])){
-       $objAdmin->modificarTipo(3,$_POST["mostrar"]);       
+       $objAdmin->modificar(3,$_POST["mostrar"]);       
     }
 
 }  ?>

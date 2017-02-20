@@ -39,13 +39,14 @@ $objAdmin=new Admin($_POST["usuarios"]);
      if (isset($_POST["modificar"])){
        echo $_POST["mostrar"] . "ok";
        $objAdmin->mostrar($_POST["mostrar"]); ?>
-       <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
+       <form method="post" class="col-lg-5">
          Tipo usuario: <input type="text" name="tipoUsuario" class="form-control"/> <!--required/>-->
          <input type="submit" name="Actualizar" value="Actualizar" class="btn btn-success"/>
        </form>
        <br>
 <?php
       if (isset($_POST["Actualizar"])){
+        echo "¿Llega?";
         echo $_POST["mostrar"] . "ok" . " " . $_POST['tipoUsuario'];
         $objAdmin->modificar($_POST['tipoUsuario'],$_POST['mostrar']);
         echo "<br>";

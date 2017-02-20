@@ -38,7 +38,7 @@ class Admin
       } else {
         $datos='Desactivado';
         $_ENV['reves']='Activar';
-      }    
+      }
     $this->username=$datosRecuperados['username'];
     //echo $datosRecuperados['username'] . "<br>";
     echo $datosRecuperados['idUsuario'] . " " . $datosRecuperados['username'] . " " . $datosRecuperados['email'] . " " . $datosRecuperados['name'] . " " . $datosRecuperados['surname']
@@ -47,12 +47,12 @@ class Admin
   } /***FIN MÉTODO mostrar() ***/
 
   public function desactivar($valor,$nombre2){
-    echo "desactivar " . $nombre2 . "<br>";
+    //echo "desactivar " . $nombre2 . "<br>";
     $desactivo=$this->objUser2->desactivarCuenta($valor,$nombre2);
   } /***FIN MÉTODO desactivar() ***/
 
   public function activar($valor,$nombre2){
-    echo "activar " . $nombre2 . "<br>";
+    //echo "activar " . $nombre2 . "<br>";
     $activar=$this->objUser2->activarCuenta($valor,$nombre2);
   } /***FIN MÉTODO activar() ***/
 

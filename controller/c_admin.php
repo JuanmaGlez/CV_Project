@@ -58,7 +58,6 @@ class Admin
 
   public function modificar($valor,$nombre2){
     $modificar=$this->objUser2->modificarTipo($valor,$nombre2);
-
   }
 
 } /***FIN CLASE Admin ***/

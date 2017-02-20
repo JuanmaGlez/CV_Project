@@ -9,13 +9,12 @@ $objAdmin=new Admin($_POST["usuarios"]);
  <input type="button" onclick=" location.href='v_perfil.php' " value="Volver">
  <br>
  <input type='submit' name='add' value='Añadir'class='btn btn-success'/>
-<form action="javascript:location.href=document.forms[0].elements['usuarios'].value">
- <!--<form action='v_admin.php' method='post'/>-->
-   <select onchange="location.href=v_admin.php" class='lista' name='usuarios'>
+ <form action='v_admin.php' method='post'/>
+   <select class='lista' name='usuarios'>
      <option value="0">Usuarios</option>
        <?php $objAdmin->listar(); ?>
    </select>
-  <!--<input type='submit' name='ver' value='Ver'class='btn btn-success'/>-->
+   <input type='submit' name='ver' value='Ver'class='btn btn-success'/>
  </form>
 
  <?php
@@ -29,7 +28,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
      <input type='submit' name='<?php echo $_ENV['reves']?>' value='<?php echo $_ENV['reves']?>' class='btn btn-success'/>
      <input type='submit' name='modificar' value='Modificar'class='btn btn-success'/>
      </form>
-     <?php
+     <?php     
      if (isset($_POST["Desactivar"])){
        $objAdmin->desactivar(true,$_POST['mostrar']);
        echo "<br>";

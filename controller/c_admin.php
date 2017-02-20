@@ -56,5 +56,9 @@ class Admin
     $activar=$this->objUser2->activarCuenta($valor,$nombre2);
   } /***FIN MÉTODO activar() ***/
 
+  public function modificar(){
+
+  }
+
 } /***FIN CLASE Admin ***/
  ?>

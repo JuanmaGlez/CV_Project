@@ -46,6 +46,7 @@ $objAdmin=new Admin($_POST["usuarios"]);
        <br>
 <?php
       if (isset($_POST["Actualizar"])){
+        echo $_POST["mostrar"] . "ok" . " " . $_POST['tipoUsuario'];
         $objAdmin->modificar($_POST['tipoUsuario'],$_POST['mostrar']);
         echo "<br>";
         }

@@ -26,7 +26,8 @@ class Conectar{
 
   //Creamos el método constructor
   public function __construct(){
-    $datos_bd = require_once '/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/config/db.php';
+    //$datos_bd = require_once '/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/config/db.php';
+    $datos_bd = require_once '/var/www/html/jobsnetworks/CV_Project/config/db.php';
     $this->serverlocal=$datos_bd["serverlocal"];
     $this->login=$datos_bd["login"];
     $this->contrasena=$datos_bd["contrasena"];

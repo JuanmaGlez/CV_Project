@@ -5,7 +5,8 @@ if (!$_SESSION['loggedin']){
   echo "<br><a href='../view/v_login.php'>Login</a>";
   exit;
 }
-require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");
+//require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");
+require_once ("../controller/c_modificarDatos.php");
 /*require_once ("../controller/c_perfil.php");
 $objVerLog=new Perfil($_POST['username'],$_POST['password']);
 $objVerLog->checkConexion();*/

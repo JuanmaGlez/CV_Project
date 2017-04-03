@@ -1,5 +1,6 @@
 <?php
-require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_recuperarpass.php");
+//require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_recuperarpass.php");
+require_once ('../controller/c_recuperarpass.php');
 //require_once ("../../model/Usuarios.php");
 if(isset($_POST["ecorreo"])){
   $objcorreo=new Recuperar($_POST['correo']);

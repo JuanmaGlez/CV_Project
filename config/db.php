@@ -1,9 +1,7 @@
 <?php
-return array (
-"serverlocal"      => "localhost",
-"login"      => "manu",
-"contrasena"  => "5Fa2afCt75",
-"basedatos"  => "pcurridb01",
-"charset"   => "utf8"
-);
+define('SERVERLOCAL', 'localhost');
+define('LOGIN', 'manu');
+define('CONTRASENA', '5Fa2afCt75');
+define('DATABASE', 'pcurridb02');
+define('CHARSET', 'utf8');
  ?>

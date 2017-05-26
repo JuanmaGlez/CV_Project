@@ -1,82 +1,66 @@
-<?php
-/*
- * @author Juanma
- * @version 0.1
- *
- * Esta clase nos va a permitir manejar los objetos Conectar
- *
- * Clase Conectar
- * Vamos a realizar con ellas las siguientes acciones:
- * Conexion a la Base de Datos
- * Desconexión a la Base de Datos
- * Consultas a la Base de Datos
- *
- */
+<?php 
+	/*
+ 	* @author Juan Manuel González
+ 	* @version 0.2
+ 	*
+ 	* Esta clase nos va a permitir manejar los objetos Conectar
+ 	*
+ 	* Clase Conectar
+ 	* Vamos a realizar con ellas las siguientes acciones:
+ 	* Conexion a la Base de Datos
+ 	* Desconexión a la Base de Datos
+ 	* Consultas a la Base de Datos
+	*
+ 	*/
 
- /*
-  * Definimos la clase Conectar
-  */
-class Conectar{
-  private $serverlocal;
-  public $login;
-  public $contrasena;
-  private $basedatos;
-  private $charset;
-  private $conex;
+	class Conectar {
 
-  //Creamos el método constructor
-  public function __construct(){
-    //$datos_bd = require_once '/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/config/db.php';
-    $datos_bd = require_once '/var/www/html/jobsnetworks/CV_Project/config/db.php';
-    $this->serverlocal=$datos_bd["serverlocal"];
-    $this->login=$datos_bd["login"];
-    $this->contrasena=$datos_bd["contrasena"];
-    $this->basedatos=$datos_bd["basedatos"];
-    $this->charset=$datos_bd["charset"];
-  }
+		//Atributos de la clase
+		 private $serverlocal;
+		 public $login;
+  		 public $contrasena;
+  		 private $database;
+         private $charset;
+    	 private $conexion;
 
-  //Creamos el método de conexión
-  public function conexion(){
-    $this->conex = new mysqli($this->serverlocal, $this->login, $this->contrasena, $this->basedatos);
-    $this->conex->query("SET NAMES '".$this->charset."'");
+		//Constructor de la clase Conectar	
+		public function __construct() {
+			//Para poder conectarnos, necesitamos los datos de la base de datos, los cuales guardamos en una variable.
+			require_once ('../config/db.php');
+			$this->serverlocal=SERVERLOCAL;
+			$this->login=LOGIN;
+			$this->contrasena=CONTRASENA;
+			$this->database=DATABASE;
+			$this->charset=CHARSET;
+			$this->conexion="";
+		}
 
-    if ($this->conex->connect_error) {
-      die("La conexión ha fallado: " . $this->conex->connect_error);
-    }
-    return $this->conex;
-  }
+		//Método para crear una conexión a la base de datos		
+		public function conexion(){
+			try {
+				$this->conexion = new mysqli($this->serverlocal, $this->login, $this->contrasena, $this->database);
+				$this->conexion->query("SET NAMES '" . $this->charset . "'");
+				//echo "Conexion Correcta";
+			} catch (Exception $e) {
+				die("Error " . $e->getMessage());
+				
+				echo "Línea del error " . $e->getLine();				
+			}
 
-  //Creamos el método desconexión
-  public function desconexion(){
-    return $this->conex->close();
-  }
+			return $this->conexion;		
 
-  //Creamos el método Consultas
-  public function query($consulta){
-    //echo "hola <br>";
-    //echo "$consulta <br>";
-    $resultado=$this->conex->query($consulta);
-    if(!$resultado){
-          echo "error en la consulta";
-          exit;
-        }
-    if($resultado->num_rows === 0){
-      echo "Ups. No hay ningun resultado";
-      exit;
-      //return $resultado;
-    }
-    /*$valor=$resultado->fetch_assoc();
-    return $valor;*/
-    if($resultado===true){
-      //echo "error por aqui";
-      return $resultado;
-    } else {
-      $valor=$resultado->fetch_assoc();
-      //echo "error aqui";
-      return $valor;
-    }
+		}
 
-  }
-
-}
+		//Método para cerrar la conexión a la base de datos
+		public function desconexion() {
+			//echo "Desconectado";
+			return $this->conexion->close();
+		}
+	}
+	
+	/*	
+	$prueba = new Conectar();
+	$prueba->conexion();
+	$prueba->desconexion();
+	*/
  ?>

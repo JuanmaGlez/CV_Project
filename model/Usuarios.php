@@ -1,348 +1,411 @@
-<?php
-/*
- * @author Juanma
- * @version 0.1
- *
- * Esta clase nos va a permitir manejar los objetos usuarios
- *
- * Clase Usuarios
- * Vamos a realizar con ellas las siguientes acciones
- * Buscar Usuario
- * Crear Usuarios
- * Modificar Datos personales del usuarios
- * Devolver Datos personales del usuarios
- * Desactivar Cuenta
- * Eliminar Cuenta
- * Listar Usuarios
- *
- */
+<?php 
 
- /*
-  * Definimos la clase Usuarios
-  */
-  //session_start();
-  require_once("Conectar.php");
+	require_once('Conectar.php');
 
-  class Usuarios {
+	class Usuarios {
 
-    // Definimos las propiedades o atributos
-    private $idUsuario;
-    private $username;
-    private $password;
-    private $email;
-    private $name;
-    private $surname;
-    private $birthday;
-    private $address;
-    private $postal;
-    private $town;
-    private $province;
-    private $mobile;
-    private $telephone;
-    private $desactivar;
-    private $idTipos;
-    public $conectarse;
+		//Atributos de la clase Usuarios
+		private $conectarse;
+		private $idUsuario;
+		private $username;
+		private $password;
+		private $email;
+		private $name;
+		private $surname;
+		private $dni;
+		private $birthday;
+		private $address;
+		private $postal;
+		private $town;
+		private $province;
+		private $mobile;
+		private $telephone;
+		private $tipoUsuario;
+		private $estado;
+		private $registro;
+		private $photo;
+		private $conectado;
+		private $empezar_desde;
+		private $tamano_paginas;
 
-    //Método Constructor
-    public function __construct($idUsuario=null){
-      //$this->conectarse=new Conectar();
-      $conect=new Conectar();
-      $this->conectarse=$conect->conexion();
-      if($idUsuario != "" || $idUsuario != 0){
-        $this->idUsuario=$idUsuario;
-        $this->recuperar();
-      } //***FIN if***
-    }// ****** FIN CONSTRUCTOR ********
+		//private $usuarios;
+		//private $usuario;
 
+		//Método Constructor de la Clase
+		public function __construct($idUsuario=null){
+			$this->conectarse= new Conectar(); //Creamos el objeto de la conexión
+			$this->conectado=$this->conectarse->conexion(); //realizamos la conexión y la guardamos en una variable
+			if($idUsuario != "" || $idUsuario != 0){
+        		$this->idUsuario=$idUsuario;
+        		$this->recuperar();
+      		} //***FIN if***			
 
-    //Métodos
-    //Método Recuperar Datos del Usuario de la Base de Datos
-    public function recuperar(){
-      $datosArray="SELECT * FROM usuarios WHERE idUsuario = $this->idUsuario";
-      $datos=$this->conectarse->query($datosArray);
-      if($datosRecuperados=$datos->fetch_assoc()){
-      //if($datosRecuperados=$this->conectarse->query($datosArray))
-        $this->idUsuario=$datosRecuperados['idUsuario'];
-        $this->username=$datosRecuperados['username'];
-        $this->password=$datosRecuperados['password'];
-        $this->email=$datosRecuperados['email'];
-        $this->name=$datosRecuperados['name'];
-        $this->surname=$datosRecuperados['surname'];
-        $this->birthday=$datosRecuperados['birthday'];
-        $this->address=$datosRecuperados['address'];
-        $this->postal=$datosRecuperados['postal'];
-        $this->town=$datosRecuperados['town'];
-        $this->province=$datosRecuperados['province'];
-        $this->mobile=$datosRecuperados['mobile'];
-        $this->telephone=$datosRecuperados['telephone'];
-        $this->desactivar=$datosRecuperados['desactivar'];
-        $this->idTipos=$datosRecuperados['idTipoUsuario'];
-      } //***FIN if***
-    } //**** FIN METODO RECUPERAR
+		} // Fin del Método Constructor
 
-    //Método devolver idUsuario
-    public function getIdUsuario(){
-      return $this->idUsuario;
-    }
+		//Método Recuperar Datos del Usuario de la Base de Datos
+	    public function recuperar(){
+	      $datosArray="SELECT * FROM usuarios WHERE idUsuario = $this->idUsuario";	      
+	      $datos=$this->conectado->query($datosArray);
+	      if($datosRecuperados=$datos->fetch_assoc()){	    
+	        $this->idUsuario=$datosRecuperados['idUsuario'];
+	        $this->username=$datosRecuperados['username'];
+	        $this->password=$datosRecuperados['password'];
+	        $this->email=$datosRecuperados['email'];
+	        $this->name=$datosRecuperados['name'];
+	        $this->surname=$datosRecuperados['surname'];
+	        $this->dni=$datosRecuperados['dni'];
+	        $this->birthday=$datosRecuperados['birthday'];
+	        $this->address=$datosRecuperados['address'];
+	        $this->postal=$datosRecuperados['postal'];
+	        $this->town=$datosRecuperados['town'];
+	        $this->province=$datosRecuperados['province'];
+	        $this->mobile=$datosRecuperados['mobile'];
+	        $this->telephone=$datosRecuperados['telephone'];
+	        $this->tipoUsuario=$datosRecuperados['tipoUsuario'];
+	        $this->estado=$datosRecuperados['estado'];
+	       	$this->registro=$datosRecuperados['registro'];
+	       	$this->photo=$datosRecuperados['photo'];
+	        
+	      } //***FIN if***
+	    } //**** FIN METODO RECUPERAR
 
-    //Método devolver username
-    public function getUsername(){
-      return $this->username;
-    }
+	    //Método devolver idUsuario
+	    public function getIdUsuario(){
+	      return $this->idUsuario;
+	    }
 
-    //Método devolver password
-    public function getPassword(){
-      return $this->password;
-    }
+	    //Método devolver username
+	    public function getUsername(){
+	      return $this->username;
+	    }
 
-    //Método devolver email
-    public function getEmail(){
-      return $this->email;
-    }
+	    //Método devolver password
+	    public function getPassword(){
+	      return $this->password;
+	    }
 
-    //Método devolver name
-    public function getName(){
-      return $this->name;
-    }
+	    //Método devolver email
+	    public function getEmail(){
+	      return $this->email;
+	    }
 
-    //Método devolver surname
-    public function getSurname(){
-      return $this->surname;
-    }
+	    //Método devolver name
+	    public function getName(){
+	      return $this->name;
+	    }
 
-    //Método devolver birthday
-    public function getBirthday(){
-      return $this->birthday;
-    }
+	    //Método devolver surname
+	    public function getSurname(){
+	      return $this->surname;
+	    }
 
-    //Método devolver address
-    public function getAddress(){
-      return $this->address;
-    }
+	    //Método devolver dni
+	    public function getDNI(){
+	      return $this->dni;
+	    }
 
-    //Método devolver postal
-    public function getPostal(){
-      return $this->postal;
-    }
+	    //Método devolver birthday
+	    public function getBirthday(){
+	      return $this->birthday;
+	    }
 
-    //Método devolver town
-    public function getTown(){
-      return $this->town;
-    }
+	    //Método devolver address
+	    public function getAddress(){
+	      return $this->address;
+	    }
 
-    //Método devolver province
-    public function getProvince(){
-      return $this->province;
-    }
+	    //Método devolver postal
+	    public function getPostal(){
+	      return $this->postal;
+	    }
 
-    //Método devolver mobile
-    public function getMobile(){
-      return $this->mobile;
-    }
+	    //Método devolver town
+	    public function getTown(){
+	      return $this->town;
+	    }
 
-    //Método devolver telephone
-    public function getTelephone(){
-      return $this->telephone;
-    }
+	    //Método devolver province
+	    public function getProvince(){
+	      return $this->province;
+	    }
 
-    //Método devolver desactivar
-    public function getDesactivar(){
-      return $this->desactivar;
-    }
+	    //Método devolver mobile
+	    public function getMobile(){
+	      return $this->mobile;
+	    }
 
-    //Método devolver tipo de usuario
-    public function getIdTipos(){
-      return $this->idTipos;
-    }
+	    //Método devolver telephone
+	    public function getTelephone(){
+	      return $this->telephone;
+	    }
 
-    //Método Buscar Usuario
-    public function buscarUsuario($username,$password){
-      $consulta="SELECT * FROM usuarios WHERE username = '$username' and password = '$password'";
-      $datos=$this->conectarse->query($consulta);
-      if($resultado=$datos->fetch_assoc()){
-      //if ($resultado=$this->conectarse->query($consulta))
-        $this->idUsuario=$resultado['idUsuario'];
-        $this->idTipos=$resultado['idTipoUsuario'];
-        $this->recuperar();
-        //$this->conectarse->desconexion();
-        return $resultado;
-      } // **Fin if**
+	    //Método devolver tipo de usuario
+	    public function getTipoUsuario(){
+	      return $this->tipoUsuario;
+	    }
 
-    } // *** Fin método buscarUsuario()***
+	    //Método devolver estado
+	    public function getEstado(){
+	      return $this->estado;
+	    }
 
-    public function buscarEmail($email){
-      $sql="SELECT * FROM usuarios WHERE email = '$email'";
-      $datos=$this->conectarse->query($sql);
-      if ($valor=$datos->fetch_assoc()){
-        return $valor;
-      }
-    }
+	    //Método devolver registro, fecha que se registro
+	    public function getRegistro(){
+	      return $this->registro;
+	    }
 
-    public function updatePass($contra,$email){
-      $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
-      $resultado=$this->conectarse->query($sql);
-      if ($resultado){
-        return $resultado;
-        //echo "Contraseña modificada";
-      } else {
-        return $resultado;
-        //echo "Error al cambiar contraseña";
-      }
-    }
+	    //Método devolver photo, foto para curriculum
+	    public function getPhoto(){
+	      return $this->photo;
+	    }
+	    
 
-    //Método Crear Usuario
-    public function crearUsuario($username,$password,$email,$name,$surname,$birthday,
-    $address,$postal,$town,$province,$mobile,$telephone=null){
-      //$consulta="SELECT idUsuario FROM usuarios WHERE username = '$username' and email = '$email'";
-      $consulta="SELECT idUsuario FROM usuarios WHERE username = '$username'";
-      $consulta2="SELECT idUsuario FROM usuarios WHERE email = '$email'";
-      $valor=$this->conectarse->query($consulta);
-      $valor2=$this->conectarse->query($consulta2);
-      if ($valor->num_rows == 0 and $valor2->num_rows == 0 ) {
-        $sql="insert into usuarios (`username`,`password`,`email`,`name`,`surname`,`birthday`,`address`,`postal`,`town`,`province`,`mobile`,`telephone`) values
-        ('$username','$password','$email','$name','$surname','$birthday','$address',$postal,'$town','$province',$mobile,$telephone)";
-        $resultado=$this->conectarse->query($sql);
-        //$this->conectarse->desconexion();
-        if ($resultado){
-          return 2;
-          //echo "Usuario Creado";
-        } else {
-          return 0;
-          //echo "Error al crear el usuario";
-        }
-      } else {
-        return $valor;
-      }
-    } //*** FIN MÉTODO crearUsuario
+			// Método de volver todos los datos de los usuarios
+		public function getUsuarios() {
+			$this->paginar();
+			//$sql="SELECT * FROM usuarios LIMIT 1, 10";
+			$sql="SELECT * FROM usuarios LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			while ($filas=$resultado->fetch_assoc()) {
+				$this->usuarios[]=$filas;
+			}
+			return $this->usuarios;			
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
 
-    //Método Modificar Datos personales
-    public function setDatosPersonales($username,$password,$email,$name,$surname,$birthday,$address,$postal,$town,$province,$mobile,$telephone){
-        $modificado=array();
-        if($this->username != $username){
-            $sql = "UPDATE usuarios SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
-            $modificado['username'] = $this->conectarse->query($sql);
-        }
-        if($this->password != $password){
-            $sql = "UPDATE usuarios set password = '$password' where idUsuario ='$this->idUsuario'";
-            $modificado['password'] = $this->conectarse->query($sql);
-        }
-        if($this->email != $email){
-            $sql = "UPDATE usuarios set email = '$email' where idUsuario ='$this->idUsuario'";
-            $modificado['email'] = $this->conectarse->query($sql);
-        }
-        if($this->name != $name){
-            $sql = "UPDATE usuarios set name = '$name' where idUsuario ='$this->idUsuario'";
-            $modificado['name'] = $this->conectarse->query($sql);
-        }
-        if($this->surname != $surname){
-            $sql = "UPDATE usuarios set surname = '$surname' where idUsuario ='$this->idUsuario'";
-            $modificado['surname'] = $this->conectarse->query($sql);
-        }
-        if($this->birthday != $birthday){
-            $sql = "UPDATE usuarios set birthday = '$birthday' where idUsuario ='$this->idUsuario'";
-            $modificado['birthday'] = $this->conectarse->query($sql);
-        }
-        if($this->address != $address){
-            $sql = "UPDATE usuarios set address = '$address' where idUsuario ='$this->idUsuario'";
-            $modificado['address'] = $this->conectarse->query($sql);
-        }
-        if($this->postal != $postal){
-            $sql = "UPDATE usuarios set postal = '$postal' where idUsuario ='$this->idUsuario'";
-            $modificado['postal'] = $this->conectarse->query($sql);
-        }
-        if($this->town != $town){
-            $sql = "UPDATE usuarios set town = '$town' where idUsuario ='$this->idUsuario'";
-            $modificado['town'] = $this->conectarse->query($sql);
-        }
-        if($this->province != $province){
-            $sql = "UPDATE usuarios set province = '$province' where idUsuario ='$this->idUsuario'";
-            $modificado['province'] = $this->conectarse->query($sql);
-        }
-        if($this->mobile != $mobile){
-            $sql = "UPDATE usuarios set mobile = '$mobile' where idUsuario ='$this->idUsuario'";
-            $modificado['mobile'] = $this->conectarse->query($sql);
-        }
-        if($this->telephone != $telephone){
-            $sql = "UPDATE usuarios set telephone = '$telephone' where idUsuario ='$this->idUsuario'";
-            $modificado['telephone'] = $this->conectarse->query($sql);
-        }
-        if($modificado){
-          //echo "Los datos has sido modificados correctamente";
-          echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
-        } else {
-          echo "No se ha modificado ningún dato";
-        }
-    } // Fin método modificar Datos Personales
+		// Método que de vuelve los datos de un usuario en concreto
+		public function getUsuario($idUsuario) {
+			$sql="SELECT * FROM usuarios where idUsuario = '$idUsuario'";
+			$resultado=$this->conectado->query($sql);
+			while ($filas=$resultado->fetch_assoc()) {
+				$this->usuario[]=$filas;
+			}
+			return $this->usuario;			
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
 
-    //Método Desactivar Cuenta Usuario
-    public function desactivarCuenta($valor,$nombre){
-      $sql="UPDATE usuarios set desactivado = $valor where username='$nombre'";
-      $valorDesactivar=$this->conectarse->query($sql);
-      if ($valorDesactivar){
-        echo "Usuario desactivado";
-      } else {
-        echo "Error al desactivar";
-      }
-    }
+		//Método comprobar si usuario existe
+		public function checkUsuario($username,$email) {
+			$consulta="SELECT idUsuario FROM usuarios WHERE username = '$username' and email = '$email'";
+			//$consulta2="SELECT idUsuario FROM usuarios WHERE email = 'email'";
+			$valor=$this->conectado->query($consulta);
+			//$valor2=$this->conectado->query($consulta2);
+			return $valor;
 
-    //Método Activar Cuenta Usuario
-    public function activarCuenta($valor,$nombre){
-      $sql="UPDATE usuarios set desactivado = '$valor' where username='$nombre'";
-      $valorActivar=$this->conectarse->query($sql);
-      if ($valorActivar){
-        echo "Usuario activado";
-      } else {
-        echo "Error al activar";
-      }
-    }
+		}
 
-    //Método Modificar Tipo Usuario
-    public function modificarTipo($valor,$nombre){
-      $sql="UPDATE usuarios set idTipoUsuario = $valor where username='$nombre'";
-      $valorModificar=$this->conectarse->query($sql);
-      if ($valorModificar){
-        echo "Tipo modificado";
-      } else {
-        echo "Error al modificar el tipo de usuario";
-      }
-    }
-/*
-    //Metodo Eliminar Cuenta usuario
-    public function eliminarCuenta($idUsuario){
-        $sql="DROP "
+		// Método para insertar usuario
+		public function crearUsuario($username, $password, $email, $name, $surname, $dni, $birthday, $address, 
+			$postal, $town, $province, $mobile, $telephone){
+			
+			$valor=$this->checkUsuario($username,$email);
+			
+			if ($valor->num_rows == 0) {
+				$sql="INSERT INTO usuarios (username, password, email, name, surname, dni, birthday, address, postal, town, province, mobile, telephone) VALUES ('$username','$password','$email',
+					'$name','$surname','$dni','$birthday','$address','$postal','$town','$province','$mobile',
+					'$telephone')";
+				
+				$resultado=$this->conectado->query($sql);
+			
+				if ($resultado) {
+					return 2;
+				} else {
+					return 1;
+				} // fin del IF ELSE anidado
+			} else {
+				return 0;
+			} // fin del IF ELSE
 
-    }
-*/
-public function listarUsuario(){
-  $sql = "SELECT * FROM usuarios ORDER BY idUsuario";
-  $row_lista = $this->conectarse->query($sql);
-  //$fila=$row_lista->fetch_array();
-  return $row_lista;
-  //while ($fila=$row_lista->fetch_array()){
-    //return $fila;
-    //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
-  //}
-} //*** FIN MÉTODO listarUsuario
+		} // Fin método crearUsuario
 
-    /*public function listarUsuario(){
-      $sql = "SELECT username FROM usuarios ORDER BY idUsuario";
-      $row_lista = $this->conectarse->query($sql);
-      //$fila=$row_lista->fetch_array();
-      return $row_lista;
-      //while ($fila=$row_lista->fetch_array()){
-        //return $fila;
-        //echo '<option value="'.$fila['username'].'">'.$fila['username']. '</option>';
-      //}
-    } //*** FIN MÉTODO listarUsuario*/
+		// Método buscar Usuario
+		public function buscarUsuario($username){							
+			$consulta="SELECT * FROM usuarios WHERE username = '$username'";			
+			
+			$valor=$this->conectado->query($consulta);
+			
+			if ($resultado=$valor->fetch_assoc()) {
+				$this->idUsuario=$resultado['idUsuario'];
+        		$this->tipoUsuario=$resultado['tipoUsuario'];
+        		return $resultado;
+			} else {
+				return 0;
+			}
+		}// Fin método buscarUsuario()
 
-    public function mostrarUsuario($nombre){
-      $sql = "SELECT * FROM usuarios WHERE username = '$nombre'";
-      $resultado=$this->conectarse->query($sql);
-      $datosRecuperados=$resultado->fetch_assoc();
-      return $datosRecuperados;
-    }
+		// Método devolver los datos del usuario por el email
+	    public function buscarEmail($email){
+	      $sql="SELECT * FROM usuarios WHERE email = '$email'";
+	      $datos=$this->conectado->query($sql);
+	      if ($valor=$datos->fetch_assoc()){
+	        return $valor;
+	      }
+	    } // Fin método buscarEmail()
+
+	    // Metodo actualizar password olvidada
+		public function updatePass($contra,$email){
+	      $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
+	      $resultado=$this->conectarse->query($sql);
+	      if ($resultado){
+	        return $resultado;
+	        //echo "Contraseña modificada";
+	      } else {
+	        return $resultado;
+	        //echo "Error al cambiar contraseña";
+	      }
+	    } // Fin método updatePass
 
 
-} //*** FIN DE LA CLASE Usuario ***
+		//Método Modificar Datos personales
+	    public function setDatosPersonales($username,$password,$email,$name,$surname,$dni,$birthday,$address,$postal,$town,$province,$mobile,$telephone){
+	        $modificado=array();
+	        if($this->username != $username){
+	            $sql = "UPDATE usuarios SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
+	            
+	            $modificado['username'] = $this->conectado->query($sql);
+	        }
+	        if($this->password != $password){
+	            $sql = "UPDATE usuarios set password = '$password' where idUsuario ='$this->idUsuario'";
+	            
+	            $modificado['password'] = $this->conectado->query($sql);
+	        }
+	        if($this->email != $email){
+	            $sql = "UPDATE usuarios set email = '$email' where idUsuario ='$this->idUsuario'";
+	            $modificado['email'] = $this->conectado->query($sql);
+	        }
+	        if($this->name != $name){
+	            $sql = "UPDATE usuarios set name = '$name' where idUsuario ='$this->idUsuario'";
+	            $modificado['name'] = $this->conectado->query($sql);
+	        }
+	        if($this->surname != $surname){
+	            $sql = "UPDATE usuarios set surname = '$surname' where idUsuario ='$this->idUsuario'";
+	            $modificado['surname'] = $this->conectado->query($sql);
+	        }
+	        if($this->dni != $dni){
+	            $sql = "UPDATE usuarios set dni = '$dni' where idUsuario ='$this->idUsuario'";
+	            $modificado['dni'] = $this->conectado->query($sql);
+	        }
+	        if($this->birthday != $birthday){
+	            $sql = "UPDATE usuarios set birthday = '$birthday' where idUsuario ='$this->idUsuario'";
+	            $modificado['birthday'] = $this->conectado->query($sql);
+	        }
+	        if($this->address != $address){
+	            $sql = "UPDATE usuarios set address = '$address' where idUsuario ='$this->idUsuario'";
+	            $modificado['address'] = $this->conectado->query($sql);
+	        }
+	        if($this->postal != $postal){
+	            $sql = "UPDATE usuarios set postal = '$postal' where idUsuario ='$this->idUsuario'";
+	            $modificado['postal'] = $this->conectado->query($sql);
+	        }
+	        if($this->town != $town){
+	            $sql = "UPDATE usuarios set town = '$town' where idUsuario ='$this->idUsuario'";
+	            $modificado['town'] = $this->conectado->query($sql);
+	        }
+	        if($this->province != $province){
+	            $sql = "UPDATE usuarios set province = '$province' where idUsuario ='$this->idUsuario'";
+	            $modificado['province'] = $this->conectado->query($sql);
+	        }
+	        if($this->mobile != $mobile){
+	            $sql = "UPDATE usuarios set mobile = '$mobile' where idUsuario ='$this->idUsuario'";
+	            $modificado['mobile'] = $this->conectado->query($sql);
+	        }
+	        if($this->telephone != $telephone){
+	            $sql = "UPDATE usuarios set telephone = '$telephone' where idUsuario ='$this->idUsuario'";
+	            $modificado['telephone'] = $this->conectado->query($sql);
+	        }
+	        if($modificado){
+	          //echo "Los datos has sido modificados correctamente";
+	          //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+	          return 1;
+	        } else {
+	          //echo "No se ha modificado ningún dato";
+	          return 0;
+	        }
+	    } // Fin método modificar Datos Personales
 
-?>
+	    public function desactivarCuenta ($idUsuario) {
+	    	$sql = "UPDATE usuarios set estado = 'desactivado' where idUsuario = $idUsuario";
+	    	$valorDesactivar=$this->conectado->query($sql);
+	    }
+
+	    public function activarCuenta ($idUsuario) {
+	    	$sql = "UPDATE usuarios set estado = 'activado' where idUsuario = $idUsuario";
+	    	$valorActivar=$this->conectado->query($sql);
+	    }
+
+	    // Método para paginar   ¿¿??
+	    public function paginar() {
+	    	$this->tamano_paginas=8;
+
+      		if (isset($_GET["pagina"])) {
+      
+        		if ($_GET["pagina"]==1) {
+          			header("location:index.php");
+        		} else {
+          			$pagina=$_GET["pagina"];
+        		}
+
+      		} else {
+        		$pagina=1;
+      		}
+
+      	    //variable que guarda el valor inicial que debe mostrar la página.
+      		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
+
+      		$sql_total="SELECT * FROM usuarios"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+
+      		$resultado=$this->conectado->query($sql_total);
+
+	    	//variables que guarda el números de filas que nos devuelve la consulta en total.
+	    	$num_filas=$resultado->num_rows;
+
+			//variable que guarda el número de páginas total que vamos a tener.
+	     	//la fx ceil redondea a la alza.
+	     	$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	     	define("TOTAL_PAGINAS", "$total_paginas");
+	    	//$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	    } // Fin método paginar
+
+	    // Métdodo setFoto
+	    public function setFoto($photo){
+
+	    	$sql = "UPDATE usuarios set photo = '$photo' where idUsuario ='$this->idUsuario'";
+
+	    	$upPhoto=$this->conectado->query($sql);
+
+	    } // Fin método setFoto.
+
+	    
+	    // Método para insertar usuario por medio del Adminstrador
+		public function addUser($username, $password, $email, $dni, $tipoUsuario, $estado){
+			
+			$valor=$this->checkUsuario($username,$email);
+			
+			if ($valor->num_rows == 0) {
+
+				$sql="INSERT INTO usuarios (username,password,email,name,surname,dni,birthday,address,postal, town,province,mobile,telephone,tipoUsuario, estado) VALUES ('$username','$password','$email', '','','$dni','2000-01-01','','','','','','', '$tipoUsuario', '$estado')";
+
+				//echo $sql;
+				
+				$resultado=$this->conectado->query($sql);
+			
+				if ($resultado) {
+					return 2;
+				} else {
+					return 1;
+				} // fin del IF ELSE anidado
+			} else {
+				return 0;
+			} // fin del IF ELSE
+
+		} // Fin método addUser
+
+	} // Fin de la Clase Usuario	
+
+	/*$a=new Usuarios();
+	$b=$a->getUsuarios();
+	foreach ($b as $registros) {
+			echo "<tr><td>" . $registros["name"] . ' ' . $registros["surname"] . "<br></td></tr>";
+		}*/
+
+ ?>

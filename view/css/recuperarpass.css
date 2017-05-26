@@ -1,0 +1,21 @@
+@charset: "utf-8";
+
+body {
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;	
+	/*background-color: orange;*/
+}
+
+h1{
+	text-align: left;
+	color: blue;
+	margin-left: 10%;
+}
+
+footer{
+	height: 90%;
+	/*background-color: gold;*/
+	text-align: center;
+	color: blue;
+}

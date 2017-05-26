@@ -1,14 +1,7 @@
 <?php
 //require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_recuperarpass.php");
-require_once ('/var/www/html/jobsnetworks/CV_Project/controller/c_recuperarpass.php');
+require_once ('../controller/c_recuperarpass.php');
 //require_once ("../../model/Usuarios.php");
-if(isset($_POST["ecorreo"])){
-  $objcorreo=new Recuperar($_POST['correo']);
-  //$objcorreo->vacio();
-  $objcorreo->enviado();
-  //echo "Saliendo";
-  //echo "datos enviados";
-}
 ?>
 
 <!DOCTYPE HTML>
@@ -16,28 +9,50 @@ if(isset($_POST["ecorreo"])){
     <head>
         <meta charset="utf-8"/>
         <title>Restaurar Contraseña</title>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <style>
-            input{
-                margin-top:5px;
-                margin-bottom:5px;
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="images/goku1.jpeg">
+        <link rel="stylesheet" type="text/css" href="css/login.css">   
+        <script type="text/javascript" >
+            function redireccionar(){
+                window.location="http://jobsnetworks.dev/CV_Project_Fin";                
             }
-            .right{
-                float:right;
-            }
-        </style>
+            //setTimeout("redireccionar()", 5000); //redirige usando la función
+            setTimeout("window.close()", 10000); // cierra la pestaña
+        </script>
     </head>
-    <body>
+    <body onload="redireccionar">
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
             <h3>Recuperar Password</h3>
             <hr/>
-            Correo: <input type="email" name="correo" class="form-control"/>
-            <input type="submit" name="ecorreo" value="Submit" class="btn btn-success"/>
+            <table>
+                <tr>
+                    <td>
+                        Correo:
+                    </td>
+                    <td>
+                        <input type="email" name="correo"/>            
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="ecorreo" value="Enviar"/>            
+                    </td>
+                </tr>
+            </table>           
         </form>
 
-        <footer class="col-lg-12">
+        <?php 
+
+            if(isset($_POST["ecorreo"])){
+              $objcorreo=new Recuperar($_POST['correo']);
+              //$objcorreo->vacio();
+              $objcorreo->enviado();
+              //echo "Saliendo";
+              //echo "datos enviados";
+            }
+
+         ?>
+
+        <footer>
             <hr/>
            Copyright &copy; <?php echo  date("Y"); ?>
         </footer>

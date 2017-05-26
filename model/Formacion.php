@@ -1,60 +1,196 @@
-<?php
-  /**
-   *
-   */
-  class Formacion {
-    private $idFormation;
-    private $formation;
-    private $start;
-    private $end;
-    private $center;
-    private $grades;
+<?php 	
 
-    public function __construct() {
+	require_once('Conectar.php');
 
-    }
+	// Clase de la Formación del Usuario
+	class Formacion {
 
-    public function getIdFormation(){
-      return $this->idFormation;
-    }
+		// Propiedades de la Clase Formación
+		private $idFormacion;
+		private $idCurri;
+		private $formation;
+		private $start;
+		private $end;
+		private $studyCenter;
+		private $town;
+		private $province;
+		private $grade;
+		private $conectado;
 
-    public function getFormation(){
-      return $this->formation;
-    }
+		// Constructor
+		public function __construct($idFormacion=null) {
+			
+			$this->conectarse= new Conectar(); //Creamos el objeto de la conexión
+			
+			$this->conectado=$this->conectarse->conexion(); //realizamos la conexión y la guardamos en una variable
 
-    public function getStart(){
-      return $this->start;
-    }
+			if($idFormacion != "" || $idFormacion != 0){
+        		$this->idFormacion=$idFormacion;
+        		$this->recuperar();
+      		} //***FIN if***	
+		}
 
-    public function getEnd(){
-      return $this->end;
-    }
+		// ** Métodos de la Clase Formación ** 
+		
+		// Método recuperar 
+		public function recuperar(){
 
-    public function getCenter(){
-      return $this->center;
-    }
+	      $datosArray="SELECT * FROM formacion WHERE idFormacion = $this->idFormacion";	      
 
-    public function getGrades(){
-      return $this->grades;
-    }
+	      $datos=$this->conectado->query($datosArray);
 
-    public function buscarFormacion($formacion){
-      $sql="SELECT * FROM formacion where formation = '$formacion'";
-    }
+	      if($datosRecuperados=$datos->fetch_assoc()){	    
 
-    public function addFormacion($formation,$start,$end,$center,$grades){
-      $sql="INSERT INTO formacion (`formation`,`start`,`end`,`center`,`grades`) values
-      ('$formation','$start','$end','$center','$grades')";
-    }
+	        $this->idFormacion=$datosRecuperados['idFormacion'];
+	        $this->idCurri=$datosRecuperados['idCurri'];
+	        $this->formation=$datosRecuperados['formation'];
+	        $this->start=$datosRecuperados['start'];
+	        $this->end=$datosRecuperados['end'];
+	        $this->studyCenter=$datosRecuperados['studyCenter'];	        
+	        $this->town=$datosRecuperados['town'];
+	        $this->province=$datosRecuperados['province'];	        
+	        $this->grade=$datosRecuperados['grade'];
+	        
+	      } //***FIN if***
 
-    public function setFormacion(){
-      //$sql="UPDATE formacion SET username = '$username' WHERE idUsuario ='$this->idUsuario'";
+	    } //**** FIN METODO RECUPERAR
 
-    }
+	    //Método devolver idFormacion
+	    public function getIdFormacion(){
 
-    public function dropFormacion(){
+	      return $this->idFormacion;
 
-    }
+	    } // Fin getIdFormacion
 
-  } // **FIN CLASE Formacion**
+	    //Método devolver idCurri
+	    public function getIdCurri(){
+
+	      return $this->idCurri;
+
+	    } // Fin getIdCurri
+
+	    //Método devolver formation
+	    public function getFormation(){
+
+	      return $this->formation;
+
+	    } // Fin getFormation
+
+	    //Método devolver start
+	    public function getStart(){
+
+	      return $this->start;
+
+	    } // Fin getStart
+
+	    //Método devolver end
+	    public function getEnd(){
+
+	      return $this->end;
+
+	    } // Fin getEnd
+
+	    //Método devolver studyCenter
+	    public function getStudyCenter(){
+
+	      return $this->studyCenter;
+
+	    } // Fin getStudyCenter
+
+	    //Método devolver town
+	    public function getTown(){
+	    
+	      return $this->town;
+	    
+	    } // Fin getTown
+
+	    //Método devolver province
+	    public function getProvince(){
+	      
+	      return $this->province;
+	    
+	    } // Fin getProvince
+		
+		//Método devolver grade
+	    public function getGrade(){
+	      
+	      return $this->grade;
+	    
+	    } // Fin getGrade
+
+	    // Método para insertar formación
+		public function addFormacion($idCurri,$formation, $start, $end, $studyCenter, $town, $province, $grade){
+			
+			$sql="INSERT INTO formacion (idCurri,formation, start, end, studyCenter, town, province, grade) VALUES ('$idCurri','$formation', '$start', '$end', '$studyCenter', '$town', '$province', '$grade')";
+				
+			$resultado=$this->conectado->query($sql);
+			
+			if ($resultado) {
+				
+				return 1; // Se creo correctamente
+				
+			} else {
+
+				return 1; // no se creo correctamente
+			
+			} // fin del IF ELSE 			
+
+		} // Fin método addFormacion
+
+
+		//Método Modificar Datos Formación
+	    public function setFormacion($formation, $start, $end, $studyCenter, $town, $province, $grade){
+	        $modificado=array();
+	        if($this->formation != $formation){
+	            $sql = "UPDATE formacion SET formation = '$formation' WHERE idFormacion ='$this->idFormacion'";
+	            
+	            $modificado['formation'] = $this->conectado->query($sql);
+	        }
+	        if($this->start != $start){
+	            $sql = "UPDATE formacion set start = '$start' where idFormacion ='$this->idFormacion'";
+	            
+	            $modificado['start'] = $this->conectado->query($sql);
+	        }
+	        if($this->end != $end){
+	            $sql = "UPDATE formacion set end = '$end' where idFormacion ='$this->idFormacion'";
+	            $modificado['end'] = $this->conectado->query($sql);
+	        }
+	        if($this->studyCenter != $studyCenter){
+	            $sql = "UPDATE formacion set studyCenter = '$studyCenter' where idFormacion ='$this->idFormacion'";
+	            $modificado['studyCenter'] = $this->conectado->query($sql);
+	        }	        
+	        if($this->town != $town){
+	            $sql = "UPDATE formacion set town = '$town' where idFormacion ='$this->idFormacion'";
+	            $modificado['town'] = $this->conectado->query($sql);
+	        }
+	        if($this->province != $province){
+	            $sql = "UPDATE formacion set province = '$province' where idFormacion ='$this->idFormacion'";
+	            $modificado['province'] = $this->conectado->query($sql);
+	        }
+	        if($this->grade != $grade){
+	            $sql = "UPDATE formacion set grade = '$grade' where idFormacion ='$this->idFormacion'";
+	            $modificado['grade'] = $this->conectado->query($sql);
+	        }	        
+	        if($modificado){
+	          //echo "Los datos has sido modificados correctamente";
+	          //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+	          return 1;
+	        } else {
+	          //echo "No se ha modificado ningún dato";
+	          return 0;
+	        }
+	    } // Fin método modificar formación
+
+	    // Método borrar formación
+	    public function dropFormacion() {
+			$sql="DELETE FROM formacion where idFormacion = $this->idFormacion";
+			$borrar=$this->conectado->query($sql);
+			if ($borrar) {
+				return 1;    	
+			} 
+	    } // Fin método borrar formación
+
+
+	} // Fin de la Clase Formación
+
  ?>

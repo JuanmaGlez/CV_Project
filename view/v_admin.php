@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ("../controller/c_admin.php");
+require_once ("/var/www/html/jobsnetworks/CV_Project/controller/c_admin.php");
 $objAdmin=new Admin($_POST["usuarios"]);
 
  ?>

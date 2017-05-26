@@ -1,5 +1,5 @@
 <?php
-require_once ("../controller/c_registrar.php");
+require_once ("/var/www/html/jobsnetworks/CV_Project/controller/c_registrar.php");
 if(isset($_POST["submit"])){
   $objregistar=new Registrar();
   $objregistar->checkUsuario();

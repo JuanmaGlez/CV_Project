@@ -2,7 +2,7 @@
 session_start();
 if (!$_SESSION['loggedin']){
   echo "Solo usuarios registrados.<br>";
-  echo "<br><a href='../view/v_login.php'>Login</a>";
+  echo "<br><a href='/var/www/html/jobsnetworks/CV_Project/view/v_login.php'>Login</a>";
   exit;
 }
 //require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_modificarDatos.php");

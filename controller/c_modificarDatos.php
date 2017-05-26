@@ -23,7 +23,7 @@ class Modificar {
 
   // Constructor
   public function __construct(){
-    $this->user=new Usuarios($_SESSION['idUsuario']);
+    $this->user=new Usuarios($_SESSION['idUsuario']);    
     $this->username=$_POST['username'];
     $this->password = $_POST['password'];
     $this->email=$_POST['email'];

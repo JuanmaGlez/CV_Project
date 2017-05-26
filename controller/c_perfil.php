@@ -3,7 +3,7 @@
  *
  */
 session_start();
-require_once('../model/Usuarios.php');
+require_once('/var/www/html/jobsnetworks/CV_Project/model/Usuarios.php');
 
 class Perfil {
   private $usuario;
@@ -18,6 +18,7 @@ class Perfil {
 
   public function checkLogin(){
     $arraybuscar=$this->objUser->buscarUsuario($this->usuario,$this->contrasena);
+    echo $arraybuscar;
     if ($arraybuscar['desactivado'] == 0) {
       if ($this->contrasena == $arraybuscar['password']) {
         $_SESSION['idUsuario']=$this->objUser->getIdUsuario();

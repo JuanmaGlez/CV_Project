@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once ("../controller/c_perfil.php");
+//session_start();
+require_once ("/var/www/html/jobsnetworks/CV_Project/controller/c_perfil.php");
 
 $objVerLog=new Perfil($_POST['username'],$_POST['password']);
 //$objVerLog->checkLogin();

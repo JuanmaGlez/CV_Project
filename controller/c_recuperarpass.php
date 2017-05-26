@@ -1,5 +1,5 @@
 <?php
-require_once('../model/Usuarios.php');
+require_once('/var/www/html/jobsnetworks/CV_Project/model/Usuarios.php');
 /**
  *
  */

@@ -4,7 +4,7 @@
       //$objetoFiltrar=new Filtrarlos();
       //$objetoFiltrar->mostrarFiltro();  
 
-      //if (isset($_POST['boton_buscar']))  {  ?>
+?>
       <form action="" method="post">
             <table  border="0">
                   <tr>
@@ -61,29 +61,46 @@
             ?>
 
             <table width="60%" border="0" align="center">
-    <tr >
-      <td>Usuario</td>
-      <td>Fecha</td>      
-    </tr> 
+                  <tr>
+                        <td>Usuario</td>
+                        <td>Fecha</td>      
+                  </tr> 
 
-    <?php 
+            <?php 
         
-        foreach ($arrayMostrar as $persona): // foreach ($registros as $persona) {
+                  foreach ($arrayMostrar as $persona): // foreach ($registros as $persona) {
 
-    ?>
+            ?>      
 
 
-    <tr>
-      <td><?php echo $persona["username"];?></td>
-      <td><?php echo $persona["birthday"]; ?></td>
-      <td><?php echo $persona["tipoUsuario"]; ?></td>
-      <td><?php echo $persona["province"]; ?></td>
-      
+                  <tr>
+                        <td><?php echo $persona["username"];?></td>
+                        <td><?php echo $persona["birthday"]; ?></td>
+                        <td><?php echo $persona["tipoUsuario"]; ?></td>
+                        <td><?php echo $persona["province"]; ?></td>
+                  </tr>      
 
-    <?php  
+
+            <?php  
       
         
-        endforeach; // }
+                  endforeach; // } ?>
+                  <tr>
+                        <td>
+                        <?php 
+
+                              //----------------PAGINACIÓN---------------------------------------------------
+                              //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
+                              for ($i=1; $i <=TOTAL_PAGINAS; $i++) { 
+                                    echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
+                              }
+
+                        ?>
+        
+                        </td>
+                </tr>   
+            </table>
+      <?php
       } else {
             echo "No existen Usuario con esos parámetros";
       }

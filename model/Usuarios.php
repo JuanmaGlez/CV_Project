@@ -415,7 +415,7 @@
 				//$sql="SELECT username, birthday from usuarios where YEAR(birthday) BETWEEN '2000' AND '2002'";
 			
 				//$sql="SELECT * FROM usuarios LIMIT 1, 10";
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta'  LIMIT $this->empezar_desde, $this->tamano_paginas";			
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";			
 				//echo $sql;
 			
 				$resultado=$this->conectado->query($sql);
@@ -438,7 +438,7 @@
 			} elseif (empty($edad_desde) && !empty($provincia)) {
 				$filtro=$filtro2;
 
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro = '$provincia' LIMIT $this->empezar_desde, $this->tamano_paginas";
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
 				//echo $sql;
 				$resultado=$this->conectado->query($sql);
 
@@ -457,7 +457,7 @@
 			} elseif (!empty($edad_desde) && !empty($provincia)) {
 				$edad_desde=date('Y') - $edad_desde;		
 				$edad_hasta=date('Y') - $edad_hasta;
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' LIMIT $this->empezar_desde, $this->tamano_paginas";
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
 				//echo $sql;
 				$resultado=$this->conectado->query($sql);
 

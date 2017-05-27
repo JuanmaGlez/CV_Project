@@ -28,7 +28,7 @@
     <?php 
         
         foreach ($arrayMostrar as $persona): // foreach ($registros as $persona) {
-
+          if ($persona['idUsuario'] != 1) {
     ?>
 
 
@@ -55,7 +55,7 @@
         if (isset($_POST['boton_activar'])) {
             $objetoMostrar->activar($persona['idUsuario']);
           }
-        
+        } //fin condicion idUsuario
         endforeach; // }
     ?>
 

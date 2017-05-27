@@ -67,7 +67,7 @@
 	    // Método para insertar Curriculum
 		public function addCurriculum($name, $idUsuario){
 			
-			$sql="INSERT INTO curriculum (name, idUsuario) VALUES ('$name', '$idUsuario')";
+			$sql="INSERT INTO curriculum (nameCurri, idUsuario) VALUES ('$name', $idUsuario)";
 				
 			$resultado=$this->conectado->query($sql);
 			

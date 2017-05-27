@@ -13,9 +13,9 @@
 
 		public function __construct() {
 			$this->objetoUsuario = new Usuarios();			
-			$this->tipo=isset($_POST['tipo']) ? $_POST['tipo'] : null;;
+			$this->tipo=isset($_POST['tipo']) ? $_POST['tipo'] : null;
 			//echo $this->tipo;
-			$this->tipo2=isset($_POST['tipo_provincia']) ? $_POST['tipo_provincia'] : null;;
+			$this->tipo2=isset($_POST['tipo_provincia']) ? $_POST['tipo_provincia'] : null;
 			//echo $this->tipo2;
 			//$this->desde=date('Y') - $_POST['hasta'];		
 			//$this->hasta=date('Y') - $_POST['desde'];

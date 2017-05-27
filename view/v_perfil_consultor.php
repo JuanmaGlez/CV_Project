@@ -1,9 +1,4 @@
-<li><a href="">Buscar</a>
-      <ul>
-            <li><a href="">Añadir Curriculum</a></li>
-            <li><a href="">Listar Curriculums</a></li>
-            <li><a href="">Mostrar Curriculum</a></li>
-      </ul>
+<li><a href=""><input class="btnsBarra" type="submit" name="boton_buscar" value="Buscar"></a>   
 </li>
 <li><a href="">Formación</a>
       <ul>

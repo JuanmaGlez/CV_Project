@@ -9,6 +9,8 @@
 
   require_once('../controller/c_mostrarUsuarios.php');
 
+  require_once('../controller/c_perfil_consultor.php');
+
   $objetoPerfil = new Perfil($_POST['username']=null,$_POST['password']=null);
   $objetoPerfil->checkConexion();
   
@@ -37,7 +39,11 @@
     $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
   }
 
-
+  $objetoFiltrar=new Filtrarlos();
+  
+  if (isset($_POST['envio_filtrar'])) {
+    $objetoFiltrar->mostrarFiltro();  
+  }
  ?>
 
 <!DOCTYPE html>
@@ -97,7 +103,11 @@
          ?>
         </form> 
          <?php
-        } 
+        } elseif (isset($_POST["boton_buscar"])) { ?>
+             <form action="" method="post">
+              <?php include('v_filtrar.php'); ?>
+             </form>
+ <?php }
 
        elseif(isset($_POST["boton_modificar"])){
         ?>

@@ -400,6 +400,84 @@
 
 		} // Fin método addUser
 
+		// Método filtrar
+		public function filtrar($filtro,$filtro2,$edad_desde, $edad_hasta, $provincia) {
+			
+			$this->paginar();
+
+			$usuarios_filtrados=array();
+		
+			if (!empty($edad_desde) && empty($provincia)) {
+			
+				$edad_desde=date('Y') - $edad_desde;		
+				$edad_hasta=date('Y') - $edad_hasta;
+			
+				//$sql="SELECT username, birthday from usuarios where YEAR(birthday) BETWEEN '2000' AND '2002'";
+			
+				//$sql="SELECT * FROM usuarios LIMIT 1, 10";
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta'  LIMIT $this->empezar_desde, $this->tamano_paginas";			
+				//echo $sql;
+			
+				$resultado=$this->conectado->query($sql);
+
+				if ($resultado->num_rows > 0) {
+				
+					foreach ($resultado as $valor) {				
+					
+						$usuarios_filtrados[]=$valor;
+
+					}
+				
+					return $usuarios_filtrados;
+					$this->conectarse->desconexion();
+
+				} else {
+					return 0;
+				}
+
+			} elseif (empty($edad_desde) && !empty($provincia)) {
+				$filtro=$filtro2;
+
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro = '$provincia' LIMIT $this->empezar_desde, $this->tamano_paginas";
+				//echo $sql;
+				$resultado=$this->conectado->query($sql);
+
+				if ($resultado->num_rows > 0) {
+					foreach ($resultado as $valor) {				
+				
+						$usuarios_filtrados[]=$valor;
+
+					}
+					return $usuarios_filtrados;
+					$this->conectarse->desconexion();
+
+				} else {
+					return 0;
+				}
+			} elseif (!empty($edad_desde) && !empty($provincia)) {
+				$edad_desde=date('Y') - $edad_desde;		
+				$edad_hasta=date('Y') - $edad_hasta;
+				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' LIMIT $this->empezar_desde, $this->tamano_paginas";
+				//echo $sql;
+				$resultado=$this->conectado->query($sql);
+
+				if ($resultado->num_rows > 0) {
+					foreach ($resultado as $valor) {				
+				
+						$usuarios_filtrados[]=$valor;
+
+					}
+					return $usuarios_filtrados;
+					$this->conectarse->desconexion();
+
+				} else {
+					return 0;
+				}
+			} // fin IF
+
+		} // Fin método filtrar
+
+
 	} // Fin de la Clase Usuario	
 
 	/*$a=new Usuarios();

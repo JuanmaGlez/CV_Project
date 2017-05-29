@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 26, 2017 at 06:37 PM
+-- Generation Time: May 29, 2017 at 07:32 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.2
 -- PHP Version: 5.6.30-10+deb.sury.org~xenial+2
 
@@ -31,6 +31,16 @@ CREATE TABLE `curriculum` (
   `nameCurri` varchar(30) NOT NULL,
   `idUsuario` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `curriculum`
+--
+
+INSERT INTO `curriculum` (`idCurri`, `nameCurri`, `idUsuario`) VALUES
+(1, 'curriculum1', 6),
+(2, 'Curriculum Informatica', 6),
+(3, 'Administrativo', 7),
+(4, 'Mecánico', 7);
 
 -- --------------------------------------------------------
 
@@ -116,9 +126,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `username`, `password`, `email`, `name`, `surname`, `dni`, `birthday`, `address`, `postal`, `town`, `province`, `mobile`, `telephone`, `tipoUsuario`, `estado`, `registro`, `photo`) VALUES
-(1, 'manu', '$2y$12$NI9m/Nk0ZlxotKjp4MuGzO7iNDh9vqpH9KH4wxrOeShpNiRF2wPpu', 'smigol_82@yahoo.es', 'Manu', 'Glez', '22222222-X', '1990-12-22', 'La que sea, 2', '41300', 'San José', 'Sevilla', '600600600', '954000000', 'administrador', 'activado', NULL, NULL),
+(1, 'manu', '$2y$12$9QMj0zhj1ITKGRLAA68.de1pXiEyP2SPs5Rwrp./AIX159NrN543.', 'smigol_82@yahoo.es', 'Manu', 'Glez', '22222222-X', '1990-12-22', 'La que sea, 8', '41300', 'San José', 'Sevilla', '600600600', '954000000', 'administrador', 'activado', NULL, 'muneco.png'),
 (2, 'maria', '$2y$12$ceqlt9OBQ5Q99GSyFkrdme/G1Vk80Xv/.aaP3RiBfHXPOuGKQmrfu', 'maria@maria.com', 'María', 'Pérez', '22222223-X', '1997-02-02', 'Lope sin Rueda, 16', '41007', 'Sevilla', 'Sevilla', '600600601', '950000001', 'usuario', 'activado', '2017-05-18 16:00:00', 'muneco.png'),
-(3, 'luis', '$2y$12$oNAwh3OKVd88j3CjzhKxZOVZ1gb6BgjSMVFVVMGZj9Kj6BMdQ4xqy', 'luis@luis.es', 'Luis', 'Díaz', '12121212-x', '2001-05-05', 'Izquierda 2', '41003', 'Sevilla', 'Sevilla', '611611611', '954111111', 'usuario', 'activado', '2017-05-18 16:02:00', 'muneco.png'),
+(3, 'luis', '$2y$12$HJQ/Xe9yLCS.brwrNIAn5uSe63R53kb/ovGC5MZGhOpirGpHgs6LK', 'luis@luis.es', 'Luis', 'Díaz', '12121212-x', '2001-05-05', 'Izquierda 2', '28002', 'Madrid', 'Madrid', '611611611', '954111111', 'usuario', 'activado', '2017-05-18 16:02:00', 'muneco.png'),
 (4, 'ana', '$2y$12$0lFd5mJUdS/VLBy8fk6PRuEk8pJVabwT7VSDgJ4E94Btovr.Yqzm2', 'ana@ana.es', 'Ana', 'López', '11111111-Z', '2000-04-02', 'Primera 97', '41300', 'San José', 'Sevilla', '600600609', '954000002', 'usuario', 'activado', '2017-05-18 16:04:21', NULL),
 (5, 'noe', '$2y$12$PqrslesDeLBFKLPkt2n6B.Nn4Z2BNFtnPU3d7T0/wDxZ83ANuL.XK', 'noe@noe.es', 'Noelia', 'Martín', '11111111-x', '2001-02-01', 'Sol 1', '41007', 'Sevilla', 'Sevilla', '600600609', '954000007', 'usuario', 'activado', '2017-05-18 16:15:34', 'muneco.png'),
 (6, 'usuario1', '$2y$12$L35o826hZGYEOpj3x3K3ZuBoxRMYQRxQqv9VwVtYD8EmhFz7qj9FC', 'usuario1@usuario.es', 'Usuario', 'Uno', '11111111-u', '1980-12-12', 'Esta de aquí 1', '41007', 'Sevilla', 'Sevilla', '955955955', '605000010', 'usuario', 'activado', NULL, 'muneco.png'),
@@ -183,7 +193,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `curriculum`
 --
 ALTER TABLE `curriculum`
-  MODIFY `idCurri` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCurri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `formacion`
 --

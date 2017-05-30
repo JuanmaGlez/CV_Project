@@ -429,7 +429,7 @@
 					}
 				
 					return $usuarios_filtrados;
-					$this->conectarse->desconexion();
+					$this->conectado->desconexion();
 
 				} else {
 					return 0;

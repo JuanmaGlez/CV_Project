@@ -245,7 +245,7 @@
 	    // Metodo actualizar password olvidada
 		public function updatePass($contra,$email){
 	      $sql = "UPDATE usuarios SET password = '$contra' WHERE  email = '$email'";
-	      $resultado=$this->conectarse->query($sql);
+	      $resultado=$this->conectado->query($sql);
 	      if ($resultado){
 	        return $resultado;
 	        //echo "Contraseña modificada";
@@ -429,7 +429,7 @@
 					}
 				
 					return $usuarios_filtrados;
-					$this->conectado->desconexion();
+					$this->conectarse->desconexion();
 
 				} else {
 					return 0;

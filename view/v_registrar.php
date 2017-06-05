@@ -15,8 +15,8 @@
     <head>
         <meta charset="utf-8"/>
         <title>Registrar</title>        
-        <link rel="icon" type="image/jpeg" sizes="16x16" href="images/goku1.jpeg">
-        <link rel="stylesheet" type="text/css" href="css/registrar.css">    
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+        <link rel="stylesheet" type="text/css" href="../view/css/registrar.css">    
     </head>
     <body>
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">

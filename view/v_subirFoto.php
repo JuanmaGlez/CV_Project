@@ -1,6 +1,6 @@
 	<?php 
 
-		require_once("../controller/c_subirFoto.php");
+		//require_once("../controller/c_subirFoto.php");
 
 		$objetoFoto= new SubirFoto();
 
@@ -26,7 +26,7 @@
 
 	
 	<div>
- 		<img src="/intranet/uploads/<?php  echo $objetoFoto->objetoUsuario->getPhoto(); ?>" alt="Imágen del primer artículo" width="200">
+ 		<img src="/intranet/uploads/<?php  echo $objetoFoto->objetoUsuario->getPhoto(); ?>" alt="Foto Curriculum" width="200">
  	</div>
 
 

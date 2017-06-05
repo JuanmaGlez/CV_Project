@@ -1,6 +1,6 @@
 <?php 
 
-  require_once('../controller/c_mostrarUsuarios.php');
+  //require_once('../controller/c_mostrarUsuarios.php');
 
   $objetoMostrar = new MostrarUsuario();
   $arrayMostrar=$objetoMostrar->mostrar(); 

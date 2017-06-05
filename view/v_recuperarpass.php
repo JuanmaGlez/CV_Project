@@ -9,15 +9,15 @@ require_once ('../controller/c_recuperarpass.php');
     <head>
         <meta charset="utf-8"/>
         <title>Restaurar Contraseña</title>
-        <link rel="icon" type="image/jpeg" sizes="16x16" href="images/goku1.jpeg">
-        <link rel="stylesheet" type="text/css" href="css/login.css">   
-        <script type="text/javascript" >
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+        <link rel="stylesheet" type="text/css" href="../view/css/recuperarpass.css">   
+      <!--  <script type="text/javascript" >
             function redireccionar(){
                 window.location="http://jobsnetworks.dev/CV_Project_Fin";                
             }
             //setTimeout("redireccionar()", 5000); //redirige usando la función
             setTimeout("window.close()", 10000); // cierra la pestaña
-        </script>
+        </script>-->
     </head>
     <body onload="redireccionar">
         <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">

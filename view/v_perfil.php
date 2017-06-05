@@ -1,58 +1,10 @@
-<?php 
-
-  //Llamos al controlador perfil.php
-  require_once('../controller/c_perfil.php');
-
-  require_once("../controller/c_modificarDatos.php");
-
-  require_once("../controller/c_subirFoto.php");
-
-  require_once('../controller/c_mostrarUsuarios.php');
-
-  require_once('../controller/c_perfil_consultor.php');
-
-  $objetoPerfil = new Perfil($_POST['username']=null,$_POST['password']=null);
-  $objetoPerfil->checkConexion();
-  
-  if(isset($_POST["boton_salir"])){
-    $objetoPerfil->closeSession();
-  }
-  
-  $objetoModificar =new ModificarDatos();
-  
-
-  if(isset($_POST["actualizar"])){
-    $objetoModificar->checkModificar();
-  }
-
-  $objetoFoto= new SubirFoto();
-
-  if (isset($_POST["Enviar_Imagen"])) {
-
-    $objetoFoto->foto();
-  }
-
-  $objetoMostrar = new MostrarUsuario();
-  //$arrayMostrar=$objetoMostrar->mostrar(); 
-
-  if (isset($_POST['insertar_nuevo'])) {
-    $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
-  }
-
-  $objetoFiltrar=new Filtrarlos();
-  
-  if (isset($_POST['envio_filtrar'])) {
-    $objetoFiltrar->mostrarFiltro();  
-  }
- ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Perfil</title>
-	<link rel="icon" type="image/jpeg" sizes="16x16" href="images/goku1.jpeg">
-    <link rel="stylesheet" type="text/css" href="css/perfil.css"> 
+	<link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+    <link rel="stylesheet" type="text/css" href="../view/css/perfil.css"> 
 </head>
 <body>
 
@@ -98,7 +50,7 @@
 
       elseif(isset($_POST["boton_foto"])){  ?>
 
-        <form action="v_perfil.php" method="post" enctype="multipart/form-data">            
+        <form action="c_perfil.php" method="post" enctype="multipart/form-data">            
          <?php include('v_subirFoto.php');       
          ?>
         </form> 
@@ -111,7 +63,7 @@
 
        elseif(isset($_POST["boton_modificar"])){
         ?>
-        <form action="v_perfil.php" method="post">            
+        <form action="c_perfil.php" method="post">            
          <?php include('v_modificarDatos.php'); ?>
         </form> 
          <?php

@@ -1,11 +1,11 @@
 <?php 
   
   // Llamamos a la Clase Perfil que esta en controller
-  require_once ("../controller/c_perfil.php");
+  //require_once ("../controller/c_perfil.php");
 
-    if (isset($_COOKIE["nombre_usuario"])) {
+    /*if (isset($_COOKIE["nombre_usuario"])) {
       echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
-    }
+    }*/
 
  ?>
 
@@ -14,8 +14,8 @@
   <head>
     <meta charset="utf-8">
     <title>Curriculum</title>
-    <link rel="icon" type="image/jpeg" sizes="16x16" href="images/goku1.jpeg">
-    <link rel="stylesheet" type="text/css" href="css/login.css">    
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+    <link rel="stylesheet" type="text/css" href="../view/css/login.css">    
   </head>
   <body>
     <header>
@@ -48,7 +48,7 @@
           </table>
         </form>
         <p>
-          Si ha olvidado la contraseña pulse <a href="v_recuperarpass.php" target="_blank">aquí</a>
+          Si ha olvidado la contraseña pulse <a href="c_recuperarpass.php" target="_blank">aquí</a>
         </p>
     </div>
 

@@ -4,7 +4,7 @@
     echo "<br><a href='../view/v_login.php'>Login</a>";
     exit;
   }
-  require_once("../controller/c_modificarDatos.php");
+  //require_once("../controller/c_modificarDatos.php");
   
   $objetoModificar =new ModificarDatos();  
   

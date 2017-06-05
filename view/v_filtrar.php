@@ -1,5 +1,5 @@
 <?php 
-      require_once('../controller/c_perfil_consultor.php');
+      //require_once('../controller/c_perfil_consultor.php');
 
       //$objetoFiltrar=new Filtrarlos();
       //$objetoFiltrar->mostrarFiltro();  

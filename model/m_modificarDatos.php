@@ -1,5 +1,5 @@
 <?php 	
-	require_once('../model/Usuarios.php');
+	require_once('Usuarios.php');
 
 	class ModificarDatos {
 		private $username;
@@ -77,7 +77,7 @@
 		    }
 		    if ($this->objetoUsuario) {
 		    	$_SESSION['username']=$this->username;
-		    	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+		    	echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../controller/c_perfil.php\">";
 		    } else {
 		    	echo "No se ha modificado ningún dato";
 		    }

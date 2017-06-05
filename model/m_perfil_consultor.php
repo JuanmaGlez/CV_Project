@@ -1,6 +1,6 @@
 <?php 
 
-	require_once('../model/Usuarios.php');
+	require_once('Usuarios.php');
 
 	class Filtrarlos {
 

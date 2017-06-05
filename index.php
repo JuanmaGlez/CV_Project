@@ -1,5 +1,5 @@
 <?php 
 
-	include("view/v_portada.html");
+	require_once("controller/c_inicial.php");
 
  ?>

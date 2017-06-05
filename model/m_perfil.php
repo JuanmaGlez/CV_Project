@@ -61,7 +61,7 @@
 			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 		    } else {
 		      echo "Solo usuarios registrados.<br>";
-		      echo "<br><a href='../view/v_login.php'>Login</a>";
+		      echo "<br><a href='../controller/c_perfil.php'>Login</a>";
 		    exit;
 		    }
 

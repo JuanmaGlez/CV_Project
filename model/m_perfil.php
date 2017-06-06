@@ -70,7 +70,7 @@
 		    if ($ahora > $_SESSION['expire']) {
 		      session_destroy();
 		      //echo "Su sesión ha terminado. <a href='../view/v_login.php'>Volver a Entrar</a>";
-		      echo "Su sesión ha terminado. <a href='../view/v_login.php'><input type='button' name='salir' value='Login'></a>";
+		      echo "Su sesión ha terminado. <a href='../controller/c_check.php'><input type='button' name='salir' value='Login'></a>";
 		      //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_login.php\">";
 		      exit;
 		    }

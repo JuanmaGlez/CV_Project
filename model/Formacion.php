@@ -118,10 +118,62 @@
 	    
 	    } // Fin getGrade
 
+	    // Método de volver toda la formación del usuario
+		public function getFormacion($idUsuario) {
+			$formaciones="";
+			$this->paginar();
+			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
+			$sql="SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			while ($filas=$resultado->fetch_assoc()) {
+				$formaciones[]=$filas;
+			}
+			if (!$formaciones) {
+				//echo "No hay na";
+				return 0;
+			} else {
+				return $formaciones;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
+		public function paginar() {
+	    	$this->tamano_paginas=8;
+
+      		if (isset($_GET["pagina"])) {
+      
+        		if ($_GET["pagina"]==1) {
+          			header("location:index.php");
+        		} else {
+          			$pagina=$_GET["pagina"];
+        		}
+
+      		} else {
+        		$pagina=1;
+      		}
+
+      	    //variable que guarda el valor inicial que debe mostrar la página.
+      		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
+
+      		$sql_total="SELECT * FROM formacion"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+
+      		$resultado=$this->conectado->query($sql_total);
+
+	    	//variables que guarda el números de filas que nos devuelve la consulta en total.
+	    	$num_filas=$resultado->num_rows;
+
+			//variable que guarda el número de páginas total que vamos a tener.
+	     	//la fx ceil redondea a la alza.
+	     	$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	     	define("TOTAL_PAGINAS", "$total_paginas");
+	    	//$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	    } // Fin método paginar
+
 	    // Método para insertar formación
-		public function addFormacion($idCurri,$formation, $start, $end, $studyCenter, $town, $province, $grade){
+		public function addFormacion($formation, $start, $end, $studyCenter, $town, $province, $grade){
 			
-			$sql="INSERT INTO formacion (idCurri,formation, start, end, studyCenter, town, province, grade) VALUES ('$idCurri','$formation', '$start', '$end', '$studyCenter', '$town', '$province', '$grade')";
+			$sql="INSERT INTO formacion (formation,start,end,studyCenter,town,province,grade) VALUES ('$formation', '$start','$end','$studyCenter','$town','$province','$grade')";
 				
 			$resultado=$this->conectado->query($sql);
 			
@@ -131,7 +183,7 @@
 				
 			} else {
 
-				return 1; // no se creo correctamente
+				return 0; // no se creo correctamente
 			
 			} // fin del IF ELSE 			
 

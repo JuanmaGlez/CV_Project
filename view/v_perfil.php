@@ -66,7 +66,13 @@
         <form action="c_perfil.php" method="post">            
          <?php include('v_modificarDatos.php'); ?>
         </form> 
-         <?php
+         <?php         
+        } elseif (isset($_POST["boton_formacion"])) {
+        ?>
+        <form action="c_perfil.php" method="post">
+          <?php include('c_formacion.php'); ?>
+        </form>          
+        <?php 
         } else {
             echo $objetoPerfil->objetoUsuario->getRegistro() . "<br>"; 
             echo "<br>";

@@ -6,9 +6,13 @@
 
 	require_once("../model/m_subirFoto.php");
 
-  	require_once('../model/m_mostrarUsuarios.php');	
+ 	require_once('../model/m_mostrarUsuarios.php');	
 
-  	require_once('../model/m_perfil_consultor.php');
+ 	require_once('../model/m_perfil_consultor.php');
+
+  require_once("../model/m_curri.php");
+
+  require_once("../model/m_formacion.php");
 
   	$objetoPerfil = new Perfil($_POST['username']=null,$_POST['password']=null);
   
@@ -44,6 +48,19 @@
   if (isset($_POST['envio_filtrar'])) {
     $objetoFiltrar->mostrarFiltro();  
   }
+
+  $objetoCurri = new InterCurri();
+
+  if (isset($_POST['guardar_curri'])) {
+    $objetoCurri->nombreCurri();
+  }
+
+  $objetoFormacion = new Formax();
+  
+  if (isset($_POST['insertar_formacion'])) {
+    $objetoFormacion->addFormacion($_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);
+  }
+
 
 	require_once("../view/v_perfil.php");
 

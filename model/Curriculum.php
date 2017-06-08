@@ -68,6 +68,7 @@
 		public function addCurriculum($name, $idUsuario){
 			
 			$sql="INSERT INTO curriculum (nameCurri, idUsuario) VALUES ('$name', $idUsuario)";
+			//echo $sql;
 				
 			$resultado=$this->conectado->query($sql);
 			
@@ -77,7 +78,7 @@
 				
 			} else {
 
-				return 1; // no se creo correctamente
+				return 0; // no se creo correctamente
 			
 			} // fin del IF ELSE 			
 
@@ -88,7 +89,7 @@
 	    public function setCurriculum($name){
 	        $modificado=array();
 	        if($this->name != $name){
-	            $sql = "UPDATE curriculum SET name = '$name' WHERE idCurri ='$this->idCurri'";
+	            $sql = "UPDATE curriculum SET name = '$name' WHERE idCurri = $this->idCurri";
 	            
 	            $modificado['name'] = $this->conectado->query($sql);
 	        }	        	        
@@ -103,12 +104,19 @@
 
 	    // Método borrar Curriculum
 	    public function dropCurriculum() {
-			$sql="DELETE FROM curriculum where idCurri = $this->idCurri";
+			$sql="DELETE FROM curriculum where idCurri = $this->idCurri and idUsuario = $idUsuario";
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	
 			} 
 	    } // Fin método borrar Curriculum
+
+	    // Método listarCurri
+	    public function listarCurri($idUsuario){
+	    	$sql = "SELECT * FROM curriculum where idUsuario = $idUsuario";
+	    	$lista = $this->conectado->query($sql);
+	    	return $lista;
+	    }
 
 
 	} // Fin de la Clase Curriculum

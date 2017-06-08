@@ -29,6 +29,7 @@
 		}
 
 		public function mostrar() {
+			echo $_SESSION['idUsuario'] . "por aqui mostrar";
 			$arrayPersonas=$this->getFormacion($_SESSION['idUsuario']);
 			if ($arrayPersonas == 0) {
 				echo "Aún no hay ningún formación registrada";

@@ -67,13 +67,21 @@
          <?php include('v_modificarDatos.php'); ?>
         </form> 
          <?php         
-        } elseif (isset($_POST["boton_formacion"])) {
+        } elseif (isset($_POST["boton_curriculum"])) {
+        ?>
+        <form action="c_perfil.php" method="post">
+          <?php include('c_curri.php'); ?>
+        </form>          
+        <?php 
+        } 
+        elseif (isset($_POST["boton_formacion"])) {
         ?>
         <form action="c_perfil.php" method="post">
           <?php include('c_formacion.php'); ?>
         </form>          
         <?php 
-        } else {
+        }
+        else {
             echo $objetoPerfil->objetoUsuario->getRegistro() . "<br>"; 
             echo "<br>";
             echo $objetoPerfil->objetoUsuario->getName() . " " . $objetoPerfil->objetoUsuario->getSurname() . "<br>";

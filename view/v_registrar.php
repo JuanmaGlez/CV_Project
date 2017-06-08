@@ -1,12 +1,8 @@
 <?php 
 
-    require_once("../controller/c_registrar.php");
+    //require_once("../model/m_registrar.php");
     
-    if (isset($_POST["submit"])) {
-
-        $objetoRegistrar=new Registrar(); 
-        $objetoRegistrar->insertar();
-    }
+ 
 
  ?>
 

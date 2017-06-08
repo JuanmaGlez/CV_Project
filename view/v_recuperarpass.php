@@ -1,6 +1,6 @@
 <?php
 //require_once ("/furanet/sites/jmgonzalez.com/web/htdocs/CV_Project/controller/c_recuperarpass.php");
-require_once ('../controller/c_recuperarpass.php');
+require_once ('../model/m_recuperarpass.php');
 //require_once ("../../model/Usuarios.php");
 ?>
 

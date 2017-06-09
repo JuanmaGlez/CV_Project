@@ -39,6 +39,15 @@
 						$_SESSION['loggedin'] = true;
 						$_SESSION['start'] = time();
 		        		$_SESSION['expire'] = $_SESSION['start'] + (10 * 60);
+
+		        		$estructura = '/intranet/uploads/' . $_SESSION['username'] . $_SESSION['idUsuario'];
+		        		$destino=$_SERVER['DOCUMENT_ROOT'] . $estructura;
+        				
+        				if(!file_exists($destino)){
+          					//die('Fallo a crearse la carpeta ....');
+          					mkdir($destino,0775,true);
+        				}	
+
 						echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../controller/c_perfil.php\">";
 					} else {
 						echo "Usuario o Contraseña son incorrectos.";

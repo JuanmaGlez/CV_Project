@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="../view/css/registrar.css">    
     </head>
     <body>
-        <form action="<?PHP $PHP_SELF ?>" method="post" class="col-lg-5">
+        <form action="<?PHP $PHP_SELF ?>" method="post">
             <h1>Registrar Usuario</h1>
             <hr/>
             <table>
@@ -24,7 +24,7 @@
                         *Username:
                     </td>
                     <td>
-                        <input type="text" name="username" class="form-control"/> <!--required/>-->         
+                        <input type="text" name="username" required/>         
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@
                         *Password:            
                     </td>
                     <td>
-                        <input type="password" name="password" class="form-control"/> <!--required/>-->
+                        <input type="password" name="password" required/>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@
                         *Email:             
                     </td>
                     <td>
-                        <input type="text" name="email" class="form-control"/><!--required />-->
+                        <input type="text" name="email" required/>
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                         *Name:           
                     </td>
                     <td>
-                         <input type="text" name="name" class="form-control"/> <!--required/>--> 
+                         <input type="text" name="name" required/> 
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         *Surname:                        
                     </td>
                     <td>
-                         <input type="text" name="surname" class="form-control"/> <!--required/>-->            
+                         <input type="text" name="surname" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +64,7 @@
                         *DNI: 
                     </td>
                     <td>
-                        <input type="text" name="dni">            
+                        <input type="text" name="dni" required>            
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                         *Birthday:
                     </td>
                     <td>
-                        <input type="text" name="birthday" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="birthday" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@
                         *Address: 
                     </td>
                     <td>
-                        <input type="text" name="address" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="address" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -88,7 +88,7 @@
                         *Postal: 
                     </td>
                     <td>
-                        <input type="text" name="postal" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="postal" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                         *Town:
                     </td>
                     <td>
-                        <input type="text" name="town" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="town" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@
                         *Province:
                     </td>
                     <td>
-                        <input type="text" name="province" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="province" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -112,7 +112,7 @@
                         *Mobile:
                     </td>
                     <td>
-                        <input type="text" name="mobile" class="form-control"/> <!--required/>-->            
+                        <input type="text" name="mobile" required/>            
                     </td>
                 </tr>
                 <tr>

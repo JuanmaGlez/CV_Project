@@ -7,10 +7,10 @@
             <li><a href=""><input class="btn" type="submit" name="boton_consultor" value="Consultor"></a></li>
       </ul>
 </li>
-<li><a href=""><input class="btnsBarra" type="submit" name="boton_libre" value="Libre"></a>
+<!--<li><a href=""><input class="btnsBarra" type="submit" name="boton_libre" value="Libre"></a>
       <ul>
             <li><a href="">Libre1</a></li>
             <li><a href="">Libre2</a></li>
             <li><a href="">Libre3</a></li>
       </ul>
-</li>
+</li>-->

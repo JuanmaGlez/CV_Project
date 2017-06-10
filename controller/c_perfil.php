@@ -38,6 +38,17 @@
 
   $objetoMostrar = new MostrarUsuario();
   //$arrayMostrar=$objetoMostrar->mostrar(); 
+  if (isset($_GET['Id_a'])) {
+    $idUsuario=$_GET["Id_a"];
+    $objetoMostrar->activar($idUsuario);
+   
+  }
+
+  if (isset($_GET['Id_d'])) {
+    $idUsuario=$_GET["Id_d"];
+    
+    $objetoMostrar->desactivar($idUsuario);
+  }
 
   if (isset($_POST['insertar_nuevo'])) {
     $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);

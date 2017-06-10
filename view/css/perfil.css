@@ -104,8 +104,12 @@ div {
 
 table .primera_fila{
 	font-size:1rem;	
-	background-color:orange;
-}
+	background-color:#C0C0C0;
+
+
+/*#menu_mostrar{
+	background: #C0C0C0;
+}*/
 
 
 footer{

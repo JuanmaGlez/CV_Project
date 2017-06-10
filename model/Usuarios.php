@@ -164,7 +164,7 @@
 		public function getUsuarios() {
 			$this->paginar();
 			//$sql="SELECT * FROM usuarios LIMIT 1, 10";
-			$sql="SELECT * FROM usuarios LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$sql="SELECT * FROM usuarios ORDER BY registro desc LIMIT $this->empezar_desde, $this->tamano_paginas";
 			$resultado=$this->conectado->query($sql);
 			while ($filas=$resultado->fetch_assoc()) {
 				$this->usuarios[]=$filas;

@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>Registrar</title>        
-        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/muneco.png">
         <link rel="stylesheet" type="text/css" href="../view/css/registrar.css">    
     </head>
     <body>

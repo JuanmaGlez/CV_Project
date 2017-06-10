@@ -9,6 +9,8 @@
 		private $desde;
 		private $hasta;
 		private $provincia;
+		private $formacion;
+		private $profesion;
 		public $objetoUsuario;
 
 		public function __construct() {
@@ -25,7 +27,7 @@
 		}
 
 		public function mostrarFiltro() {
-			$arrayPersonas=$this->objetoUsuario->filtrar($this->tipo,$this->tipo2,$this->desde,$this->hasta, $this->provincia);
+			$arrayPersonas=$this->objetoUsuario->filtrar($this->tipo,$this->tipo2,$this->desde,$this->hasta, $this->provincia,$this->formacion,$this->profesion);
 			if ($arrayPersonas == 0) {
 				return 0;
 			} else {

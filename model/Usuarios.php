@@ -401,79 +401,347 @@
 		} // Fin método addUser
 
 		// Método filtrar
-		public function filtrar($filtro,$filtro2,$edad_desde, $edad_hasta, $provincia) {
-			
+		public function filtrar($filtro,$filtro2,$edad_desde, $edad_hasta, $provincia, $formacion, $profesion) {
+			//echo $formacion . " aqui dentro filtrar <br>";
 			$this->paginar();
 
 			$usuarios_filtrados=array();
 		
-			if (!empty($edad_desde) && empty($provincia)) {
+			if (!empty($edad_desde) && empty($provincia) && empty($formacion) && empty($profesion) ) {
 			
-				$edad_desde=date('Y') - $edad_desde;		
-				$edad_hasta=date('Y') - $edad_hasta;
-			
-				//$sql="SELECT username, birthday from usuarios where YEAR(birthday) BETWEEN '2000' AND '2002'";
-			
-				//$sql="SELECT * FROM usuarios LIMIT 1, 10";
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";			
-				//echo $sql;
-			
-				$resultado=$this->conectado->query($sql);
 
-				if ($resultado->num_rows > 0) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+			
+			//$sql="SELECT username, birthday from usuarios where YEAR(birthday) BETWEEN '2000' AND '2002'";
+			
+			//$sql="SELECT * FROM usuarios LIMIT 1, 10";
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";		
+		
+			//echo $sql;
+			$resultado=$this->conectado->query($sql);
+			/*if ($resultado->fetch_assoc()) {
+				echo "verdad";
+			} else {
+				echo "mentira";
+			}
+
+			while ($filas=$resultado->fetch_assoc()) {
+				echo "hola";
+				echo $filas['username'];
+				$usuarios_filtrados[]=$filas;
+			}
+			return $usuarios_filtrados;			*/
+			if ($resultado->num_rows > 0) {
 				
-					foreach ($resultado as $valor) {				
-					
-						$usuarios_filtrados[]=$valor;
+			
+				/*if ($resultado) {
+					echo "v";
+				} else {echo "f";}*/
 
-					}
-				
-					return $usuarios_filtrados;
-					$this->conectarse->desconexion();
-
-				} else {
-					return 0;
+			/*while ($a=$resultado->fetch_row()) {
+				echo "hola";
+				for ($i=0; $i < count($a); $i++) { 
+					echo $a[$i] . " ";
 				}
+			}*/
 
-			} elseif (empty($edad_desde) && !empty($provincia)) {
-				$filtro=$filtro2;
+				foreach ($resultado as $valor) {				
+				/*echo $valor['username'];
+				echo " ";
+				echo $valor['birthday'];
+				echo " ";*/
+					//echo "hola";
+					$usuarios_filtrados[]=$valor;
 
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
-				//echo $sql;
-				$resultado=$this->conectado->query($sql);
-
-				if ($resultado->num_rows > 0) {
-					foreach ($resultado as $valor) {				
-				
-						$usuarios_filtrados[]=$valor;
-
-					}
-					return $usuarios_filtrados;
-					$this->conectarse->desconexion();
-
-				} else {
-					return 0;
 				}
-			} elseif (!empty($edad_desde) && !empty($provincia)) {
-				$edad_desde=date('Y') - $edad_desde;		
-				$edad_hasta=date('Y') - $edad_hasta;
-				$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
-				//echo $sql;
-				$resultado=$this->conectado->query($sql);
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
 
-				if ($resultado->num_rows > 0) {
-					foreach ($resultado as $valor) {				
-				
-						$usuarios_filtrados[]=$valor;
+			} else {
+				return 0;
+			}
 
-					}
-					return $usuarios_filtrados;
-					$this->conectarse->desconexion();
+		} elseif (empty($edad_desde) && !empty($provincia) && empty($formacion) && empty($profesion)) {
+			$filtro=$filtro2;
 
-				} else {
-					return 0;
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql;
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
 				}
-			} // fin IF
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && !empty($provincia) && empty($formacion) && empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql;
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (empty($edad_desde) && empty($provincia) && !empty($formacion) && empty($profesion)) {
+			//echo $formacion . "aqui dentro FORMACION <br>";
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion
+			where curriculum.idCurri=formacion.idCurri and formation like '%$formacion%') ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+			//$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && empty($provincia) && !empty($formacion) && empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion where curriculum.idCurri=formacion.idCurri and formation like '%$formacion%') and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		}  elseif (empty($edad_desde) && !empty($provincia) && !empty($formacion) && empty($profesion)) {	
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion where curriculum.idCurri=formacion.idCurri and formation like '%$formacion%') and $filtro2 = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && !empty($provincia) && !empty($formacion) && empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion where curriculum.idCurri=formacion.idCurri and formation like '%$formacion%') and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (empty($edad_desde) && empty($provincia) && empty($formacion) && !empty($profesion)) {
+			
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, profesion where curriculum.idCurri=profesion.idCurri and occupation like '%$profesion%') ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+			//$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && empty($provincia) && empty($formacion) && !empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, profesion where curriculum.idCurri=profesion.idCurri and occupation like '%$profesion%') and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		}  elseif (empty($edad_desde) && !empty($provincia) && empty($formacion) && !empty($profesion)) {
+			
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, profesion where curriculum.idCurri=profesion.idCurri and occupation like '%$profesion%') and $filtro2 = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (empty($edad_desde) && empty($provincia) && !empty($formacion) && !empty($profesion)) {
+			
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion, profesion where curriculum.idCurri=formacion.idCurri and curriculum.idCurri=profesion.idCurri and formation like '%$formacion%' and occupation like '%$profesion%') ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && !empty($provincia) && empty($formacion) && !empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, profesion where curriculum.idCurri=profesion.idCurri and occupation like '%$profesion%') and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && empty($provincia) && !empty($formacion) && !empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion, profesion where curriculum.idCurri=formacion.idCurri and curriculum.idCurri=profesion.idCurri and formation like '%$formacion%' and occupation like '%$profesion%') and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (empty($edad_desde) && !empty($provincia) && !empty($formacion) && !empty($profesion)) {	
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion, profesion where curriculum.idCurri=formacion.idCurri and curriculum.idCurri=profesion.idCurri and formation like '%$formacion%' occupation like '%$profesion%') and $filtro2 = '$provincia' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		} elseif (!empty($edad_desde) && !empty($provincia) && !empty($formacion) && !empty($profesion)) {
+			$edad_desde=date('Y') - $edad_desde;		
+			$edad_hasta=date('Y') - $edad_hasta;
+
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion, profesion where curriculum.idCurri=formacion.idCurri and curriculum.idCurri=profesion.idCurri and formation like '%$formacion%' and occupation like '%$profesion%') and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql . "<br>";
+
+			$resultado=$this->conectado->query($sql);
+
+			if ($resultado->num_rows > 0) {
+				foreach ($resultado as $valor) {				
+			
+					$usuarios_filtrados[]=$valor;
+
+				}
+				return $usuarios_filtrados;
+				$this->conectarse->desconexion();
+
+			} else {
+				return 0;
+			}
+		}
 
 		} // Fin método filtrar
 

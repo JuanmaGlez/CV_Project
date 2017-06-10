@@ -1,6 +1,6 @@
 <li><a href=""><input class="btnsBarra" type="submit" name="boton_buscar" value="Buscar"></a>   
 </li>
-<li><a href="">Formación</a>
+<!--<li><a href="">Formación</a>
       <ul>
             <li><a href="">Añadir Formación</a></li>
             <li><a href="">Mostrar Formación</a></li>
@@ -20,4 +20,4 @@
             <li><a href="">Mostrar Otros</a></li>
             <li><a href="">Modificar Otros</a></li>
       </ul>
-</li>
+</li>-->

@@ -9,7 +9,7 @@ require_once ('../model/m_recuperarpass.php');
     <head>
         <meta charset="utf-8"/>
         <title>Restaurar Contraseña</title>
-        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/goku1.jpeg">
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/muneco.png">
         <link rel="stylesheet" type="text/css" href="../view/css/recuperarpass.css">   
       <!--  <script type="text/javascript" >
             function redireccionar(){

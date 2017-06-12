@@ -1,11 +1,9 @@
 <?php 
   
   // Llamamos a la Clase Perfil que esta en controller
-  //require_once ("../controller/c_perfil.php");
+  //require_once ("../model/m_perfil.php");
 
-    /*if (isset($_COOKIE["nombre_usuario"])) {
-      echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
-    }*/
+   
 
  ?>
 
@@ -27,13 +25,25 @@
           <table>
             <tr>
               <td><label for="nombre">Usuario: </label></td>
+              <?php
+               if (isset($_COOKIE["nombre_usuario"])) {
+                  //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+              ?><td><input type="text" name="username" id="username" value="<?php echo $_COOKIE['nombre_usuario']; ?>" size="8" maxlengh="10" class="form-control" required></td>
+    <?php } else { ?>
               <td><input type="text" name="username" id="username" placeholder="usuario"
                 size="8" maxlengh="10" class="form-control" required></td>
+                <?php } ?>
             </tr>
             <tr>
               <td><label for="pass">Contraseña: </label></td>
+              <?php
+               if (isset($_COOKIE["nombre_usuario"])) {                
+              ?><td><input type="password" name="password" id="password" 
+              value="<?php echo $_COOKIE["password_usuario"]; ?>"  size="8" maxlengh="10" required></td>
+              <?php } else { ?>
               <td><input type="password" name="password" id="password"
                 placeholder="contraseña" size="8" maxlengh="10" required></td>
+                <?php } ?>
             </tr>
             <tr>
             <td class="izq">Recordar:</td>
@@ -59,7 +69,7 @@
           $objetoVerificarLogin=new Perfil($_POST['username'],$_POST['password']);
           $objetoVerificarLogin->checkLogin();
           if (isset($_POST['recordar'])) {
-            $objetoVerificarLogin->guardarLogin($_POST['username']); 
+            $objetoVerificarLogin->guardarLogin($_POST['username'],$_POST['password']); 
           }
         }
 

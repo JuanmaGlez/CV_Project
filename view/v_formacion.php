@@ -5,6 +5,15 @@
 
  ?>
 
+   <script language="JavaScript">
+    function Abrir(pagina) {
+      var opciones="toolbar=no, location=no, directories=no, menubar=no, scrollbars=no, resizable=yes,      width=640, height=480, top=100, left=100";
+
+      window.open(pagina,"",opciones);
+    }
+    
+  </script>
+
 <h3>Formación</h3>
 
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -41,11 +50,12 @@
       <td><?php echo $persona["province"]; ?></td>
       <td><?php echo $persona["grade"]; ?></td>
       
-        <td><input type='submit' name='boton_modificar' value='Modificar'></a></td>
-      
+        <td><input type='submit' name='boton_modificar_for' value='Modificar'></a></td>
+        <!--<td><a  href="javascript:Abrir('../controller/c_formacion.php')"><input type='button' name='boton_modificar' value='Modificar'></a></td>-->
+     
 
       
-        <td><input type='submit' name='boton_eliminar' value='Eliminar'></a></td>
+        <td><input type='submit' name='boton_eliminar_for' value='Eliminar'></a></td>
       
 
     <?php         

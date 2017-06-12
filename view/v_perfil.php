@@ -81,6 +81,13 @@
         </form>          
         <?php 
         }
+        elseif (isset($_POST["boton_profesion"])) {
+        ?>
+        <form action="c_perfil.php" method="post">
+          <?php include('c_profesion.php'); ?>
+        </form>          
+        <?php 
+        }
         else {
             echo $objetoPerfil->objetoUsuario->getRegistro() . "<br>"; 
             echo "<br>";

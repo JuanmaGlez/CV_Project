@@ -14,6 +14,8 @@
 
   require_once("../model/m_formacion.php");
 
+  require_once("../model/m_profesion.php");
+
   	$objetoPerfil = new Perfil($_POST['username']=null,$_POST['password']=null);
   
   	$objetoPerfil->checkConexion();
@@ -72,6 +74,11 @@
     $objetoFormacion->addFormacion($_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);
   }
 
+  $objetoProfesion = new Profex();
+  
+  if (isset($_POST['insertar_profesion'])) {
+    $objetoProfesion->addProfesion($_POST['Prof'],$_POST['Inicio'],$_POST['Fin'],$_POST['Emp'],$_POST['Pue'],$_POST['Pro'],$_POST['Desc']);
+  }
 
 	require_once("../view/v_perfil.php");
 

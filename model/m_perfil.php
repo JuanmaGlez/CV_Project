@@ -60,10 +60,11 @@
 			}
 		} // Fin método checkLogin
 
-		public function guardarLogin($usuario) {
-			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+		public function guardarLogin($usuario, $password) {
+			//if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 				setcookie("nombre_usuario", "$usuario", time()+86400);
-			}
+				setcookie("password_usuario", "$password", time()+86400);
+			//}
 		}
 
 		public function checkConexion(){

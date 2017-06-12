@@ -126,14 +126,18 @@
 			$sql="SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
 			$resultado=$this->conectado->query($sql);
-			while ($filas=$resultado->fetch_assoc()) {
-				$formaciones[]=$filas;
-			}
-			if (!$formaciones) {
-				//echo "No hay na";
-				return 0;
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$formaciones[]=$filas;
+				}
+				if (!$formaciones) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $formaciones;
+				}
 			} else {
-				return $formaciones;
+				return 0;
 			}
 			$this->conectarse->desconexion();
 		} // Fin método devolver usuarios

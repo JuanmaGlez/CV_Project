@@ -1,21 +1,26 @@
- <script language="JavaScript">
-  function Abrir(pagina) {
-    var opciones="toolbar=no, location=no, directories=no, menubar=no, scrollbars=no, resizable=yes,      width=640, height=480, top=100, left=100";
+ <script type="text/JavaScript" src="../view/js/abrir.js"></script>
+   <script language="JavaScript">
+    function Confirmar(id){
+      var mensaje = confirm("¿Esta seguro que quiere eliminarlo?");
+      if (mensaje) {
+        window.location = "../controller/c_perfil.php?menu=5&Id_ef="+id;
+        alert("Eliminado");
+      } else {
+        alert("No borrado");
+      }
+    }
 
-    window.open(pagina,"",opciones);
-  }
-  
-</script>
+  </script>
 
 <h3>Formación</h3>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr >
       <td>Formación</td>
       <td>Inicio</td>
       <td>Fin</td>
-      <td>Centro</td>
+      <td>Centro de Estudios</td>
       <td>Pueblo</td>
       <td>Provincia</td>
       <td>Notas</td>
@@ -25,7 +30,7 @@
 
     <?php 
 
-        $arrayMostrar=$objetoMostrar->mostrar(); 
+        $arrayMostrar=$objetoMostrarF->mostrar(); 
         
         if ($arrayMostrar) {
 
@@ -43,12 +48,12 @@
       <td><?php echo $persona["province"]; ?></td>
       <td><?php echo $persona["grade"]; ?></td>
       
-        <td><input type='submit' name='boton_modificar_for' value='Modificar'></a></td>
-        <!--<td><a  href="javascript:Abrir('../controller/c_formacion.php')"><input type='button' name='boton_modificar' value='Modificar'></a></td>-->
-     
+        <!--<td><input type='submit' name='boton_modificar_for' value='Modificar'></a></td>-->
+        <td><a href="javascript:Abrir('../controller/c_formarM.php?Id_mf=<?php echo $persona["idFormacion"]; ?>')"><input type='button' name='boton_modificar_for' value='Modificar'></a></td>
+        <!--<td><a  href="javascript:Abrir('../controller/c_formacion.php')"><input type='button' name='boton_modificar' value='Modificar'></a></td>-->    
 
       
-        <td><input type='submit' name='boton_eliminar_for' value='Eliminar'></a></td>
+        <td><a href="javascript:Confirmar('../controller/c_perfil.php?menu=5&Id_ef=<?php echo $persona["idFormacion"]; ?>')"><input type='button'  name='boton_eliminar_for' value='Eliminar'></a></td>        
       
 
     <?php         
@@ -74,7 +79,7 @@
           //----------------PAGINACIÓN---------------------------------------------------
           //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
           for ($i=1; $i <=TOTAL_PAGINAS; $i++) { 
-            echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
+            echo "<a href='?menu=5&pagina=" . $i . "'>" . $i . "</a>  ";
           }
 
        ?>

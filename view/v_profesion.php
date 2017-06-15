@@ -1,13 +1,21 @@
-<?php 
+<script type="text/JavaScript" src="../view/js/abrir.js"></script>
 
-  //$objetoMostrar = new Profex();
-  
+<script language="JavaScript">
+    function Confirmar(id){
+      var mensaje = confirm("¿Esta seguro que quiere eliminarlo?");
+      if (mensaje) {
+        window.location = "../controller/c_perfil.php?menu=6&Id_ef="+id;
+        alert("Eliminado");
+      } else {
+        alert("No borrado");
+      }
+    }
 
- ?>
+</script>
 
 <h3>Profesión</h3>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr >
       <td>Profesión</td>
@@ -23,7 +31,7 @@
 
     <?php 
 
-        $arrayMostrar=$objetoMostrar->mostrar(); 
+        $arrayMostrar=$objetoMostrarP->mostrar(); 
         
         if ($arrayMostrar) {
 
@@ -41,11 +49,13 @@
       <td><?php echo $persona["province"]; ?></td>
       <td><?php echo $persona["description"]; ?></td>
       
-        <td><input type='submit' name='boton_modificar_pro' value='Modificar'></a></td>
+        <!--<td><input type='submit' name='boton_modificar_pro' value='Modificar'></a></td>-->
+         <td><a href="javascript:Abrir('../controller/c_profeM.php?Id_mp=<?php echo $persona["idProfesion"]; ?>')"><input type='button' name='boton_modificar_pro' value='Modificar'></a></td>
       
 
       
-        <td><input type='submit' name='boton_eliminar_pro' value='Eliminar'></a></td>
+        <!--<td><input type='submit' name='boton_eliminar_pro' value='Eliminar'></a></td>-->
+         <td><a href="javascript:Confirmar('../controller/c_perfil.php?menu=6&Id_ep=<?php echo $persona["idProfesion"]; ?>')"><input type='button' name='boton_eliminar_pro' value='Eliminar'></a></td>
       
 
     <?php         
@@ -71,7 +81,7 @@
           //----------------PAGINACIÓN---------------------------------------------------
           //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
           for ($i=1; $i <=TOTAL_PAGINAS; $i++) { 
-            echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
+            echo "<a href='?menu=6&pagina=" . $i . "'>" . $i . "</a>  ";
           }
 
        ?>

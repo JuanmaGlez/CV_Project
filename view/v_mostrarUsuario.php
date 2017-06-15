@@ -48,12 +48,12 @@
         <?php } ?>         
 
     <?php  
-       if (isset($_POST['boton_desactivar'])) {
+    /*   if (isset($_POST['boton_desactivar'])) {
           $objetoMostrar->desactivar($persona['idUsuario']);          
         }
         if (isset($_POST['boton_activar'])) {
             $objetoMostrar->activar($persona['idUsuario']);
-          }
+          }*/
         } //fin condicion idUsuario
         endforeach; // }
     ?>
@@ -73,7 +73,7 @@
           //----------------PAGINACIÓN---------------------------------------------------
           //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
           for ($i=1; $i <=$_ENV; $i++) { 
-            echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
+            echo "<a href='?menu=8&pagina=" . $i . "'>" . $i . "</a>  ";
           }
 
        ?>

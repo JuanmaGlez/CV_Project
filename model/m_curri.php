@@ -35,6 +35,11 @@
 				echo '<option value="' . $fila['idCurri']. '">' .$fila['nameCurri']. '</option>';
 			}
 		}
+
+		public function contarCurri(){
+			$contar=$this->objetoCurriculum->contarCurri($this->idUsuario);
+			return $contar;
+		}
 	}
 
  ?>

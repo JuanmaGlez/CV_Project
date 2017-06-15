@@ -6,20 +6,20 @@
       </ul>
 </li>
 <li><a href="../controller/c_perfil.php?menu=5">Formación</a>
-      <ul>
+     <!-- <ul>
             <li><a href=""><input class="btn" type="submit" name="boton_addFormacion" value="Añadir Formación"></a></li>
             <li><a href=""><input class="btn" type="submit" name="boton_mostrarFormacion" value="Mostrar Formación"></a></li>            
-      </ul>
+      </ul>-->
 </li>
 <li><a href="../controller/c_perfil.php?menu=6">Profesión</a>
-      <ul>
+      <!--<ul>
             <li><a href=""><input class="btn" type="submit" name="boton_addProfesion" value="Añadir Profesión"></a></li>
             <li><a href=""><input class="btn" type="submit" name="boton_mostrarProfesion" value="Mostrar Profesión"></a></li>            
-      </ul>
+      </ul>-->
 </li>
 <li><a href="../controller/c_perfil.php?menu=7">Otros</a>
-      <ul>
+      <!--<ul>
             <li><a href=""><input class="btn" type="submit" name="boton_addOtros" value="Añadir Otros"></a></li>
             <li><a href=""><input class="btn" type="submit" name="boton_mostrarOtros" value="Mostrar Otros"></a></li>            
-      </ul>
+      </ul>-->
 </li>

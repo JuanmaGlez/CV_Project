@@ -19,6 +19,7 @@
 
 		// Constructor
 		public function __construct($idProfesion=null) {
+			//echo $idProfesion;
 			
 			$this->conectarse= new Conectar(); //Creamos el objeto de la conexión
 			
@@ -92,7 +93,7 @@
 
 	    //Método devolver company
 	    public function getCompany(){
-
+	    	//echo $this->company;	
 	      return $this->company;
 
 	    } // Fin getCompany
@@ -148,7 +149,7 @@
       		if (isset($_GET["pagina"])) {
       
         		if ($_GET["pagina"]==1) {
-          			header("location:index.php");
+          			header("location:c_perfil.php?menu=6");
         		} else {
           			$pagina=$_GET["pagina"];
         		}
@@ -237,8 +238,8 @@
 	    } // Fin método modificar profesión
 
 	    // Método borrar Profesión
-	    public function dropProfesion() {
-			$sql="DELETE FROM profesion where idProfesion = $this->idProfesion";
+	    public function dropProfesion($idProfesion) {
+			$sql="DELETE FROM profesion where idProfesion = $idProfesion";
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	

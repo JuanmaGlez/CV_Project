@@ -340,13 +340,27 @@
       		if (isset($_GET["pagina"])) {
       
         		if ($_GET["pagina"]==1) {
-          			header("location:index.php");
+          			header("location:c_perfil.php?menu=8");
         		} else {
           			$pagina=$_GET["pagina"];
         		}
 
       		} else {
         		$pagina=1;
+      		}
+
+      		if (isset($_GET["paginaf"])) {
+      
+        		if ($_GET["paginaf"]==1) {
+          			header("location:c_perfil.php?menu=10");
+        		} else {
+          			$paginaf=$_GET["paginaf"];
+          			$pagina=$paginaf;
+        		}
+
+      		} else {
+        		$paginaf=1;
+        		$pagina=$paginaf;
       		}
 
       	    //variable que guarda el valor inicial que debe mostrar la página.

@@ -46,7 +46,7 @@
                         //----------------PAGINACIÓN---------------------------------------------------
                         //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
                         for ($i=1; $i <=$_ENV; $i++) { 
-                              echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
+                              echo "<a href='?menu=10&paginaf=" . $i . "'>" . $i . "</a>  ";
                         }
 
                   ?>

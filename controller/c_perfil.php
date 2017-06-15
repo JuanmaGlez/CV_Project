@@ -76,7 +76,7 @@
                } ?>
             </form>             
 <?php     } elseif ($_GET['menu']==5) { ?>
-             <form action="" method="post">
+             <form action="c_perfil.php?menu=5" method="post">
                 <?php include('../controller/c_formacion.php');
                   if (isset($_POST['insertar_formacion'])) {
                     $objetoFormacion->addFormacion($_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);

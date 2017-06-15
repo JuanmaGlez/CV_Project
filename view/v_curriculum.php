@@ -1,6 +1,7 @@
 <form action="<?PHP $PHP_SELF ?>" method="post">
 <h2>Curriculum</h2>
 
+<p>Curriculum guardados: <?php echo $objetoCurri->contarCurri(); ?></p>
 <table>
 	<tr>
 		<td>

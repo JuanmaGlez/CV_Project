@@ -19,7 +19,7 @@
 
 		// Constructor
 		public function __construct($idFormacion=null) {
-			
+			//echo "$idFormacion";
 			$this->conectarse= new Conectar(); //Creamos el objeto de la conexión
 			
 			$this->conectado=$this->conectarse->conexion(); //realizamos la conexión y la guardamos en una variable
@@ -92,7 +92,7 @@
 
 	    //Método devolver studyCenter
 	    public function getStudyCenter(){
-
+	    	//echo "aqui llego" . $this->studyCenter;
 	      return $this->studyCenter;
 
 	    } // Fin getStudyCenter
@@ -149,7 +149,7 @@
       		if (isset($_GET["pagina"])) {
       
         		if ($_GET["pagina"]==1) {
-          			header("location:index.php");
+          			header("location:c_perfil.php?menu=5");
         		} else {
           			$pagina=$_GET["pagina"];
         		}
@@ -239,8 +239,9 @@
 	    } // Fin método modificar formación
 
 	    // Método borrar formación
-	    public function dropFormacion() {
-			$sql="DELETE FROM formacion where idFormacion = $this->idFormacion";
+	    public function dropFormacion($idFormacion) {
+			$sql="DELETE FROM formacion where idFormacion = $idFormacion";
+			//echo $sql;
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	

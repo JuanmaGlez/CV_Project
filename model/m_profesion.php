@@ -15,16 +15,16 @@
 		private $province;
 		private $description;
 		
-		public function __construct() {
-			parent::__construct();
-			/*$this->idCurri=$_POST[''];
-			$this->occupation=$_POST[''];
-			$this->start=$_POST[''];
-			$this->end=$_POST[''];
-			$this->company=$_POST[''];
-			$this->town=$_POST[''];
-			$this->province=$_POST[''];
-			$this->description=$_POST[''];*/
+		public function __construct($idProfesion=null) {
+			parent::__construct($idProfesion);
+			//$this->idCurri=$_POST[''];			
+			$this->occupation=isset($_POST['nombreprofesion']) ? $_POST['nombreprofesion'] : null;
+			$this->start=isset($_POST['iniciop']) ? $_POST['iniciop'] : null;
+			$this->end=isset($_POST['finP']) ? $_POST['finP'] : null;
+			$this->company=isset($_POST['empresap']) ? $_POST['empresap'] : null;
+			$this->town=isset($_POST['puep']) ? $_POST['puep'] : null;
+			$this->province=isset($_POST['probp']) ? $_POST['probp'] : null;
+			$this->description=isset($_POST['descp']) ? $_POST['descp'] : null;
 			
 		}
 
@@ -48,6 +48,21 @@
 			}
 		}
 
+		public function dropProfe($idProfesion) {
+			$borrar=$this->dropProfesion($idProfesion);
+			if ($borrar == 1) {
+				echo "Profesión borrada correctamente";
+			}
+		}
+
+		public function setProfe(){	
+			$modificarP=$this->setProfesion($this->occupation,$this->start,$this->end,$this->company,$this->town,$this->province,$this->description);
+			if ($modificarP==1) {
+				echo "Profesión modificada correctamente";
+			} else {
+				echo "No se ha modificado";
+			}
+		}
 
 
 	}

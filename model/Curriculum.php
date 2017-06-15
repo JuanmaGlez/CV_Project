@@ -118,6 +118,14 @@
 	    	return $lista;
 	    }
 
+	    public function contarCurri($idUsuario){
+	    	$sql="SELECT * FROM curriculum where idUsuario = $idUsuario";
+	    	//echo $sql;
+	    	$contar=$this->conectado->query($sql);
+	    	$resultado=$contar->num_rows;
+	    	return $resultado;
+	    }
+
 
 	} // Fin de la Clase Curriculum
 

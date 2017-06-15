@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 29, 2017 at 07:32 PM
--- Server version: 5.7.17-0ubuntu0.16.04.2
--- PHP Version: 5.6.30-10+deb.sury.org~xenial+2
+-- Generation Time: Jun 15, 2017 at 09:53 AM
+-- Server version: 5.7.18-0ubuntu0.16.04.1
+-- PHP Version: 5.6.30-11+deb.sury.org~xenial+3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +40,26 @@ INSERT INTO `curriculum` (`idCurri`, `nameCurri`, `idUsuario`) VALUES
 (1, 'curriculum1', 6),
 (2, 'Curriculum Informatica', 6),
 (3, 'Administrativo', 7),
-(4, 'Mecánico', 7);
+(4, 'Mecánico', 7),
+(5, 'Curriculum Asir', 8),
+(6, '', 2),
+(7, 'Curri1', 2),
+(8, '', 2),
+(9, '', 2),
+(10, '', 2),
+(11, '', 2),
+(12, 'Curri2', 2),
+(13, 'Curri3', 2),
+(14, 'Curri4', 2),
+(15, 'Noe1', 5),
+(16, 'Curri1Usu4', 9),
+(17, 'Curr123', 6),
+(18, 'Curri20', 6),
+(19, 'Noe2', 5),
+(20, 'Noe3', 5),
+(21, 'Noe4', 5),
+(22, 'Noe5', 5),
+(23, 'Noe6', 5);
 
 -- --------------------------------------------------------
 
@@ -50,7 +69,7 @@ INSERT INTO `curriculum` (`idCurri`, `nameCurri`, `idUsuario`) VALUES
 
 CREATE TABLE `formacion` (
   `idFormacion` int(11) NOT NULL,
-  `idCurri` int(11) NOT NULL,
+  `idCurri` int(11) NOT NULL DEFAULT '0',
   `formation` varchar(100) NOT NULL,
   `start` date NOT NULL,
   `end` date DEFAULT NULL,
@@ -59,6 +78,23 @@ CREATE TABLE `formacion` (
   `province` varchar(100) NOT NULL,
   `grade` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `formacion`
+--
+
+INSERT INTO `formacion` (`idFormacion`, `idCurri`, `formation`, `start`, `end`, `studyCenter`, `town`, `province`, `grade`) VALUES
+(1, 5, 'ASIR', '2015-09-20', NULL, 'IES Jacaranda', 'Brenes', 'Sevilla', '8, 8, 8'),
+(2, 5, 'Bachiller en Ciencias', '2013-09-30', '2015-06-20', 'IES Las Aguas', 'Sevilla', 'Sevilla', '7, 8, 7'),
+(3, 5, 'Bachillerato', '2009-09-25', '2011-06-15', 'IES San José', 'San José', 'Sevilla', '9, 9, 9, 9'),
+(4, 0, 'Técnico Administracion', '2013-10-01', '2015-06-23', 'IES Las Aguas', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(5, 0, 'Medicina', '2000-09-30', '2006-06-06', 'Universidad', 'Sevilla', 'Sevilla', '10, 8, 9'),
+(6, 0, 'Abogada', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(7, 0, 'Veterinario', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(8, 15, 'Policia', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(9, 0, 'Psicologia', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(10, 0, 'Biologo', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8'),
+(11, 0, 'Biologo', '2009-10-01', '2016-06-23', 'Universidad de Sevilla', 'Sevilla', 'Sevilla', '9, 5, 7, 8');
 
 -- --------------------------------------------------------
 
@@ -84,7 +120,7 @@ CREATE TABLE `otros` (
 
 CREATE TABLE `profesion` (
   `idProfesion` int(11) NOT NULL,
-  `idCurri` int(11) NOT NULL,
+  `idCurri` int(11) NOT NULL DEFAULT '0',
   `occupation` varchar(100) NOT NULL,
   `start` date NOT NULL,
   `end` date DEFAULT NULL,
@@ -93,6 +129,14 @@ CREATE TABLE `profesion` (
   `province` varchar(100) NOT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profesion`
+--
+
+INSERT INTO `profesion` (`idProfesion`, `idCurri`, `occupation`, `start`, `end`, `company`, `town`, `province`, `description`) VALUES
+(1, 15, 'Auxiliar Administrativa', '2009-10-01', '2016-06-23', 'La vida', 'Sevilla', 'Sevilla', 'Me aburria'),
+(2, 15, 'Veterinaria', '2000-10-01', '2016-06-23', 'Vida SA', 'Madrid', 'Madrid', 'Me aburria');
 
 -- --------------------------------------------------------
 
@@ -126,23 +170,31 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `username`, `password`, `email`, `name`, `surname`, `dni`, `birthday`, `address`, `postal`, `town`, `province`, `mobile`, `telephone`, `tipoUsuario`, `estado`, `registro`, `photo`) VALUES
-(1, 'manu', '$2y$12$9QMj0zhj1ITKGRLAA68.de1pXiEyP2SPs5Rwrp./AIX159NrN543.', 'smigol_82@yahoo.es', 'Manu', 'Glez', '22222222-X', '1990-12-22', 'La que sea, 8', '41300', 'San José', 'Sevilla', '600600600', '954000000', 'administrador', 'activado', NULL, 'muneco.png'),
-(2, 'maria', '$2y$12$ceqlt9OBQ5Q99GSyFkrdme/G1Vk80Xv/.aaP3RiBfHXPOuGKQmrfu', 'maria@maria.com', 'María', 'Pérez', '22222223-X', '1997-02-02', 'Lope sin Rueda, 16', '41007', 'Sevilla', 'Sevilla', '600600601', '950000001', 'usuario', 'activado', '2017-05-18 16:00:00', 'muneco.png'),
+(1, 'manu', '$2y$12$zJy4QEIHjZ9imH.C59QLjOIe1GlvKtl2.a.e0SJ94F3i/Aw8uiz6O', 'smigol_82@yahoo.es', 'Manu', 'Glez', '22222222-X', '1990-12-12', 'La que sea, 14', '41300', 'San José', 'Sevilla', '600600600', '954000000', 'administrador', 'activado', NULL, 'playmobil.png'),
+(2, 'maria', '$2y$12$ceqlt9OBQ5Q99GSyFkrdme/G1Vk80Xv/.aaP3RiBfHXPOuGKQmrfu', 'maria@maria.com', 'María', 'Pérez', '22222223-X', '1997-02-02', 'Lope sin Rueda, 16', '41007', 'Sevilla', 'Sevilla', '600600601', '950000001', 'usuario', 'activado', '2017-05-18 16:00:00', 'Elefantes.jpg'),
 (3, 'luis', '$2y$12$HJQ/Xe9yLCS.brwrNIAn5uSe63R53kb/ovGC5MZGhOpirGpHgs6LK', 'luis@luis.es', 'Luis', 'Díaz', '12121212-x', '2001-05-05', 'Izquierda 2', '28002', 'Madrid', 'Madrid', '611611611', '954111111', 'usuario', 'activado', '2017-05-18 16:02:00', 'muneco.png'),
 (4, 'ana', '$2y$12$0lFd5mJUdS/VLBy8fk6PRuEk8pJVabwT7VSDgJ4E94Btovr.Yqzm2', 'ana@ana.es', 'Ana', 'López', '11111111-Z', '2000-04-02', 'Primera 97', '41300', 'San José', 'Sevilla', '600600609', '954000002', 'usuario', 'activado', '2017-05-18 16:04:21', NULL),
-(5, 'noe', '$2y$12$PqrslesDeLBFKLPkt2n6B.Nn4Z2BNFtnPU3d7T0/wDxZ83ANuL.XK', 'noe@noe.es', 'Noelia', 'Martín', '11111111-x', '2001-02-01', 'Sol 1', '41007', 'Sevilla', 'Sevilla', '600600609', '954000007', 'usuario', 'activado', '2017-05-18 16:15:34', 'muneco.png'),
-(6, 'usuario1', '$2y$12$L35o826hZGYEOpj3x3K3ZuBoxRMYQRxQqv9VwVtYD8EmhFz7qj9FC', 'usuario1@usuario.es', 'Usuario', 'Uno', '11111111-u', '1980-12-12', 'Esta de aquí 1', '41007', 'Sevilla', 'Sevilla', '955955955', '605000010', 'usuario', 'activado', NULL, 'muneco.png'),
+(5, 'noe', '$2y$12$Kvns7KhYbCpURNMgo1Ia5uTL85gUHXhfcF0kbgdXakLPYmXZdBVG2', 'noe@noe.es', 'Noelia', 'Martín', '11111111-x', '1998-02-07', 'Sol 1', '41007', 'Sevilla', 'Sevilla', '600600609', '954000007', 'usuario', 'activado', '2017-05-18 16:15:34', 'Escudo.PNG'),
+(6, 'usuario1', '$2y$12$L35o826hZGYEOpj3x3K3ZuBoxRMYQRxQqv9VwVtYD8EmhFz7qj9FC', 'usuario1@usuario.es', 'Usuario', 'Uno', '11111111-u', '1980-12-12', 'Esta de aquí 1', '41007', 'Sevilla', 'Sevilla', '955955955', '605000010', 'usuario', 'activado', NULL, 'Escudo.PNG'),
 (7, 'usuario2', '$2y$12$NbJm2MqaaBcDnR9Yjvyi7.cDfQLVr49RjNKi1K701Kfgpknyuvuw.', 'usuario2@usuario.es', 'Usuario', 'Dos', '11111112-u', '1980-12-13', 'Bien 1', '41007', 'Sevilla', 'Sevilla', '600600602', '954000003', 'usuario', 'activado', NULL, 'muneco.png'),
-(8, 'usuario3', '$2y$12$GOLM3eC1Ev3F4gqEHjSt1eenTRsXvhC.ohpgvSjB5tuS2q10wTL7u', 'usuario3@usuario.es', 'Usuario', 'Tres', '11111113-x', '2000-04-22', 'Esta misma 2', '41300', 'San José', 'Sevilla', '612345679', '954000007', 'usuario', 'activado', NULL, 'muneco.png'),
+(8, 'usuario3', '$2y$12$h1NoxKyGNszG81uJfVN7a.q9UMCb6pn8VegPOuzF.tE29zcooGuau', 'usuario3@usuario.es', 'Usuario', 'Tres', '11111113-x', '2000-04-22', 'Esta misma 6', '41300', 'San José', 'Sevilla', '612345679', '954000007', 'usuario', 'activado', NULL, 'muneco.png'),
 (9, 'usuario4', '$2y$12$oGYDjFVuJ1gQ9YGKEAnrE.ZQzv6OcnPBpTY3MbcYLF2k68DIsKrEe', 'usuario4@usuario.es', 'Usuario', 'Cuatro', '11111114-x', '2000-06-22', 'Primera 2', '41007', 'Sevilla', 'Sevilla', '600600604', '954000004', 'usuario', 'activado', NULL, 'muneco.png'),
 (10, 'usuario5', '$2y$12$CXI928echqr2w7c5IpHdIuI19Vt18fYHPDUIBlbQAEqImh9oNsS.i', 'usuario5@usuario.es', 'Usuario', 'Cinco', '11111115-x', '2002-06-22', 'Que bien 2', '41002', 'Sevilla', 'Sevilla', '600221122', '951234123', 'usuario', 'activado', NULL, NULL),
 (11, 'consultor1', '$2y$12$VuWE6cjVXR5MtYCTJQAnYOa2dVF1MqpHX4RDPKU5bbfPoYmWPGLNy', 'consultor1@consultor.com', 'Consultor', 'Uno', '33333333-x', '1997-02-01', 'Rio 2', '41007', 'Sevilla', 'Sevilla', '600111000', '950111000', 'consultor', 'activado', NULL, NULL),
 (12, 'xwilly', '$2y$12$/5tYpZK.d0vXj4CxwzA1lO/DtQRMfX79cp6gKtqsrh4Go19.oIAsC', 'willy@willy.com', 'Wilson', 'Alarcon', '22112211-x', '2001-02-01', 'Luna 1', '41300', 'San José', 'Sevilla', '612345679', '954000002', 'usuario', 'activado', NULL, NULL),
-(13, 'consultor2', '$2y$12$0SKB6xV623Qx8T6pwq3JxO7Yso4XPFY0OzT9Reb4QOVdSCeXxrDZW', 'consultor2@consultor.com', 'Consultor', 'Dos', '12345678-P', '2002-02-04', 'Luna 4', '41209', 'Sevilla', 'Sevilla', '600600604', '954000004', 'usuario', 'activado', '2017-05-21 16:37:26', NULL),
-(14, 'consultor3', 'aaaa', 'consultor3@consultor.com', 'vacio', 'vacio', 'vacio', '2000-01-01', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'consultor', 'activado', '2017-05-23 18:35:54', NULL),
-(15, 'consultor4', '', 'consultor4@consultor.com', '', '', '', '2000-01-01', '', '', '', '', '', '', 'consultor', 'desactivado', '2017-05-23 18:39:13', NULL),
-(16, 'admin1', '$2y$12$AzKZtuVBATfYdenqVDyZRekF3MJzuvlkRxvNrALiXAEsgn1uL/Hu2', 'admin1@admin.com', '', '', 'admin1', '2000-01-01', '', '', '', '', '', '', 'administrador', 'activado', '2017-05-23 18:52:21', NULL),
-(17, 'consultor5', '$2y$12$e478NlG6pbAEfwi/gwIEseIX.K.JQNsUGZ1Id1RtbH34GZguOMoku', 'consultor5@consultor.com', '', '', 'consultor5', '2000-01-01', '', '', '', '', '', '', 'consultor', 'activado', '2017-05-23 19:30:25', NULL);
+(13, 'consultor2', '$2y$12$0SKB6xV623Qx8T6pwq3JxO7Yso4XPFY0OzT9Reb4QOVdSCeXxrDZW', 'consultor2@consultor.com', 'Consultor', 'Dos', '12345678-P', '2002-02-04', 'Luna 4', '41209', 'Sevilla', 'Sevilla', '600600604', '954000004', 'consultor', 'activado', '2017-05-21 16:37:26', NULL),
+(14, 'consultor3', '$2y$12$Awr/GwFOquE.yPj6UMY/HOmu/TMnWwaO08/9/Nk0aHaELKq8/vc0G', 'consultor3@consultor.com', 'vacio', 'vacio', 'vacio', '2000-01-01', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'consultor', 'activado', '2017-05-23 18:35:54', NULL),
+(15, 'consultor4', '$2y$12$kNufeFMcrP8nhMqeQM2QH.uiGWaREASxtY1MxBTkP2x5F26cL3wDK', 'consultor4@consultor.com', '', '', '', '2000-01-01', '', '', '', '', '', '', 'consultor', 'activado', '2017-05-23 18:39:13', NULL),
+(16, 'admin1', '$2y$12$AzKZtuVBATfYdenqVDyZRekF3MJzuvlkRxvNrALiXAEsgn1uL/Hu2', 'admin1@admin.com', '', '', 'admin1', '2000-01-01', '', '', '', '', '', '', 'administrador', 'desactivado', '2017-05-23 18:52:21', NULL),
+(17, 'consultor5', '$2y$12$e478NlG6pbAEfwi/gwIEseIX.K.JQNsUGZ1Id1RtbH34GZguOMoku', 'consultor5@consultor.com', '', '', 'consultor5', '2000-01-01', '', '', '', '', '', '', 'consultor', 'activado', '2017-05-23 19:30:25', NULL),
+(18, 'usuario6', '$2y$12$/4rqVJR.QPCPRBTkY5/t5.uVmVoFzc9GaHQ.7b0OmoMiza3ia92q6', 'usuario6@usuario.es', 'Usuario', 'Seis', '22221122-X', '1992-12-12', 'Primera 2', '41309', 'La Rinconada', 'Sevilla', '600600606', '954000006', 'usuario', 'activado', '2017-06-08 21:35:41', NULL),
+(19, 'usuario7', '$2y$12$GwmvhPhjG8OCB0Sdh7stweWvLIFRgMuP0RmS.EhwLLmmlCj5JR20e', 'usuario7@usuario.es', '', '', 'usuario7', '2000-01-01', '', '', '', '', '', '', 'usuario', 'activado', '2017-06-12 18:31:18', NULL),
+(20, 'usuario8', '$2y$12$0rX4AbKWzcN8MoFeyHRCj.UiyBo6qEpJNVz4BvbWUNfw2INjjj6EK', 'usuario8@usuario.es', '', '', 'usuario8', '2000-01-01', '', '', '', '', '', '', 'usuario', 'activado', '2017-06-13 21:44:42', NULL),
+(21, 'consultor6', '$2y$12$tUvldawFRL2.3iLINCmEYOCc8wxlTTYo7njAqJu4ntC0l5JTM6DSS', 'consultor6@consultor.com', '', '', 'consultor6', '2000-01-01', '', '', '', '', '', '', 'consultor', 'activado', '2017-06-13 21:49:54', NULL),
+(22, 'consultor7', '$2y$12$aoMrpXCYpKrY4rCiiXbZOuihPD3zj4PIUlDn2nhd76RMoVmKZeMbG', 'consultor7@consultor.com', '', '', 'consultor7', '2000-01-01', '', '', '', '', '', '', 'consultor', 'activado', '2017-06-13 21:53:04', NULL),
+(23, 'admin2', '$2y$12$Vh9QggjGlxR2PDE0CGF7DeB9S9f676xxymHLmHHUY/dPfszLOFOpy', 'admin2@admin.com', '', '', 'admin2', '2000-01-01', '', '', '', '', '', '', 'administrador', 'desactivado', '2017-06-13 21:53:50', NULL),
+(24, 'pedro', '$2y$12$uYV.pS.Y0DoofLmJbL8bZOBmZz20/E5R2.l.duDHDICzRalxs7XYa', 'pedro@pedrito.es', 'Pedro', 'Ruiz Pérez', '12345679-O', '1978-05-23', 'Espronceda, 15', '28002', 'Madrid', 'Madrid', '600100100', '910010010', 'usuario', 'activado', '2017-06-15 09:47:01', NULL),
+(25, 'rayo', '$2y$12$SQxoEj7cfRvVVsWlWUO9P.uMBAlQoDEQgn3wfFiJt/smUErzNOMMS', 'rayo@rayo.es', 'Rayo', 'McCuin', '12345679-Y', '2000-04-02', 'Sol 1', '41300', 'San José', 'Sevilla', '600600602', '954000002', 'usuario', 'activado', '2017-06-15 11:09:50', 'Escudo.PNG');
 
 --
 -- Indexes for dumped tables
@@ -193,12 +245,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `curriculum`
 --
 ALTER TABLE `curriculum`
-  MODIFY `idCurri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCurri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `formacion`
 --
 ALTER TABLE `formacion`
-  MODIFY `idFormacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idFormacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `otros`
 --
@@ -208,12 +260,12 @@ ALTER TABLE `otros`
 -- AUTO_INCREMENT for table `profesion`
 --
 ALTER TABLE `profesion`
-  MODIFY `idProfesion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProfesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

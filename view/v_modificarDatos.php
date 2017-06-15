@@ -3,17 +3,11 @@
     echo "Solo usuarios registrados.<br>";
     echo "<br><a href='../view/v_login.php'>Login</a>";
     exit;
-  }
-  //require_once("../controller/c_modificarDatos.php");
-  
-  $objetoModificar =new ModificarDatos();  
-  
+  }  
  ?>
 
 <h3>Modificar Datos Personales</h3>
-  
-
-            
+              
       <table>
           <tr>
               <td class="der">

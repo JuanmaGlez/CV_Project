@@ -20,9 +20,6 @@
   
   	$objetoPerfil->checkConexion();
   
-  if(isset($_POST["boton_salir"])){
-    $objetoPerfil->closeSession();
-  }
   
   $objetoModificar =new ModificarDatos();
   
@@ -40,46 +37,88 @@
 
   $objetoMostrar = new MostrarUsuario();
   //$arrayMostrar=$objetoMostrar->mostrar(); 
-  if (isset($_GET['Id_a'])) {
-    $idUsuario=$_GET["Id_a"];
-    $objetoMostrar->activar($idUsuario);
-   
-  }
-
-  if (isset($_GET['Id_d'])) {
-    $idUsuario=$_GET["Id_d"];
-    
-    $objetoMostrar->desactivar($idUsuario);
-  }
-
-  if (isset($_POST['insertar_nuevo'])) {
-    $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
-  }
-
-  $objetoFiltrar=new Filtrarlos();
-  
-  if (isset($_POST['envio_filtrar'])) {
-    $objetoFiltrar->mostrarFiltro();  
-  }
+ 
 
   $objetoCurri = new InterCurri();
 
-  if (isset($_POST['guardar_curri'])) {
-    $objetoCurri->nombreCurri();
-  }
 
   $objetoFormacion = new Formax();
-  
-  if (isset($_POST['insertar_formacion'])) {
-    $objetoFormacion->addFormacion($_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);
-  }
+ 
 
   $objetoProfesion = new Profex();
   
-  if (isset($_POST['insertar_profesion'])) {
-    $objetoProfesion->addProfesion($_POST['Prof'],$_POST['Inicio'],$_POST['Fin'],$_POST['Emp'],$_POST['Pue'],$_POST['Pro'],$_POST['Desc']);
-  }
+  
 
 	require_once("../view/v_perfil.php");
+
+  if (isset($_GET['menu'])) {     
+     
+          if ($_GET['menu']== 0) {
+            include("../view/v_mostrarDatos.php");            
+          } elseif ($_GET['menu']== 1) { ?>
+            <form action="" method="post" enctype="multipart/form-data">            
+              <?php include('../view/v_subirFoto.php'); ?>
+            </form> 
+            
+<?php    }  elseif ($_GET['menu']==2) { ?>
+
+              <form action="c_perfil.php?menu=0" method="post">            
+                <?php include('../view/v_modificarDatos.php'); ?>
+              </form> 
+<?php     }  elseif ($_GET['menu']==3) { 
+            $objetoPerfil->closeSession();
+          }  elseif ($_GET['menu']== 4) { ?>
+            <form action="" method="post">
+              <?php include('../controller/c_curri.php'); 
+               if (isset($_POST['guardar_curri'])) {
+                  $objetoCurri->nombreCurri(); 
+                  header("location: c_perfil.php?menu=4");
+               } ?>
+            </form>             
+<?php     } elseif ($_GET['menu']==5) { ?>
+             <form action="" method="post">
+                <?php include('../controller/c_formacion.php');
+                  if (isset($_POST['insertar_formacion'])) {
+                    $objetoFormacion->addFormacion($_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);
+                  } ?>
+             </form>                
+<?php     }  elseif ($_GET['menu']==6) { ?>
+              <form action="" method="post">
+                <?php include('../controller/c_profesion.php'); 
+                if (isset($_POST['insertar_profesion'])) {
+                   $objetoProfesion->addProfesion($_POST['Prof'],$_POST['Inicio'],$_POST['Fin'],$_POST['Emp'],$_POST['Pue'],$_POST['Pro'],$_POST['Desc']);
+                } ?>   
+              </form> 
+
+<?php     } elseif ($_GET['menu']==7) { 
+              include('../controller/c_otros.php');
+
+          } elseif ($_GET['menu']==8) {  ?>
+              <form action="c_perfil.php?menu=8" method="post"> 
+           <?php   include('../controller/c_mostrarUsuarios.php');
+              if (isset($_POST['insertar_nuevo'])) {
+                 $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
+                 
+                 //header("location: c_perfil2.php?menu=8");
+              } ?>
+             </form>               
+<?php     } elseif ($_GET['menu']==9) { 
+              include('../controller/c_otros.php');
+
+          } elseif ($_GET['menu']==10) { ?>
+            <form action="" method="post">
+              <?php include('../controller/c_filtrar.php'); ?>
+             </form>
+<?php     }
+
+  } else {
+    $_GET['menu']=0;  
+     
+    if ($_GET['menu']== 0) {
+      include("../view/v_mostrarDatos.php");            
+    }
+  }  
+
+  require_once("../view/v_footer.php");
 
  ?>

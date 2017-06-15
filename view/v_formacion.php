@@ -1,18 +1,11 @@
-<?php 
+ <script language="JavaScript">
+  function Abrir(pagina) {
+    var opciones="toolbar=no, location=no, directories=no, menubar=no, scrollbars=no, resizable=yes,      width=640, height=480, top=100, left=100";
 
-  $objetoMostrar = new Formax();
+    window.open(pagina,"",opciones);
+  }
   
-
- ?>
-
-   <script language="JavaScript">
-    function Abrir(pagina) {
-      var opciones="toolbar=no, location=no, directories=no, menubar=no, scrollbars=no, resizable=yes,      width=640, height=480, top=100, left=100";
-
-      window.open(pagina,"",opciones);
-    }
-    
-  </script>
+</script>
 
 <h3>Formación</h3>
 

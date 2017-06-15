@@ -1,6 +1,6 @@
 <?php 
 
-  $objetoMostrar = new Profex();
+  //$objetoMostrar = new Profex();
   
 
  ?>

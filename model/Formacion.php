@@ -123,7 +123,8 @@
 			$formaciones="";
 			$this->paginar();
 			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
-			$sql="SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$sql="SELECT * FROM formacion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql;
 			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
 			$resultado=$this->conectado->query($sql);
 			if ($resultado) {				

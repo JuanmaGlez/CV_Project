@@ -13,10 +13,26 @@
         <title>Registrar</title>        
         <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/muneco.png">
         <link rel="stylesheet" type="text/css" href="../view/css/registrar.css">    
+        <link rel="stylesheet" type="text/css" href="../view/css/reloj.css"> 
+        <script type="text/JavaScript" src="../view/js/reloj.js"></script>
     </head>
-    <body>
-        <form action="<?PHP $PHP_SELF ?>" method="post">
-            <h1>Registrar Usuario</h1>
+    <body onload="mueveReloj()">
+        <table>
+            <tr>
+                <td>
+                    <h1>Registrar Usuario</h1>        
+                </td>
+                <td>
+                    <div class=de_reloj>
+                        <form name="form_reloj">
+                            <input class="reloj" type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()">
+                        </form>
+                    </div>      
+                </td>
+            </tr>
+        </table>
+        <form action="<?PHP $PHP_SELF ?>" method="post">       
+             
             <hr/>
             <table>
                 <tr>

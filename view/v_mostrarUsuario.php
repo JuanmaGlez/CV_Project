@@ -1,19 +1,13 @@
 <?php 
 
-  //require_once('../controller/c_mostrarUsuarios.php');
-
   $objetoMostrar = new MostrarUsuario();
   $arrayMostrar=$objetoMostrar->mostrar(); 
-
-  /*if (isset($_POST['insertar_nuevo'])) {
-    $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
-  }*/
 
  ?>
 
   <h3>Lista de Usuarios </h3>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr>  
       <td class="primera_fila">Registro</td>    
@@ -41,7 +35,7 @@
         <td><?php echo $persona["estado"]; ?></td>
        <?php  } else { ?>         
         <!--<td><input type='submit' name='boton_activar' value='Activar'></a></td>-->
-        <td><a href="../controller/c_perfil.php?Id_a=<?php echo $persona['idUsuario']; ?>"><input type='button' name='boton_activar' value='Activar'></a></td>
+        <td><a href="../controller/c_perfil.php?menu=8&Id_a=<?php echo $persona['idUsuario']; ?>"><input type='button' name='boton_activar' value='Activar'></a></td>
          <!--<td class="bot"><a href="v71_borrar.php?Id=<?php echo $persona->id; ?>"><input type='button' name='del' id='del' value='Borrar'></a></td>-->
         <?php } ?>
 
@@ -49,7 +43,8 @@
           <td><?php echo $persona["estado"]; ?></td>
        <?php  } else { ?>         
         <!--<td><input type='submit' name='boton_desactivar' value='Desactivar'></a></td>-->
-        <td><a href="../controller/c_perfil.php?Id_d=<?php echo $persona['idUsuario']; ?>"><input type='button' name='boton_desactivar' value='Desactivar'></a></td>
+        <td><a href="../controller/c_perfil.php?menu=8&Id_d=<?php echo $persona['idUsuario']; ?>"><input type='button' name='boton_desactivar' value='Desactivar'></a></td>
+        
         <?php } ?>         
 
     <?php  
@@ -77,7 +72,7 @@
 
           //----------------PAGINACIÓN---------------------------------------------------
           //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
-          for ($i=1; $i <=TOTAL_PAGINAS; $i++) { 
+          for ($i=1; $i <=$_ENV; $i++) { 
             echo "<a href='?pagina=" . $i . "'>" . $i . "</a>  ";
           }
 

@@ -1,6 +1,4 @@
-	<?php 
-
-		//require_once("../controller/c_subirFoto.php");
+	<?php 		
 
 		$objetoFoto= new SubirFoto();
 

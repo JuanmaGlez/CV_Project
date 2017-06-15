@@ -1,23 +1,30 @@
-<?php 
-  
-  // Llamamos a la Clase Perfil que esta en controller
-  //require_once ("../model/m_perfil.php");
-
-   
-
- ?>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Curriculum</title>
     <link rel="icon" type="image/jpeg" sizes="16x16" href="../view/images/muneco.png">
-    <link rel="stylesheet" type="text/css" href="../view/css/login.css">    
+    <link rel="stylesheet" type="text/css" href="../view/css/login.css"> 
+     <link rel="stylesheet" type="text/css" href="../view/css/reloj.css"> 
+        <script type="text/JavaScript" src="../view/js/reloj.js"></script>   
   </head>
-  <body>
+  <body onload="mueveReloj()">
     <header>
-      <h1>CURRICULUM</h1>
+      <table>
+        <tr>
+          <td>
+              <h1>CURRICULUM</h1>          
+          </td>
+          <td>
+              <div class=de_reloj>
+                <form name="form_reloj">
+                  <input class="reloj" type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()">
+                </form>
+              </div> 
+          </td>
+        </tr>
+      </table>
+  
     </header>
     <hr>
     <div class="login">
@@ -76,7 +83,7 @@
 
      ?>
 
-    <footer class="col-lg-12">
+    <footer>
       <hr/>
       Copyright &copy; <?php echo  date("Y"); ?>
     </footer>

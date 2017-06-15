@@ -362,7 +362,8 @@
 			//variable que guarda el número de páginas total que vamos a tener.
 	     	//la fx ceil redondea a la alza.
 	     	$total_paginas=ceil($num_filas/$this->tamano_paginas);
-	     	define("TOTAL_PAGINAS", "$total_paginas");
+	     	//define("TOTAL_PAGINAS", "$total_paginas");
+	     	$_ENV=$total_paginas;
 	    	//$total_paginas=ceil($num_filas/$this->tamano_paginas);
 	    } // Fin método paginar
 
@@ -404,6 +405,8 @@
 		public function filtrar($filtro,$filtro2,$edad_desde, $edad_hasta, $provincia, $formacion, $profesion) {
 			//echo $formacion . " aqui dentro filtrar <br>";
 			$this->paginar();
+
+			//echo $provincia . $formacion . $profesion;
 
 			$usuarios_filtrados=array();
 		
@@ -502,7 +505,7 @@
 			}
 		} elseif (empty($edad_desde) && empty($provincia) && !empty($formacion) && empty($profesion)) {
 			//echo $formacion . "aqui dentro FORMACION <br>";
-			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario = (SELECT idUsuario FROM curriculum, formacion
+			$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and idUsuario in (SELECT idUsuario FROM curriculum, formacion
 			where curriculum.idCurri=formacion.idCurri and formation like '%$formacion%') ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//echo $sql . "<br>";
 			//$sql="SELECT * FROM usuarios where tipoUsuario = 'usuario' and $filtro2 = '$provincia' and YEAR($filtro) BETWEEN '$edad_desde' and '$edad_hasta' ORDER BY birthday LIMIT $this->empezar_desde, $this->tamano_paginas";

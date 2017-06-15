@@ -24,6 +24,8 @@
 			$this->desde=isset($_POST['hasta']) ? $_POST['hasta'] : null;
 			$this->hasta=isset($_POST['desde']) ? $_POST['desde'] : null;
 			$this->provincia=isset($_POST['provincia']) ? $_POST['provincia'] : null;
+			$this->formacion=isset($_POST['formacion']) ? $_POST['formacion'] : null;
+			$this->profesion=isset($_POST['profesion']) ? $_POST['profesion'] : null;
 		}
 
 		public function mostrarFiltro() {

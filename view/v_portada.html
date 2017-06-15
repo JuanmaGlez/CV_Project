@@ -5,13 +5,22 @@
 	<title>Portal JobsNetworks</title>
 	<link rel="icon" type="image/jpeg" sizes="16x16" href="view/images/muneco.png">
 	<link rel="stylesheet" type="text/css" href="view/css/portada.css">
+	<link rel="stylesheet" type="text/css" href="view/css/reloj.css"> 
+  	<script type="text/JavaScript" src="view/js/reloj.js"></script>
 </head>
-<body>
+<body onload="mueveReloj()">
 	<header>
 		<table>
 			<tr>
 				<td>
 					<h1>LA ERA DEL SABER BUSCAR</h1>
+				</td>
+				<td>
+					 <div class=de_reloj>
+      					<form name="form_reloj">
+        					<input class="reloj" type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()">
+        				</form>
+    				</div>
 				</td>
 				<td class="boton_login">
 					<!--<input class="login" type="button" onclick="location.href='view/v_login.php'" name="login" value="Login">-->

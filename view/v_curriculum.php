@@ -1,9 +1,3 @@
-<?php 
-
-	//require_once('c_curri.php');
-	//$objetoCurri = new InterCurri();
- ?>
-
 <form action="<?PHP $PHP_SELF ?>" method="post">
 <h2>Curriculum</h2>
 

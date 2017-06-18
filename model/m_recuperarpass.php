@@ -1,4 +1,5 @@
 <?php
+require_once("../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php");
 require_once('Usuarios.php');
 /**
  *
@@ -8,10 +9,12 @@ require_once('Usuarios.php');
     // Propiedades 
     private $email;
     public $objetoBuscar;
+    private $mail;
 
     // Método Constructor
     public function __construct($email=null) {
       $this->objetoBuscar=new Usuarios();
+      $this->mail = new PHPMailer();
       if ($_POST['correo'] != ""){
         $this->email=$email;
       }
@@ -25,26 +28,36 @@ require_once('Usuarios.php');
       $resultado=$this->objetoBuscar->buscarEmail($this->email);
       $logitud = 10;
       $psswd = substr( md5(microtime()), 1, $logitud);
-      //echo $psswd;
+      
       if ($this->email!="") {
         if ($resultado['email'] == $this->email) {
-          // Mensaje
-          //$mensaje = "Link para poder recuperar su password \"http://jmgonzalez.com\"";
+          $this->mail->SMTPDebug = 4;
+
+          $this->mail->SMTPAuth = false;
+
+          $this->mail->Port = 25;
+
+          $this->mail->SetFrom('jmgonzalez@comvive.es','Administrador Web');
+
+          $this->mail->AddReplyTo('jmgonzalez@comvive.es','Administrador Web');
+
+          //$address = "jmgonzalez@comvive.es";
+          //$address = "juanmita1982@gmail.com";          
+          $address = $this->email;
+
+          $this->mail->AddAddress($address, "Usuario", $resultado['name']);
+
+          $this->mail->Subject = "Recuperar Password";
+
           $mensaje = "Su nueva password es: " . $psswd;        
           $mensaje .= " Recuerde modificarla";
-          //Titulo
-          $titulo = "Recuperar Password";
-          //cabecera
-          /*  $headers = "MIME-Version: 1.0\r\n";
-          $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-          //dirección del remitente
-          $headers .= "From: Curriculum Web < jmgonzalez@comvive.es >\r\n";*/
-          $cabeceras = 'From: jmgonzalez@comvive.es' . "\r\n" .
-          'Reply-To: jmgonzalez@comvive.es' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-          //Enviamos el mensaje a tu_dirección_email
-          $bool = mail($this->email,$titulo,$mensaje,$cabeceras);
-          if($bool){
+
+          $this->mail->Body = $mensaje;
+
+          $this->mail->charSet = "UTF8";
+          
+          if ($this->mail->Send()) {
+         
             echo "Mensaje enviado.";
             $passwd=password_hash($psswd, PASSWORD_DEFAULT, array("cost"=>12));
             $contra=$this->objetoBuscar->updatePass($passwd,$this->email);
@@ -52,7 +65,7 @@ require_once('Usuarios.php');
               echo "Error en Contraseña";
             }
           }else{
-            echo "Mensaje no enviado";
+            echo "Error al envviar el mensaje" . $this->mail->ErrorInfo;
           }
         } else {
           echo "El email introducido no está en la base de datos";

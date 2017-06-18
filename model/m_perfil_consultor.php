@@ -4,8 +4,8 @@
 
 	class Filtrarlos {
 
-		private $tipo;
-		private $tipo2;
+		private $tipo_edad;
+		private $tipo_provincia;
 		private $desde;
 		private $hasta;
 		private $provincia;
@@ -15,9 +15,9 @@
 
 		public function __construct() {
 			$this->objetoUsuario = new Usuarios();			
-			$this->tipo=isset($_POST['tipo']) ? $_POST['tipo'] : null;
+			$this->tipo_edad=isset($_POST['tipo']) ? $_POST['tipo'] : null;
 			//echo $this->tipo;
-			$this->tipo2=isset($_POST['tipo_provincia']) ? $_POST['tipo_provincia'] : null;
+			$this->tipo_provincia=isset($_POST['tipo_provincia']) ? $_POST['tipo_provincia'] : null;
 			//echo $this->tipo2;
 			//$this->desde=date('Y') - $_POST['hasta'];		
 			//$this->hasta=date('Y') - $_POST['desde'];
@@ -29,7 +29,7 @@
 		}
 
 		public function mostrarFiltro() {
-			$arrayPersonas=$this->objetoUsuario->filtrar($this->tipo,$this->tipo2,$this->desde,$this->hasta, $this->provincia,$this->formacion,$this->profesion);
+			$arrayPersonas=$this->objetoUsuario->filtrar($this->tipo_edad,$this->tipo_provincia,$this->desde,$this->hasta, $this->provincia,$this->formacion,$this->profesion);
 			if ($arrayPersonas == 0) {
 				return 0;
 			} else {

@@ -5,6 +5,8 @@
 
  ?>
 
+  <script type="text/JavaScript" src="../view/js/abrir.js"></script>
+
   <h3>Lista de Usuarios </h3>
 
   <form action="" method="post">
@@ -46,7 +48,7 @@
         <td><a href="../controller/c_perfil.php?menu=8&Id_d=<?php echo $persona['idUsuario']; ?>"><input type='button' name='boton_desactivar' value='Desactivar'></a></td>
         
         <?php } ?>         
-
+        <td><a href="javascript:Abrir('../controller/c_modificarTipoUsuarios.php?Id_mt=<?php echo $persona["idUsuario"]; ?>')"><input type='button' name='boton_modificar_tipo' value='Modificar'></a></td>
     <?php  
     /*   if (isset($_POST['boton_desactivar'])) {
           $objetoMostrar->desactivar($persona['idUsuario']);          

@@ -9,6 +9,7 @@
 		private $idCurri;		
 		private $name;
 		private $idUsuario;
+		private $conectarse;
 		private $conectado;
 
 		// Constructor

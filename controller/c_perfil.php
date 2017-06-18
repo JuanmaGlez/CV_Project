@@ -98,7 +98,7 @@
            <?php   include('../controller/c_mostrarUsuarios.php');
               if (isset($_POST['insertar_nuevo'])) {
                  $objetoMostrar->addUser($_POST['Usu'],$_POST['Email'],$_POST['Tipo'],$_POST['Estado']);
-                 
+                 echo '<meta http-equiv="refresh" content="0; URL=c_perfil.php?menu=8" />';
                  //header("location: c_perfil2.php?menu=8");
               } ?>
              </form>               

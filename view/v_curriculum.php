@@ -29,7 +29,7 @@
 			<input type="submit" name="listarlo" value="Ver">
 		</td>
 		<td>
-			<input type="submit" name="borrarlo" value="Borrar">
+			<a href=""></a><input type="submit" name="borrarlo" value="Borrar">
 		</td>
 		<td>
 			<input type="submit" name="modificarlo" value="Modificar">

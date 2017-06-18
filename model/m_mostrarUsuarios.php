@@ -14,10 +14,13 @@
 
 	class MostrarUsuario {
 
-		private $objetoUsuario;
+		public $objetoUsuario;
+		private $tipoUsuario;
 
-		public function __construct() {
-			$this->objetoUsuario = new Usuarios();
+		public function __construct($idUsuario=null) {
+			$this->objetoUsuario = new Usuarios($idUsuario);
+			$this->tipoUsuario =isset($_POST['tipousuario']) ? $_POST['tipousuario'] : null;
+			//echo $this->tipoUsuario;
 		}
 
 		public function mostrar() {
@@ -46,6 +49,15 @@
 			} else {
 				echo "El usuario ya existe";
 			
+			}
+		}
+
+		public function setTipo(){	
+			$modificarT=$this->objetoUsuario->setTipoUsuario($this->tipoUsuario);
+			if ($modificarT==1) {
+				echo "Tipo de Usuario modificado correctamente";
+			} else {
+				echo "No se ha modificado";
 			}
 		}
 

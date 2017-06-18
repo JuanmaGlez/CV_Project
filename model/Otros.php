@@ -13,6 +13,7 @@
 		private $ability;
 		private $knowledge;
 		private $hobby;		
+		private $conectarse;
 		private $conectado;
 
 		// Constructor
@@ -100,11 +101,68 @@
 	      return $this->hobby;
 	    
 	    } // Fin getHobby
+
+	      // Método de volver toda la formación del usuario
+		public function getOtros($idUsuario) {
+			$otros="";
+			$this->paginar();
+			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
+			$sql="SELECT * FROM otros where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql;
+			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$otros[]=$filas;
+				}
+				if (!$otros) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $otros;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
+		public function paginar() {
+	    	$this->tamano_paginas=8;
+
+      		if (isset($_GET["pagina"])) {
+      
+        		if ($_GET["pagina"]==1) {
+          			header("location:c_perfil.php?menu=7");
+        		} else {
+          			$pagina=$_GET["pagina"];
+        		}
+
+      		} else {
+        		$pagina=1;
+      		}
+
+      	    //variable que guarda el valor inicial que debe mostrar la página.
+      		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
+
+      		$sql_total="SELECT * FROM otros"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+
+      		$resultado=$this->conectado->query($sql_total);
+
+	    	//variables que guarda el números de filas que nos devuelve la consulta en total.
+	    	$num_filas=$resultado->num_rows;
+
+			//variable que guarda el número de páginas total que vamos a tener.
+	     	//la fx ceil redondea a la alza.
+	     	$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	     	define("TOTAL_PAGINAS", "$total_paginas");
+	    	//$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	    } // Fin método paginar
 		
 	    // Método para insertar Otros
-		public function addOtros($idCurri,$occupation, $lenguage, $card, $ability, $knowledge, $hobby){
+		public function addOtros($lenguage, $card, $ability, $knowledge, $hobby){
 			
-			$sql="INSERT INTO otros (idCurri,occupation, lenguage, card, ability, knowledge, hobby, description) VALUES ('$idCurri','$occupation', '$lenguage', '$card', '$ability', '$knowledge', '$hobby', '$description')";
+			$sql="INSERT INTO otros (lenguage, card, ability, knowledge, hobby, description) VALUES ('$lenguage', '$card', '$ability', '$knowledge', '$hobby')";
 				
 			$resultado=$this->conectado->query($sql);
 			

@@ -144,6 +144,25 @@
 	      return $this->tipoUsuario;
 	    }
 
+	    public function setTipoUsuario($tipoUsuario){
+	    	//echo $tipoUsuario . "1<br>";
+	    	//echo $this->tipoUsuario . "2<br>";
+	    	if($this->tipoUsuario != $tipoUsuario){
+	    		//echo $this->tipoUsuario . "3";
+	            $sql = "UPDATE usuarios set tipoUsuario = '$tipoUsuario' where idUsuario ='$this->idUsuario'";
+	            //echo $sql;
+	            $modificado['tipoUsuario'] = $this->conectado->query($sql);
+	        }
+	        if($modificado){
+	          //echo "Los datos has sido modificados correctamente";
+	          //echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=../view/v_perfil.php\">";
+	          return 1;
+	        } else {
+	          //echo "No se ha modificado ningún dato";
+	          return 0;
+	        }
+	    }
+
 	    //Método devolver estado
 	    public function getEstado(){
 	      return $this->estado;
@@ -338,18 +357,19 @@
 	    	$this->tamano_paginas=8;
 
       		if (isset($_GET["pagina"])) {
-      
+      		//echo $_GET["pagina"];
         		if ($_GET["pagina"]==1) {
           			header("location:c_perfil.php?menu=8");
         		} else {
           			$pagina=$_GET["pagina"];
+          			//echo $pagina;
         		}
 
       		} else {
         		$pagina=1;
       		}
 
-      		if (isset($_GET["paginaf"])) {
+      	/*	if (isset($_GET["paginaf"])) {
       
         		if ($_GET["paginaf"]==1) {
           			header("location:c_perfil.php?menu=10");
@@ -361,10 +381,11 @@
       		} else {
         		$paginaf=1;
         		$pagina=$paginaf;
-      		}
+      		}*/
 
       	    //variable que guarda el valor inicial que debe mostrar la página.
       		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
+      		//echo $pagina . $this->empezar_desde;
 
       		$sql_total="SELECT * FROM usuarios"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
 
@@ -398,7 +419,7 @@
 			
 			if ($valor->num_rows == 0) {
 
-				$sql="INSERT INTO usuarios (username,password,email,name,surname,dni,birthday,address,postal, town,province,mobile,telephone,tipoUsuario, estado) VALUES ('$username','$password','$email', '','','$dni','2000-01-01','','','','','','', '$tipoUsuario', '$estado')";
+				$sql="INSERT INTO usuarios (username,password,email,name,surname,dni,birthday,address,postal, town,province,mobile,telephone,tipoUsuario, estado) VALUES ('$username','$password','$email', 'Nombre','Apellidos','$dni','2000-01-01','Direccion','XXXXX','Pueblo','Provincia','Móvil','Teléfono', '$tipoUsuario', '$estado')";
 
 				//echo $sql;
 				

@@ -118,12 +118,35 @@
 	    
 	    } // Fin getGrade
 
+	    public function getFormax($idCurri) {
+			$formaciones="";			
+			
+			$sql="SELECT * FROM formacion where idCurri = $idCurri ORDER BY start desc"; 
+			//echo $sql;
+			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$formaciones[]=$filas;
+				}
+				if (!$formaciones) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $formaciones;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
 	    // Método de volver toda la formación del usuario
 		public function getFormacion($idUsuario) {
 			$formaciones="";
 			$this->paginar();
 			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
-			$sql="SELECT * FROM formacion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$sql="SELECT * FROM formacion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) ORDER BY start desc LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//echo $sql;
 			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
 			$resultado=$this->conectado->query($sql);
@@ -176,9 +199,9 @@
 	    } // Fin método paginar
 
 	    // Método para insertar formación
-		public function addFormacion($formation, $start, $end, $studyCenter, $town, $province, $grade){
+		public function addFormacion($idCurri,$formation, $start, $end, $studyCenter, $town, $province, $grade){
 			
-			$sql="INSERT INTO formacion (formation,start,end,studyCenter,town,province,grade) VALUES ('$formation', '$start','$end','$studyCenter','$town','$province','$grade')";
+			$sql="INSERT INTO formacion (idCurri,formation,start,end,studyCenter,town,province,grade) VALUES ($idCurri,'$formation', '$start','$end','$studyCenter','$town','$province','$grade')";
 				
 			$resultado=$this->conectado->query($sql);
 			

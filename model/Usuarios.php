@@ -221,9 +221,9 @@
 			
 			if ($valor->num_rows == 0) {
 				$sql="INSERT INTO usuarios (username, password, email, name, surname, dni, birthday, address, postal, town, province, mobile, telephone) VALUES ('$username','$password','$email',
-					'$name','$surname','$dni','$birthday','$address','$postal','$town','$province','$mobile',
+					'$name','$surname','$dni',STR_TO_DATE('$birthday','%d/%m/%Y'),'$address','$postal','$town','$province','$mobile',
 					'$telephone')";
-				
+				//echo $sql;
 				$resultado=$this->conectado->query($sql);
 			
 				if ($resultado) {
@@ -305,7 +305,7 @@
 	            $modificado['dni'] = $this->conectado->query($sql);
 	        }
 	        if($this->birthday != $birthday){
-	            $sql = "UPDATE usuarios set birthday = '$birthday' where idUsuario ='$this->idUsuario'";
+	            $sql = "UPDATE usuarios set birthday = STR_TO_DATE('$birthday','%d/%m/%Y') where idUsuario ='$this->idUsuario'";
 	            $modificado['birthday'] = $this->conectado->query($sql);
 	        }
 	        if($this->address != $address){

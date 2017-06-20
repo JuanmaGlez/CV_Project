@@ -3,7 +3,7 @@
 	require_once('Conectar.php');
 
 	// Clase de la Otros del Usuario
-	class otros {
+	class Otros {
 
 		// Propiedades de la Clase Otros
 		private $idOtros;
@@ -102,6 +102,29 @@
 	    
 	    } // Fin getHobby
 
+	    public function getOtrox($idCurri) {
+			$otros="";
+						
+			$sql="SELECT * FROM otros where idCurri = $idCurri";
+			//echo $sql;
+			//$sql="SELECT * FROM formacion LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$otros[]=$filas;
+				}
+				if (!$otros) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $otros;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
 	      // Método de volver toda la formación del usuario
 		public function getOtros($idUsuario) {
 			$otros="";
@@ -160,9 +183,9 @@
 	    } // Fin método paginar
 		
 	    // Método para insertar Otros
-		public function addOtros($lenguage, $card, $ability, $knowledge, $hobby){
+		public function addOtros($idCurri,$lenguage, $card, $ability, $knowledge, $hobby){
 			
-			$sql="INSERT INTO otros (lenguage, card, ability, knowledge, hobby, description) VALUES ('$lenguage', '$card', '$ability', '$knowledge', '$hobby')";
+			$sql="INSERT INTO otros (idCurri,lenguage, card, ability, knowledge, hobby, description) VALUES ($idCurri,'$lenguage', '$card', '$ability', '$knowledge', '$hobby')";
 				
 			$resultado=$this->conectado->query($sql);
 			
@@ -180,7 +203,7 @@
 
 
 		//Método Modificar Datos Otros
-	    public function setOtros($occupation, $lenguage, $card, $ability, $knowledge, $hobby){
+	    public function setOtrox($lenguage, $card, $ability, $knowledge, $hobby){
 	        $modificado=array();
 	        if($this->lenguage != $lenguage){
 	            $sql = "UPDATE otros set lenguage = '$lenguage' where idOtros ='$this->idOtros'";
@@ -213,8 +236,8 @@
 	    } // Fin método modificar Otros
 
 	    // Método borrar Otros
-	    public function dropOtros() {
-			$sql="DELETE FROM otros where idOtros = $this->idOtros";
+	    public function dropOtros($idOtros) {
+			$sql="DELETE FROM otros where idOtros = $idOtros";
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	

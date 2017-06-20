@@ -1,0 +1,81 @@
+@charset: "utf-8";
+
+body {
+	width: 90%;
+	height: 100%;
+	margin-left: 4%;	
+	background-color: orange;
+}
+
+h1 {
+	text-align: center;
+}
+
+.foto{
+	border: solid yellow;
+	width: 75px;
+	height: 100px;
+	color: blue;
+	font-size: 0.3em;
+	background-color: red;
+	position: relative;
+	top:10%;
+	left: 80%;
+}
+
+.nombre {
+	border: solid yellow;
+	background-color: blue;
+	width: 90%;
+	height: 40%;
+	font-size: 70%;
+	margin:0%;
+	padding: 0%;
+	position: absolute;
+	top: 15%;
+}
+ p{
+ 	font-size: 55%;
+ }
+
+ .profesion {
+ 	border: solid yellow;
+	background-color: white;
+	width: 90%;
+	height: 40%;
+	font-size: 70%;
+	margin:0%;
+	padding: 0%;
+	position: absolute;
+	top: 55%;
+}
+
+ .formacion {
+ 	border: solid yellow;
+	background-color: green;
+	width: 90%;
+	height: 40%;
+	font-size: 70%;
+	margin:0%;
+	padding: 0%;
+	position: absolute;
+	top: 95%;
+}
+
+#forma{
+	font-size: 0.5em;
+	text-align: left;
+}
+
+ .otros {
+ 	border: solid yellow;
+	background-color: blue;
+	width: 90%;
+	height: 40%;
+	font-size: 70%;
+	margin:0%;
+	padding: 0%;
+	position: absolute;
+	top: 135%;
+}
+	

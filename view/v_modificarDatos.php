@@ -62,7 +62,11 @@
                   Birthday:
               </td>
               <td>
-                  <input type="text" name="birthday" value="<?php echo $objetoModificar->objetoUsuario->getBirthday();?>"/>             
+                  <input type="text" name="birthday" value="<?php $fecha=$objetoPerfil->objetoUsuario->getBirthday();
+                    $objeto = DateTime::createFromFormat('Y-m-d', $fecha);
+                    $cadena= date_format($objeto, "d/m/Y");
+                    echo $cadena;
+                    //echo $objetoModificar->objetoUsuario->getBirthday();?>"/>             
               </td>
           </tr>
           <tr>

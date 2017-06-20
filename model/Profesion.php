@@ -119,12 +119,34 @@
 	    
 	    } // Fin getDescription
 
+	    public function getProfex($idCurri) {
+			$profesiones="";
+						
+			$sql="SELECT * FROM profesion where idCurri = $idCurri ORDER BY start desc";
+			//$sql="SELECT * FROM profesion LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$profesiones[]=$filas;
+				}
+				if (!$profesiones) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $profesiones;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
 	    	    // Método de volver toda la profesión del usuario
 		public function getProfesion($idUsuario) {
 			$profesiones="";
 			$this->paginar();
 			//SELECT * FROM profesion where idCurri = (select idCurri from curriculum where idUsuario = 8);
-			$sql="SELECT * FROM profesion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$sql="SELECT * FROM profesion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) ORDER BY start desc LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//$sql="SELECT * FROM profesion LIMIT $this->empezar_desde, $this->tamano_paginas";
 			$resultado=$this->conectado->query($sql);
 			if ($resultado) {				
@@ -176,9 +198,9 @@
 	    } // Fin método paginar
 
 	    // Método para insertar Profesión
-		public function addProfesion($occupation, $start, $end, $company, $town, $province, $description){
+		public function addProfesion($idCurri,$occupation, $start, $end, $company, $town, $province, $description){
 			
-			$sql="INSERT INTO profesion (occupation, start, end, company, town, province, description) VALUES ('$occupation', '$start', '$end', '$company', '$town', '$province', '$description')";
+			$sql="INSERT INTO profesion (idCurri,occupation, start, end, company, town, province, description) VALUES ($idCurri,'$occupation', '$start', '$end', '$company', '$town', '$province', '$description')";
 			//echo $sql;
 				
 			$resultado=$this->conectado->query($sql);

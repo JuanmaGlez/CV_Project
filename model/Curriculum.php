@@ -37,7 +37,7 @@
 	      if($datosRecuperados=$datos->fetch_assoc()){	    
 
 	        $this->idCurri=$datosRecuperados['idCurri'];	        
-	        $this->name=$datosRecuperados['name'];
+	        $this->name=$datosRecuperados['nameCurri'];
 	        $this->idUsuario=$datosRecuperados['idUsuario'];
 	        	        
 	      } //***FIN if***
@@ -65,6 +65,64 @@
 
 	    } // Fin getIdUsuario
 
+	     // Método de volver todos los Curriculum del usuario
+		public function getCurriculum($idUsuario) {
+			$curriculums="";
+			$this->paginar($idUsuario);
+			
+			$sql="SELECT * FROM curriculum where idUsuario = $idUsuario ORDER BY idCurri desc LIMIT $this->empezar_desde, $this->tamano_paginas";
+			//echo $sql;
+			//$sql="SELECT * FROM curriculum LIMIT $this->empezar_desde, $this->tamano_paginas";
+			$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$curriculums[]=$filas;
+				}
+				if (!$curriculums) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $curriculums;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+		} // Fin método devolver usuarios
+
+		public function paginar($idUsuario) {
+	    	$this->tamano_paginas=8;
+
+      		if (isset($_GET["pagina"])) {
+      
+        		if ($_GET["pagina"]==1) {
+          			header("location:c_perfil.php?menu=4");
+        		} else {
+          			$pagina=$_GET["pagina"];
+        		}
+
+      		} else {
+        		$pagina=1;
+      		}
+
+      	    //variable que guarda el valor inicial que debe mostrar la página.
+      		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
+
+      		$sql_total="SELECT * FROM curriculum WHERE idUsuario = $idUsuario"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+
+      		$resultado=$this->conectado->query($sql_total);
+
+	    	//variables que guarda el números de filas que nos devuelve la consulta en total.
+	    	$num_filas=$resultado->num_rows;
+
+			//variable que guarda el número de páginas total que vamos a tener.
+	     	//la fx ceil redondea a la alza.
+	     	$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	     	define("TOTAL_PAGINAS", "$total_paginas");
+	    	//$total_paginas=ceil($num_filas/$this->tamano_paginas);
+	    } // Fin método paginar
+
+
 	    // Método para insertar Curriculum
 		public function addCurriculum($name, $idUsuario){
 			
@@ -88,10 +146,11 @@
 
 		//Método Modificar Datos Curriculum
 	    public function setCurriculum($name){
+	    	//echo  $name . " " . $this->name . "<br>";
 	        $modificado=array();
 	        if($this->name != $name){
-	            $sql = "UPDATE curriculum SET name = '$name' WHERE idCurri = $this->idCurri";
-	            
+	            $sql = "UPDATE curriculum SET nameCurri = '$name' WHERE idCurri = $this->idCurri";
+	            //echo $sql . "<br>";
 	            $modificado['name'] = $this->conectado->query($sql);
 	        }	        	        
 	        if($modificado){
@@ -104,28 +163,13 @@
 	    } // Fin método modificar Curriculum
 
 	    // Método borrar Curriculum
-	    public function dropCurriculum() {
-			$sql="DELETE FROM curriculum where idCurri = $this->idCurri and idUsuario = $idUsuario";
+	    public function dropCurriculum($idCurri) {
+			$sql="DELETE FROM curriculum where idCurri = $idCurri";
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	
 			} 
-	    } // Fin método borrar Curriculum
-
-	    // Método listarCurri
-	    public function listarCurri($idUsuario){
-	    	$sql = "SELECT * FROM curriculum where idUsuario = $idUsuario";
-	    	$lista = $this->conectado->query($sql);
-	    	return $lista;
-	    }
-
-	    public function contarCurri($idUsuario){
-	    	$sql="SELECT * FROM curriculum where idUsuario = $idUsuario";
-	    	//echo $sql;
-	    	$contar=$this->conectado->query($sql);
-	    	$resultado=$contar->num_rows;
-	    	return $resultado;
-	    }
+	    } // Fin método borrar Curriculum        
 
 
 	} // Fin de la Clase Curriculum

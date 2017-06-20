@@ -39,6 +39,17 @@
 			
 		}
 
+		public function mostrarFormax($idCurri) {
+
+			$arrayPersonas=$this->getFormax($idCurri);
+			if ($arrayPersonas == 0) {
+				echo "Aún no hay ningún formación registrada";
+			} else {
+				return $arrayPersonas;	
+			}
+			
+		}
+
 		public function formar(){
 			$guardado=$this->addFormacion($this->formation, $this->start, $this->end, $this->studyCenter, $this->town, $this->province, $this->grade);
 			if ($guardado == 1) {

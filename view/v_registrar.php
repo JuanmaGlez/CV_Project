@@ -40,7 +40,7 @@
                         *Username:
                     </td>
                     <td>
-                        <input type="text" name="username" required/>         
+                        <input type="text" name="username" placeholder="nick" required/>         
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                         *Password:            
                     </td>
                     <td>
-                        <input type="password" name="password" required/>
+                        <input type="password" name="password" placeholder="contraseña" required/>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         *Email:             
                     </td>
                     <td>
-                        <input type="text" name="email" required/>
+                        <input type="text" name="email" placeholder="ejempo@ejemplo.es" required/>
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +64,7 @@
                         *Name:           
                     </td>
                     <td>
-                         <input type="text" name="name" required/> 
+                         <input type="text" name="name" placeholder="Juan" required/> 
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                         *Surname:                        
                     </td>
                     <td>
-                         <input type="text" name="surname" required/>            
+                         <input type="text" name="surname" placeholder="Díaz" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -80,7 +80,7 @@
                         *DNI: 
                     </td>
                     <td>
-                        <input type="text" name="dni" required>            
+                        <input type="text" name="dni" placeholder="00011100-W" required>            
                     </td>
                 </tr>
                 <tr>
@@ -88,7 +88,7 @@
                         *Birthday:
                     </td>
                     <td>
-                        <input type="text" name="birthday" required/>            
+                        <input type="text" name="birthday" placeholder="01/01/1992" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                         *Address: 
                     </td>
                     <td>
-                        <input type="text" name="address" required/>            
+                        <input type="text" name="address" placeholder="Madrid, 32" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@
                         *Postal: 
                     </td>
                     <td>
-                        <input type="text" name="postal" required/>            
+                        <input type="text" name="postal" placeholder="41310" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -112,7 +112,7 @@
                         *Town:
                     </td>
                     <td>
-                        <input type="text" name="town" required/>            
+                        <input type="text" name="town" placeholder="Brenes" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                         *Province:
                     </td>
                     <td>
-                        <input type="text" name="province" required/>            
+                        <input type="text" name="province" placeholder="Sevilla" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
                         *Mobile:
                     </td>
                     <td>
-                        <input type="text" name="mobile" required/>            
+                        <input type="text" name="mobile" placeholder="600600600" required/>            
                     </td>
                 </tr>
                 <tr>
@@ -136,7 +136,7 @@
                         Telephone:
                     </td>
                     <td>
-                         <input type="text" name="telephone" class="form-control"/>
+                         <input type="text" name="telephone" placeholder="954000954"/>
                     </td>
                 </tr>
                 <tr>

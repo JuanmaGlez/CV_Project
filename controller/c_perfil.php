@@ -16,6 +16,8 @@
 
   require_once("../model/m_profesion.php");
 
+  require_once("../model/m_otros.php");
+
   	$objetoPerfil = new Perfil($_POST['username']=null,$_POST['password']=null);
   
   	$objetoPerfil->checkConexion();
@@ -47,6 +49,7 @@
 
   $objetoProfesion = new Profex();
   
+  $objetoOtros = new OtrosDatos();
   
 
 	require_once("../view/v_perfil.php");
@@ -72,7 +75,8 @@
               <?php include('../controller/c_curri.php'); 
                if (isset($_POST['guardar_curri'])) {
                   $objetoCurri->nombreCurri(); 
-                  header("location: c_perfil.php?menu=4");
+                  echo '<meta http-equiv="refresh" content="0; URL=c_perfil.php?menu=4" />';
+                  //header("location: c_perfil.php?menu=4");
                } ?>
             </form>             
 <?php     } elseif ($_GET['menu']==5) { ?>
@@ -92,6 +96,11 @@
 
 <?php     } elseif ($_GET['menu']==7) { 
               include('../controller/c_otros.php');
+              echo "aqui 1";
+              if (isset($_POST['insertar_otros'])) {
+                echo "aqui 2";
+                $objetoMostrarO->addOtros($idCurri,$_POST['idi'],$_POST['card'],$_POST['abi'],$_POST['know'],$_POST['hob']);
+              } 
 
           } elseif ($_GET['menu']==8) {  ?>
               <form action="c_perfil.php?menu=8" method="post"> 

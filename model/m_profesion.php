@@ -39,6 +39,17 @@
 			
 		}
 
+		public function mostrarProfex($idCurri) {
+
+			$arrayPersonas=$this->getProfex($idCurri);
+			if ($arrayPersonas == 0) {
+				echo "Aún no hay ningún profesión registrada";
+			} else {
+				return $arrayPersonas;	
+			}
+			
+		}
+
 		public function profe(){
 			$guardado=$this->addProfesion($this->occupation, $this->start, $this->end, $this->company, $this->town, $this->province, $this->description);
 			if ($guardado == 1) {

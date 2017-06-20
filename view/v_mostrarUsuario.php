@@ -29,7 +29,12 @@
 
 
     <tr>      
-      <td nowrap><?php echo $persona["registro"];?></td>
+      <td nowrap><?php //echo $persona["registro"];
+                        $fecha=$persona["registro"];
+                        $objeto = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
+                        $cadena= date_format($objeto, "d/m/Y H:i:s");
+                        echo $cadena;
+      ?></td>
       <td><?php echo $persona["username"];?></td>
       <td><?php echo $persona["email"]; ?></td>
       <td><?php echo $persona["tipoUsuario"]; ?></td>

@@ -56,6 +56,7 @@
 		}
 
 		public function dropOtro($idOtros) {
+			echo "hola";
 			$borrar=$this->dropOtros($idOtros);
 			/*$borrar=$this->dropFormacion($idFormacion);
 			if ($borrar == 1) {

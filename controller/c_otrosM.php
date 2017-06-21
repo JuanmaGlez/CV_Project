@@ -1,12 +1,13 @@
 <?php 
 	session_start();
 	require_once("../model/m_otros.php");
+	//echo "aqui c_otros";
 
 	if (isset($_GET['Id_mo'])) {
         //echo $_GET['Id_ef'];          
-    	$idUsuario=$_GET["Id_mo"];
-    	//echo $idUsuario;
-    	$objetoMOtros = new OtrosDatos($idUsuario);    	
+    	$idOtros=$_GET["Id_mo"];
+    	//echo $idOtros;
+    	$objetoMOtros = new OtrosDatos($idOtros);    	
   	}
 
 	require_once("../view/v_modificarOtros.php");

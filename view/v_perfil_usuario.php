@@ -1,9 +1,9 @@
 <li><a href="../controller/c_perfil.php?menu=4">Curriculum</a>
-      <ul>
+     <!-- <ul>
             <li><a href=""><input class="btn" type="submit" name="boton_addCurri" value="Añadir Curriculum"></a></li>
             <li><a href=""><input class="btn" type="submit" name="boton_listCurri" value="Listar Curriculum"></a></li>
             <li><a href=""><input class="btn" type="submit" name="boton_mostrarCurri" value="Mostrar Curriculum"></a></li>
-      </ul>
+      </ul>-->
 </li>
 <li><a href="../controller/c_perfil.php?menu=5">Formación</a>
      <!-- <ul>

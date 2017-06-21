@@ -94,15 +94,17 @@
                 } ?>   
               </form> 
 
-<?php     } elseif ($_GET['menu']==7) { 
-              include('../controller/c_otros.php');
-              echo "aqui 1";
+<?php     } elseif ($_GET['menu']==7) { ?>
+            <form action="" method="post">
+          <?php    include('../controller/c_otros.php');
               if (isset($_POST['insertar_otros'])) {
-                echo "aqui 2";
-                $objetoMostrarO->addOtros($idCurri,$_POST['idi'],$_POST['card'],$_POST['abi'],$_POST['know'],$_POST['hob']);
-              } 
+                
+                $objetoOtros->addOtros($_POST['idi'],$_POST['card'],$_POST['abi'],$_POST['know'],$_POST['hob']);
+              } ?>   
+              </form> 
 
-          } elseif ($_GET['menu']==8) {  ?>
+
+<?php     } elseif ($_GET['menu']==8) {  ?>
               <form action="c_perfil.php?menu=8" method="post"> 
            <?php   include('../controller/c_mostrarUsuarios.php');
               if (isset($_POST['insertar_nuevo'])) {

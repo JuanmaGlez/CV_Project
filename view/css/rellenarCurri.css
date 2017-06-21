@@ -4,7 +4,7 @@ body {
 	width: 90%;
 	height: 100%;
 	margin-left: 4%;	
-	background-color: orange;
+	/*background-color: orange;*/
 }
 
 h1 {
@@ -12,20 +12,20 @@ h1 {
 }
 
 .foto{
-	border: solid yellow;
+	border: solid white;
 	width: 75px;
 	height: 100px;
 	color: blue;
 	font-size: 0.3em;
-	background-color: red;
+	/*background-color: red;*/
 	position: relative;
 	top:10%;
 	left: 80%;
 }
 
 .nombre {
-	border: solid yellow;
-	background-color: blue;
+	/*border: solid yellow;
+	background-color: blue;*/
 	width: 90%;
 	height: 40%;
 	font-size: 70%;
@@ -39,8 +39,8 @@ h1 {
  }
 
  .profesion {
- 	border: solid yellow;
-	background-color: white;
+ 	/*border: solid yellow;
+	background-color: white;*/
 	width: 90%;
 	height: 40%;
 	font-size: 70%;
@@ -51,15 +51,15 @@ h1 {
 }
 
  .formacion {
- 	border: solid yellow;
-	background-color: green;
+ 	/*border: solid yellow;
+	background-color: green;*/
 	width: 90%;
 	height: 40%;
 	font-size: 70%;
 	margin:0%;
 	padding: 0%;
 	position: absolute;
-	top: 95%;
+	top: 90%;
 }
 
 #forma{
@@ -68,8 +68,8 @@ h1 {
 }
 
  .otros {
- 	border: solid yellow;
-	background-color: blue;
+ 	/*border: solid yellow;
+	background-color: blue;*/
 	width: 90%;
 	height: 40%;
 	font-size: 70%;

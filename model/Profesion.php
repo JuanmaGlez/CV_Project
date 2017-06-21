@@ -144,7 +144,7 @@
 	    	    // Método de volver toda la profesión del usuario
 		public function getProfesion($idUsuario) {
 			$profesiones="";
-			$this->paginar();
+			$this->paginar($idUsuario);
 			//SELECT * FROM profesion where idCurri = (select idCurri from curriculum where idUsuario = 8);
 			$sql="SELECT * FROM profesion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) ORDER BY start desc LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//$sql="SELECT * FROM profesion LIMIT $this->empezar_desde, $this->tamano_paginas";
@@ -165,7 +165,7 @@
 			$this->conectarse->desconexion();
 		} // Fin método devolver usuarios
 
-		public function paginar() {
+		public function paginar($idUsuario) {
 	    	$this->tamano_paginas=8;
 
       		if (isset($_GET["pagina"])) {
@@ -183,7 +183,7 @@
       	    //variable que guarda el valor inicial que debe mostrar la página.
       		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
 
-      		$sql_total="SELECT * FROM profesion"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+      		$sql_total="SELECT * FROM profesion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario)"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
 
       		$resultado=$this->conectado->query($sql_total);
 

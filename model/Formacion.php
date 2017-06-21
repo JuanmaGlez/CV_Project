@@ -144,7 +144,7 @@
 	    // Método de volver toda la formación del usuario
 		public function getFormacion($idUsuario) {
 			$formaciones="";
-			$this->paginar();
+			$this->paginar($idUsuario);
 			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
 			$sql="SELECT * FROM formacion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) ORDER BY start desc LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//echo $sql;
@@ -166,7 +166,7 @@
 			$this->conectarse->desconexion();
 		} // Fin método devolver usuarios
 
-		public function paginar() {
+		public function paginar($idUsuario) {
 	    	$this->tamano_paginas=8;
 
       		if (isset($_GET["pagina"])) {
@@ -184,7 +184,7 @@
       	    //variable que guarda el valor inicial que debe mostrar la página.
       		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
 
-      		$sql_total="SELECT * FROM formacion"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+      		$sql_total="SELECT * FROM formacion where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario)"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
 
       		$resultado=$this->conectado->query($sql_total);
 

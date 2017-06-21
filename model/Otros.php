@@ -41,8 +41,7 @@
 	      if($datosRecuperados=$datos->fetch_assoc()){	    
 
 	        $this->idOtros=$datosRecuperados['idOtros'];
-	        $this->idCurri=$datosRecuperados['idCurri'];
-	        $this->occupation=$datosRecuperados['occupation'];
+	        $this->idCurri=$datosRecuperados['idCurri'];	       
 	        $this->lenguage=$datosRecuperados['lenguage'];
 	        $this->card=$datosRecuperados['card'];
 	        $this->ability=$datosRecuperados['ability'];	        
@@ -128,7 +127,7 @@
 	      // Método de volver toda la formación del usuario
 		public function getOtros($idUsuario) {
 			$otros="";
-			$this->paginar();
+			$this->paginar($idUsuario);
 			//SELECT * FROM formacion where idCurri = (select idCurri from curriculum where idUsuario = 8);
 			$sql="SELECT * FROM otros where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) LIMIT $this->empezar_desde, $this->tamano_paginas";
 			//echo $sql;
@@ -150,7 +149,7 @@
 			$this->conectarse->desconexion();
 		} // Fin método devolver usuarios
 
-		public function paginar() {
+		public function paginar($idUsuario) {
 	    	$this->tamano_paginas=8;
 
       		if (isset($_GET["pagina"])) {
@@ -168,7 +167,7 @@
       	    //variable que guarda el valor inicial que debe mostrar la página.
       		$this->empezar_desde=($pagina-1)*$this->tamano_paginas;
 
-      		$sql_total="SELECT * FROM otros"; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
+      		$sql_total="SELECT * FROM otros where idCurri in (select idCurri from curriculum where idUsuario = $idUsuario) "; //limit admite dos datos, el primero seria cual es el primero que quieres ver, y el segundo es hasta cuanto quieres ver. En este caso tb se puede poner LIMIT 3.
 
       		$resultado=$this->conectado->query($sql_total);
 
@@ -185,7 +184,8 @@
 	    // Método para insertar Otros
 		public function addOtros($idCurri,$lenguage, $card, $ability, $knowledge, $hobby){
 			
-			$sql="INSERT INTO otros (idCurri,lenguage, card, ability, knowledge, hobby, description) VALUES ($idCurri,'$lenguage', '$card', '$ability', '$knowledge', '$hobby')";
+			$sql="INSERT INTO otros (idCurri,lenguage, card, ability, knowledge, hobby) VALUES ($idCurri,'$lenguage','$card','$ability','$knowledge', '$hobby')";
+			//echo $sql;
 				
 			$resultado=$this->conectado->query($sql);
 			
@@ -238,6 +238,7 @@
 	    // Método borrar Otros
 	    public function dropOtros($idOtros) {
 			$sql="DELETE FROM otros where idOtros = $idOtros";
+			//echo $sql;
 			$borrar=$this->conectado->query($sql);
 			if ($borrar) {
 				return 1;    	

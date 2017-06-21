@@ -6,12 +6,16 @@
 	require_once("../model/m_formacion.php");
 	require_once("../model/m_profesion.php");
 	require_once("../model/m_otros.php");
+    require_once("../model/m_subirFoto.php");
+
 
 	$objetoMostrarF = new Formax();
 
 	$objetoMostrarP = new Profex();
 
 	$objetoMostrarO = new OtrosDatos();
+
+    $objetoFoto= new SubirFoto();
 
 	if (isset($_GET['Id_rc'])) {
         //echo $_GET['Id_mc'];          
@@ -24,18 +28,20 @@
 
 	require_once("../view/v_rellenarCurri.php");
 
+
 	 if (isset($_POST['insertar_formacion'])) {
           $objetoMostrarF->addFormacion($idCurri,$_POST['For'],$_POST['Inicio'],$_POST['Fin'],$_POST['Cent'],$_POST['Pue'],$_POST['Pro'],$_POST['Notas']);
+          echo '<meta http-equiv="refresh" content="2; URL=c_curriR.php?Id_rc=15" />';
      }
 
      if (isset($_POST['insertar_profesion'])) {
          $objetoMostrarP->addProfesion($idCurri,$_POST['Prof'],$_POST['Inicio'],$_POST['Fin'],$_POST['Emp'],$_POST['Pue'],$_POST['Pro'],$_POST['Desc']);
+         echo '<meta http-equiv="refresh" content="2; URL=c_curriR.php?Id_rc=15" />';
      }   
 
-     echo "aqui 1";
      if (isset($_POST['insertar_otros'])) {
-     	echo "aqui 2";
          $objetoMostrarO->addOtros($idCurri,$_POST['idi'],$_POST['card'],$_POST['abi'],$_POST['know'],$_POST['hob']);
+         echo '<meta http-equiv="refresh" content="2; URL=c_curriR.php?Id_rc=15" />';
      }   
 	
 

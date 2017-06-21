@@ -8,8 +8,8 @@
 <body>
 <h1>Curriculum Vitae<h1>
 
-<div class="foto">
-	<img src="" alt="Foto Curriculum">	
+<div class="foto">	
+	<img src="/intranet/uploads/<?php  echo $objetoFoto->objetoUsuario->getUsername() . $objetoFoto->objetoUsuario->getIdUsuario() . '/' . $objetoFoto->objetoUsuario->getPhoto(); ?>" alt="Foto Curriculum" width="75">		
 </div>
 
 <div class="nombre">
@@ -47,6 +47,7 @@
 <div class="otros">
 	<h3>OTROS DATOS<h3>
 	<?php include('v_curriOtros.php'); ?>
+
 </div>
 
 	

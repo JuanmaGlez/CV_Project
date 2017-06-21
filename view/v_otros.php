@@ -49,7 +49,7 @@
         <!--<td><a  href="javascript:Abrir('../controller/c_formacion.php')"><input type='button' name='boton_modificar' value='Modificar'></a></td>-->    
 
       
-        <td><a href="javascript:Confirmar('../controller/c_perfil.php?menu=7&Id_ef=<?php echo $otros["idotros"]; ?>')"><input type='button'  name='boton_eliminar_otros' value='Eliminar'></a></td>        
+        <td><a href="javascript:Confirmar('../controller/c_perfil.php?menu=7&Id_eo=<?php echo $otros["idOtros"]; ?>')"><input type='button'  name='boton_eliminar_otros' value='Eliminar'></a></td>        
       
 
     <?php         
@@ -73,7 +73,7 @@
           //----------------PAGINACIÓN---------------------------------------------------
           //Creamos un bucle for para que recorra todas las páginas. Sean 4 o 500 páginas.
           for ($i=1; $i <=TOTAL_PAGINAS; $i++) { 
-            echo "<a href='?menu=5&pagina=" . $i . "'>" . $i . "</a>  ";
+            echo "<a href='?menu=7&pagina=" . $i . "'>" . $i . "</a>  ";
           }
 
        ?>

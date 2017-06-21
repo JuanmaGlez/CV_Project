@@ -20,8 +20,8 @@
   <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr >
-      <td>Nombre Curriculum</td>      
-      <td colspan="3" align="center">Acción</td>
+      <td class="primera_fila">Nombre Curriculum</td>      
+      <td class="primera_fila" colspan="3" align="center">Acción</td>
       <td>&nbsp;</td>
     </tr> 
 

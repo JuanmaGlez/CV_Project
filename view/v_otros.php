@@ -17,12 +17,12 @@
   <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr >
-      <td>Idiomas</td>
-      <td>Carnet Conducir</td>
-      <td>Habilidades</td>
-      <td>Conocimientos</td>
-      <td>Hobbys</td>      
-      <td>&nbsp;</td>
+      <td class="primera_fila">Idiomas</td>
+      <td class="primera_fila">Carnet Conducir</td>
+      <td class="primera_fila">Habilidades</td>
+      <td class="primera_fila">Conocimientos</td>
+      <td class="primera_fila">Hobbys</td>      
+      <td class="primera_fila" colspan="2" align="center">Acción</td>
       <td>&nbsp;</td>
     </tr> 
 
@@ -57,15 +57,7 @@
         endforeach; // }
       }
     ?>
-
-        <tr>
-          <td><input type='text' name='idi' size='8' class='centrado'></td>
-          <td><input type='text' name='card' size='10' class='centrado'></td>
-          <td><input type='text' name='abi' size='15' class='centrado'></td>
-          <td><input type='text' name='know' size='15' class='centrado'></td>
-          <td><input type='text' name='hob' size='15' class='centrado'></td>    
-          <td><input type='submit' name='insertar_otros' value='Insertar'></td>      
-        </tr> 
+   
     <tr>
       <td>
       <?php 

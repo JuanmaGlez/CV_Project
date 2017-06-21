@@ -17,14 +17,14 @@
   <form action="" method="post">
   <table width="60%" border="0" align="center">
     <tr >
-      <td>Formación</td>
-      <td>Inicio</td>
-      <td>Fin</td>
-      <td>Centro de Estudios</td>
-      <td>Pueblo</td>
-      <td>Provincia</td>
-      <td>Notas</td>
-      <td>&nbsp;</td>
+      <td nowrap class="primera_fila">Formación</td>
+      <td class="primera_fila">Inicio</td>
+      <td class="primera_fila">Fin</td>
+      <td nowrap class="primera_fila">Centro de Estudios</td>
+      <td class="primera_fila">Pueblo</td>
+      <td class="primera_fila">Provincia</td>
+      <td class="primera_fila">Notas</td>
+      <td class="primera_fila" colspan="2" align="center">Acción</td>
       <td>&nbsp;</td>
     </tr> 
 
@@ -61,17 +61,7 @@
         endforeach; // }
       }
     ?>
-
-        <tr>
-          <td><input type='text' name='For' size='20' class='centrado'></td>
-          <td><input type='text' name='Inicio' size='8' class='centrado'></td>
-          <td><input type='text' name='Fin' size='8' class='centrado'></td>
-          <td><input type='text' name='Cent' size='18' class='centrado'></td>
-          <td><input type='text' name='Pue' size='18' class='centrado'></td>
-          <td><input type='text' name='Pro' size='10' class='centrado'></td>
-          <td><input type='text' name='Notas' size='10' class='centrado'></td>
-          <td><input type='submit' name='insertar_formacion' value='Insertar'></td>
-        </tr> 
+      
     <tr>
       <td>
       <?php 

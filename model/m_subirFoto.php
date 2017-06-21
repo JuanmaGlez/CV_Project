@@ -19,6 +19,7 @@
 				if ($tipo_imagen=="image/jpeg" || $tipo_imagen=="image/jpg" || $tipo_imagen=="image/png" || $tipo_imagen=="image/gif") {
 								
 					$carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/intranet/uploads/' . $_SESSION['username'] . $_SESSION['idUsuario'] . '/';
+					//echo $carpeta_destino;
 
 					//fx que mueve la imagen de la temporal a la carpeta destino. mv_uploaded_file(filename, destination);
 					//Movemos la imagen del directorio temporal al directorio elegido.

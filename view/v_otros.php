@@ -24,6 +24,7 @@
       <td class="primera_fila">Hobbys</td>      
       <td class="primera_fila" colspan="2" align="center">Acción</td>
       <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr> 
 
     <?php 

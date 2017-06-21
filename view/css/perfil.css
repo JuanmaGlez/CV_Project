@@ -99,13 +99,13 @@ div {
 	margin: 2% 4% 4% 2%;
 	/*background-color: yellow;*/
 	width: 90%;
-	height: 500px;
+	height: 600px;
 }
 
 table .primera_fila{
 	font-size:1rem;	
 	background-color:#C0C0C0;
-	width: 30px;
+	width: 50px;
 
 }
 
@@ -113,7 +113,7 @@ footer{
 	position: absolute;	
 	height: 10%;
 	width: 90%;
-	margin: 40% 5% 5% 2%;
+	margin: 45% 5% 5% 2%;
 	/*background-color: gold;*/
 	text-align: center;
 	color: blue;

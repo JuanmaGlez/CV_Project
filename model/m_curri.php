@@ -57,6 +57,11 @@
 			}
 		}
 
+		public function verC($idUsuario){			
+			$ver=$this->objetoCurriculum->verCurri($idUsuario);
+
+			return $ver;
+		}
 		
 	}
 

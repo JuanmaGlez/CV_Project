@@ -171,6 +171,28 @@
 			} 
 	    } // Fin método borrar Curriculum        
 
+	    public function verCurri($idUsuario){
+	    	$ver="";
+
+	    	$sql="Select * from curriculum where idCurri = (SELECT min(idCurri) from curriculum where idUsuario = $idUsuario)";
+	    	//echo $sql;
+	    	$resultado=$this->conectado->query($sql);
+			if ($resultado) {				
+				while ($filas=$resultado->fetch_assoc()) {
+					$ver[]=$filas;
+				}
+				if (!$ver) {
+					//echo "No hay na";
+					return 0;
+				} else {
+					return $ver;
+				}
+			} else {
+				return 0;
+			}
+			$this->conectarse->desconexion();
+	    }
+
 
 	} // Fin de la Clase Curriculum
 

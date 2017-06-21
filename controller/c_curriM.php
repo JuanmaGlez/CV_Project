@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	require_once("../model/m_curri2.php");
+	require_once("../model/m_curri.php");
 
 	if (isset($_GET['Id_mc'])) {
         //echo $_GET['Id_mc'];          

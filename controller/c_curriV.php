@@ -33,7 +33,7 @@
         }
 
     	//$objetoDatosUsuario = new Perfil();  	
-    	$objetoDatosUsuario = new Perfil($_SESSION['username']=null,$_SESSION['pass']=null);  	
+    	$objetoDatosUsuario = new Perfil($a=null,$b=null);  	
   	}
 
 	require_once("../view/v_verCurri.php");

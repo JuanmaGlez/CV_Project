@@ -33,13 +33,24 @@ require_once('Usuarios.php');
         if ($resultado['email'] == $this->email) {
           $this->mail->SMTPDebug = 4;
 
-          $this->mail->SMTPAuth = false;
+          $this->mail->Host = "smtp.gmail.com";
 
-          $this->mail->Port = 25;
+          //$this->mail->SMTPAuth = false;
+          $this->mail->SMTPAuth = true;
 
-          $this->mail->SetFrom('jmgonzalez@comvive.es','Administrador Web');
+          $this->mail->Username="juanmita1982@gmail.com";
 
-          $this->mail->AddReplyTo('jmgonzalez@comvive.es','Administrador Web');
+          $this->mail->Password="arlekin@#1982new";
+
+          $this->mail->SMTPSecure ='tls';
+
+          $this->mail->Port = 587;
+          //$this->mail->Port = 25;
+
+          //$this->mail->SetFrom('jmgonzalez@comvive.es','Administrador Web');
+          $this->mail->SetFrom('juanmita1982@gmail.com','Administrador Web');
+          
+          $this->mail->AddReplyTo('juanmita1982@gmail.com','Administrador Web');
 
           //$address = "jmgonzalez@comvive.es";
           //$address = "juanmita1982@gmail.com";          

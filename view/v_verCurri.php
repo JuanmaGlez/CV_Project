@@ -33,20 +33,20 @@
 
 <div class="profesion">
 	<h3>PROFESIÓN<h3>		
-	<?php include('v_curriProfesion.php'); ?>
+	<?php include('v_curriVerProfesion.php'); ?>
 	<hr>
 </div>
 
 
 <div class="formacion">
 	<h3>FORMACIÓN<h3>
-	<?php include('v_curriFormacion.php'); ?>
+	<?php include('v_curriVerFormacion.php'); ?>
 	<hr>
 </div>
 
 <div class="otros">
 	<h3>OTROS DATOS<h3>
-	<?php include('v_curriOtros.php'); ?>
+	<?php include('v_curriVerOtros.php'); ?>
 
 </div>
 

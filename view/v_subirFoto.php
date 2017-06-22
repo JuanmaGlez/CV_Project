@@ -23,8 +23,8 @@
 	</table>
 
 	
-	<div>
- 		<img src="/intranet/uploads/<?php  echo $_SESSION['username'] . $_SESSION['idUsuario'] . '/' . $objetoFoto->objetoUsuario->getPhoto(); ?>" alt="Foto Curriculum" width="200" border="2">
+	<div class="foto">
+ 		<img src="/intranet/uploads/<?php  echo $_SESSION['username'] . $_SESSION['idUsuario'] . '/' . $objetoFoto->objetoUsuario->getPhoto(); ?>" alt="Foto Curriculum" width="90">
  	</div>
 
 

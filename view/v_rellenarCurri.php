@@ -1,3 +1,11 @@
+<?php   
+  if (!$_SESSION['loggedin']){
+    echo "Solo usuarios registrados.<br>";
+    echo "<br><a href='../view/v_login.php'>Login</a>";
+    exit;
+  }  
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

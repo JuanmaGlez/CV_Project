@@ -200,7 +200,7 @@
 	    // Método para insertar Profesión
 		public function addProfesion($idCurri,$occupation, $start, $end, $company, $town, $province, $description){
 			
-			$sql="INSERT INTO profesion (idCurri,occupation, start, end, company, town, province, description) VALUES ($idCurri,'$occupation', '$start', '$end', '$company', '$town', '$province', '$description')";
+			$sql="INSERT INTO profesion (idCurri,occupation, start, end, company, town, province, description) VALUES ($idCurri,'$occupation', STR_TO_DATE('$start','%d/%m/%Y'), STR_TO_DATE('$end','%d/%m/%Y'), '$company', '$town', '$province', '$description')";
 			//echo $sql;
 				
 			$resultado=$this->conectado->query($sql);

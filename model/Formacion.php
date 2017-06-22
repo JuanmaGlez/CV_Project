@@ -201,7 +201,8 @@
 	    // Método para insertar formación
 		public function addFormacion($idCurri,$formation, $start, $end, $studyCenter, $town, $province, $grade){
 			
-			$sql="INSERT INTO formacion (idCurri,formation,start,end,studyCenter,town,province,grade) VALUES ($idCurri,'$formation', '$start','$end','$studyCenter','$town','$province','$grade')";
+			$sql="INSERT INTO formacion (idCurri,formation,start,end,studyCenter,town,province,grade) VALUES ($idCurri,'$formation', STR_TO_DATE('$start','%d/%m/%Y'), STR_TO_DATE('$end','%d/%m/%Y'),'$studyCenter','$town','$province','$grade')";
+			//echo $sql;
 				
 			$resultado=$this->conectado->query($sql);
 			
